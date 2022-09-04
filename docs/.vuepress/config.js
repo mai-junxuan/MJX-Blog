@@ -1,6 +1,6 @@
 const themeConfig = require('./themeConfig')
 module.exports = {
-    base: '/MJX-Blog/',
+    // base: '/MJX-Blog/',
     title: "maijunxuan's blog",
     description: '',
     markdown: {
