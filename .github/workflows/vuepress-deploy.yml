@@ -18,3 +18,4 @@ jobs:
           TARGET_BRANCH: page
           BUILD_SCRIPT: yarn && yarn docs:build
           BUILD_DIR: docs/.vuepress/dist
+          CNAME: https://maijunxuan.cn
