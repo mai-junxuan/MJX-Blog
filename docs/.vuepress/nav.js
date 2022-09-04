@@ -1,8 +1,8 @@
 module.exports = [
-    {
-        text: 'Java', items: [
-        ]
-    },
+    // {
+    //     text: 'Java', items: [
+    //     ]
+    // },
     {
         text: 'JUC',
         items: [
@@ -10,10 +10,10 @@ module.exports = [
             {text: 'volatile和CAS的弊端', link: '/JUC/volatile和CAS的弊端/'},
         ]
     },
-    {
-        text: 'MySQL', items: [
-        ]
-    },
+    // {
+    //     text: 'MySQL', items: [
+    //     ]
+    // },
     {
         text: 'Redis',
         items: [
@@ -30,16 +30,16 @@ module.exports = [
     {
         text: '工具',
         items: [
-            {
-                text: 'Spring', items: [
-                    {text: '', link: ''}
-                ]
-            },
-            {
-                text: 'MyBatis', items: [
-                    {text: '', link: ''}
-                ]
-            },
+            // {
+            //     text: 'Git', items: [
+            //         {text: '', link: ''}
+            //     ]
+            // },
+            // {
+            //     text: 'Linux', items: [
+            //         {text: '', link: ''}
+            //     ]
+            // },
             {
                 text: 'Docker', items: [
                     {text: 'Docker常用命令', link: '/工具/Docker/Docker常用命令'}
@@ -59,34 +59,29 @@ module.exports = [
             {text: 'Redis的安装与基本操作', link: '/Redis/Redis的安装与基本操作/'},
         ]
     },
-    {
-        text: '框架',
-        items: [
-            {
-                text: 'Spring', items: [
-                    {text: '', link: ''}
-                ]
-            },
-            {
-                text: 'MyBatis', items: [
-                    {text: '', link: ''}
-                ]
-            },
-            {
-                text: 'MyBatis', items: [
-                    {text: '', link: ''}
-                ]
-            },
-        ]
-    },
+    // {
+    //     text: '框架',
+    //     items: [
+    //         {
+    //             text: 'Spring', items: [
+    //                 {text: '', link: ''}
+    //             ]
+    //         },
+    //         {
+    //             text: 'MyBatis', items: [
+    //                 {text: '', link: ''}
+    //             ]
+    //         },
+    //     ]
+    // },
     {
         text: '中间件',
         items: [
-            {
-                text: '消息队列', items: [
-                    {text: '', link: ''}
-                ]
-            },
+            // {
+            //     text: '消息队列', items: [
+            //         {text: '', link: ''}
+            //     ]
+            // },
             {
                 text: 'Canal', items: [
                     {text: 'Canal的使用', link: '/中间件/Canal/Canal的使用'}
