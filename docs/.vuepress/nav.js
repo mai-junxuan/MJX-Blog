@@ -10,9 +10,14 @@ module.exports = [
     {
         text: 'JUC',
         items: [
+            {text: 'Java中的线程池', link: '/JUC/Java中的线程池/'},
+            {text: 'Java中的并发容器', link: '/JUC/Java中的并发容器/'},
             {text: '谈谈ThreadLocal', link: '/JUC/谈谈ThreadLocal/'},
             {text: 'synchronized的优化', link: '/JUC/synchronized的优化/'},
+            {text: 'CAS和原子类', link: '/JUC/CAS和原子类/'},
             {text: 'volatile和CAS的弊端', link: '/JUC/volatile和CAS的弊端/'},
+            {text: 'CompletableFuture简单使用', link: '/JUC/CompletableFuture简单使用/'},
+            {text: 'JUC常用工具类', link: '/JUC/JUC常用工具类/'},
         ]
     },
     {
@@ -64,7 +69,7 @@ module.exports = [
             },
             {
                 text: 'Nginx', items: [
-                    {text: 'Nginx的安装.md', link: '/工具/Nginx/Nginx的安装/'},
+                    {text: 'Nginx的安装', link: '/工具/Nginx/Nginx的安装/'},
                     {text: 'Nginx基础入门', link: '/工具/Nginx/Nginx基础入门/'}
                 ]
             },

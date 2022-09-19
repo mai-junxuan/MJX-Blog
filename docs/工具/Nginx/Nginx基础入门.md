@@ -108,7 +108,7 @@ location / {
 
 #### 前置步骤
 
-安装tomcat服务器，具体步骤可参考笔者之前写过的这篇文章 [Linux下tomcat的部署](https://blog.csdn.net/shark_chili3007/article/details/107473612)
+安装tomcat服务器
 
 设置域名重定向
 
