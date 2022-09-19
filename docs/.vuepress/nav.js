@@ -10,14 +10,24 @@ module.exports = [
     {
         text: 'JUC',
         items: [
+            {text: '谈谈ThreadLocal', link: '/JUC/谈谈ThreadLocal/'},
             {text: 'synchronized的优化', link: '/JUC/synchronized的优化/'},
             {text: 'volatile和CAS的弊端', link: '/JUC/volatile和CAS的弊端/'},
         ]
     },
-    // {
-    //     text: 'MySQL', items: [
-    //     ]
-    // },
+    {
+        text: 'MySQL',
+        items: [
+            {text: 'MySQL常用语句', link: '/MySQL/MySQL常用语句/'},
+            {text: 'MySQL中的事务', link: '/MySQL/MySQL中的事务/'},
+            {text: '一条SQL的执行过程', link: '/MySQL/一条SQL的执行过程/'},
+            {text: 'MySQL中datetime和timestamp的区别与选择', link: '/MySQL/MySQL中datetime和timestamp的区别与选择/'},
+            {text: '普通索引和唯一索引的区别.md', link: '/MySQL/普通索引和唯一索引的区别.md/'},
+            {text: 'Explain语句', link: '/MySQL/Explain语句/'},
+            {text: 'MySQL的执行成本怎么算', link: '/MySQL/MySQL的执行成本怎么算/'},
+            {text: 'MVCC实现原理', link: '/MySQL/MVCC实现原理/'},
+        ]
+    },
     {
         text: 'Redis',
         items: [
@@ -65,23 +75,24 @@ module.exports = [
         items: [
             {text: 'CAP和BASE理论', link: '/分布式/CAP和BASE理论/'},
             {text: '分布式事务的解决方案', link: '/分布式/分布式事务的解决方案/'},
+            {text: '分布式锁的几种实现方式', link: '/分布式/分布式锁的几种实现方式/'},
         ]
     },
-    // {
-    //     text: '框架',
-    //     items: [
-    //         {
-    //             text: 'Spring', items: [
-    //                 {text: '', link: ''}
-    //             ]
-    //         },
-    //         {
-    //             text: 'MyBatis', items: [
-    //                 {text: '', link: ''}
-    //             ]
-    //         },
-    //     ]
-    // },
+    {
+        text: '框架',
+        items: [
+            {
+                text: 'Spring', items: [
+                    {text: 'Spring的常用注解', link: '/框架/Spring/Spring的常用注解/'},
+                    {text: '@Autowired注解详解', link: '/框架/Spring/@Autowired注解详解/'},
+                    {text: 'SpringBean的作用域', link: '/框架/Spring/SpringBean的作用域/'},
+                    {text: 'Spring三级缓存与循环依赖', link: '/框架/Spring/Spring三级缓存与循环依赖/'},
+                    {text: 'JDK动态代理和CGlib代理', link: '/框架/Spring/JDK动态代理和CGlib代理/'},
+                ]
+            },
+
+        ]
+    },
     {
         text: '中间件',
         items: [
@@ -92,9 +103,14 @@ module.exports = [
             // },
             {
                 text: 'Canal', items: [
-                    {text: 'Canal的使用', link: '/中间件/Canal/Canal的使用'}
+                    {text: 'Canal的使用', link: '/中间件/Canal/Canal的使用/'}
                 ]
             },
+            // {
+            //     text: 'Sharding-JDBC', items: [
+            //         {text: '', link: ''}
+            //     ]
+            // },
         ]
     },
 ]
