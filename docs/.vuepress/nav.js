@@ -101,11 +101,11 @@ module.exports = [
     {
         text: '中间件',
         items: [
-            // {
-            //     text: '消息队列', items: [
-            //         {text: '', link: ''}
-            //     ]
-            // },
+            {
+                text: '消息队列', items: [
+                    {text: 'RabbitMQ简单使用', link: '/中间件/RabbitMQ/RabbitMQ简单使用/'}
+                ]
+            },
             {
                 text: 'Canal', items: [
                     {text: 'Canal的使用', link: '/中间件/Canal/Canal的使用/'}
