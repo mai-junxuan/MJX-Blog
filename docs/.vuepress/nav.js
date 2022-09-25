@@ -2,9 +2,14 @@ module.exports = [
     {
         text: 'Java',
         items: [
-            {text: 'Lambda实践', link: '/Java/Lambda实践/'},
+            {text: 'Java基础小结', link: '/Java/Java基础小结/'},
+            {text: 'Java注解小结', link: '/Java/Java注解小结/'},
+            {text: 'Java反射小结', link: '/Java/Java反射小结/'},
             {text: 'Java中的泛型', link: '/Java/Java中的泛型/'},
             {text: '谈谈Java的异常', link: '/Java/谈谈Java的异常/'},
+            {text: 'Lambda实践', link: '/Java/Lambda实践/'},
+            {text: 'Stream流实践', link: '/Java/Stream流实践/'},
+            {text: 'Java中的字符串', link: '/Java/Java中的字符串/'},
         ]
     },
     {
@@ -17,7 +22,9 @@ module.exports = [
             {text: 'CAS和原子类', link: '/JUC/CAS和原子类/'},
             {text: 'volatile和CAS的弊端', link: '/JUC/volatile和CAS的弊端/'},
             {text: 'CompletableFuture简单使用', link: '/JUC/CompletableFuture简单使用/'},
+            {text: 'AQS简述', link: '/JUC/AQS简述/'},
             {text: 'JUC常用工具类', link: '/JUC/JUC常用工具类/'},
+            {text: 'Java中的并发容器', link: '/JUC/Java中的并发容器/'},
         ]
     },
     {
@@ -37,6 +44,7 @@ module.exports = [
         text: 'Redis',
         items: [
             {text: 'Redis的安装与基本操作', link: '/Redis/Redis的安装与基本操作/'},
+            {text: 'Redis的3种特殊类型', link: '/Redis/Redis的3种特殊类型/'},
             {text: 'Redis配置文件介绍', link: '/Redis/Redis配置文件介绍/'},
             {text: 'Redis的Java客户端示例', link: '/Redis/Redis的Java客户端示例/'},
             {text: 'Redis事务', link: '/Redis/Redis事务/'},
