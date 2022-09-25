@@ -4,7 +4,7 @@
 
 如下所示，我们使用这条命令就可以看到如下图所示的控制台
 
-```
+```java
 java -XX:+UnlockDiagnosticVMOptions -XX:NativeMemoryTracking=summary -XX:+PrintNMTStatistics -version
 
 ```
@@ -27,7 +27,7 @@ Executor提交任务的方式有两种一种是基于提交继承`Runnable`接�
 
 线程池返回类型使用的类基本都是基于`future`类，所以当我们把`runnable`和`callable`使用submit提交时，就会返回一个future对象，这回时候我们就可以使用get方式对主线程进行阻塞并获取当前线程的结果。具体可以参考以下代码:
 
-```
+```java
 public class FutureTaskDemo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -69,7 +69,7 @@ public class FutureTaskDemo {
 
 ## 线程池基础使用示例
 
-```
+```java
 /**
  * 工作线程
  */
@@ -129,7 +129,7 @@ public class ThreadPool {
 
 上文说过使用线程池可以做一个线程池的监控器，下面我们就来简单实现一个
 
-```
+```java
 /**
  * 拒绝策略
  */
@@ -139,7 +139,6 @@ public class RejectedExecutionHandlerImpl implements RejectedExecutionHandler {
         System.out.println(r.toString() + "被拒绝了");
     }
 }
-package com.shark.wiki.threadExecutor.monitor;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -238,14 +237,14 @@ public class Test {
 >
 > 5.handler则是处理那些连备份线程都没有空闲处理的线程，而JUC为我们提供了以下四种拒绝策略：
 >
-> ```
+> ```java
 > AbortPolicy: 直接抛出异常，默认策略；
 > CallerRunsPolicy: 用调用者所在的线程来执行任务；
 > DiscardOldestPolicy: 丢弃阻塞队列中靠最前的任务，并执行当前任务；
 > DiscardPolicy: 直接丢弃任务；
 > ```
 
-```java
+```javajava
 public ThreadPoolExecutor(int corePoolSize,
                               int maximumPoolSize,
                               long keepAliveTime,
@@ -259,7 +258,7 @@ public ThreadPoolExecutor(int corePoolSize,
 
 ## 状态
 
-```java
+```javajava
 private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
 private static final int COUNT_BITS = Integer.SIZE - 3; //    Integer.SIZE为 32 -3为29
 private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
@@ -282,7 +281,7 @@ private static int ctlOf(int rs, int wc) { return rs | wc; }
 
 如下所示，源码已经个我们足够的提示不多赘述，需要的读者可以配合翻译阅读，我们不妨继续往下看看addWorker
 
-```java
+```javajava
 public void execute(Runnable command) {
         if (command == null)
             throw new NullPointerException();
@@ -401,7 +400,7 @@ private boolean addWorker(Runnable firstTask, boolean core) {
 
 最后我们再来看看worker是如何运行任务的
 
-```java
+```javajava
  final void runWorker(Worker w) {
         Thread wt = Thread.currentThread();<br>
 　　　　//拿到任务并重置firstTask
@@ -457,7 +456,7 @@ private boolean addWorker(Runnable firstTask, boolean core) {
 
 如下所示，我们经常用的开发方式就callable执行，future获取结果，future的get原理就是阻塞主线程将主线程放入waiters中，当前线程执行完成后会通过LockSupport类unpark唤醒主线程
 
-```java
+```javajava
 public class Test {
 
 
@@ -505,7 +504,7 @@ protected <T> RunnableFuture<T> newTaskFor(Callable<T> callable) {
 
 # 线程池关闭
 
-```java
+```javajava
 public void shutdown() {
     final ReentrantLock mainLock = this.mainLock;
     mainLock.lock();
@@ -559,7 +558,7 @@ private void interruptIdleWorkers(boolean onlyOne) {
 
 newFixedThreadPool通过源码我们可以看出这样将会创建定量的线程，而且任务队列将是无限量的，所以这就导致了`maximumPoolSize`和`keepAliveTime`没有任何作用
 
-```java
+```javajava
 public static ExecutorService newFixedThreadPool(int nThreads) {
         return new ThreadPoolExecutor(nThreads, nThreads,
                                       0L, TimeUnit.MILLISECONDS,
@@ -569,7 +568,7 @@ public static ExecutorService newFixedThreadPool(int nThreads) {
 
 newSingleThreadExecutor如其名线程池中永远只有一个线程池，当任务超过线程池线程数量就会将其放到无限量的队列中，且永远不会拒绝任务。
 
-```java
+```javajava
 public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactory) {
         return new FinalizableDelegatedExecutorService
             (new ThreadPoolExecutor(1, 1,
@@ -581,7 +580,7 @@ public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactor
 
 newCachedThreadPool就比较特殊了，这个线程池初始时线程池的线程是0，每当有个任务进来且线程池没有空闲的线程时，就会创建一个新的线程，当线程超过60s后没有任务时就会将这个线程释放。
 
-```java
+```javajava
 public static ExecutorService newCachedThreadPool(ThreadFactory threadFactory) {
         return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
                                       60L, TimeUnit.SECONDS,
@@ -598,7 +597,7 @@ public static ExecutorService newCachedThreadPool(ThreadFactory threadFactory) {
 
 # ThreadPoolExecutor使用示例
 
-```java
+```javajava
 /**
  * 无返回值的线程使用示例
  */
@@ -647,7 +646,7 @@ public class ThreadPoolExecutorDemo {
 
 这两者最明显的区别就是一个有返回值而另一个没有返回值，具体示例如下所示
 
-```java
+```javajava
 /**
  * 无返回值的线程使用示例
  */
@@ -722,7 +721,7 @@ public class Test {
 
 需要补充的是runnable是可以是可以转换为带返回值的任务的，具体可参照如下代码
 
-```java
+```javajava
 /**
  * runable改造后带返回值的线程池使用示例
  */
@@ -782,7 +781,7 @@ public class ThreadPoolExecutorDemo {
 
 说了这么多，我们不妨补充一个调试多线程的方法，以下代码为例，笔者将会通过idea完成对线程1的debug
 
-```java
+```javajava
 public class DebugRunnable implements Runnable{
 
     @Override
@@ -832,7 +831,7 @@ public class DebugRunnable implements Runnable{
 
 从以下源码我们就能看出前者只能提交任务，无法看到返回值,而且无法抛出异常。而后者可以，但是我们并不能因此完全使用后者，如果你提交的线程任务无需返回值或者抛出异常的话，更推荐使用前者。
 
-```java
+```javajava
 @FunctionalInterface
 public interface Runnable {
 
@@ -849,7 +848,7 @@ public interface Callable<V> {
 
 如下源码所示execute提交的任务返回值我们无法获取
 
-```java
+```javajava
 public interface Executor {
 
 
@@ -860,7 +859,7 @@ public interface Executor {
 
 而submit可以获取返回值，如下源码所示，他会将传入的任务封装成一个RunnableFuture对象(这个对象我们在源码也可以看出继承了Future所以可以拿到返回值)，我们可以通过这个类的get方法阻塞获取返回值，而你你也可以通过`get(long timeout, TimeUnit unit)`在指定时间内阻塞获取返回值，当然小心使用，否则报了一个超时异常如代码段2
 
-```java
+```javajava
  public Future<?> submit(Runnable task) {
         if (task == null) throw new NullPointerException();
         RunnableFuture<Void> ftask = newTaskFor(task, null);
@@ -891,7 +890,7 @@ public static void main(String[] args) throws InterruptedException, ExecutionExc
 
 由阿里开发手册我们就知道创建线程池的方式尽可能使`ThreadPoolExecutor` ，若使用`newSingleThreadExecutor`或者使用`newFixedThreadPool`通过源码我们可以看出，他们使用的队列都是无界队列，使用不当很容易导致OOM问题，源码如下所示
 
-```java
+```javajava
 public static ExecutorService newFixedThreadPool(int nThreads) {
         return new ThreadPoolExecutor(nThreads, nThreads,
                                       0L, TimeUnit.MILLISECONDS,
@@ -904,7 +903,7 @@ public LinkedBlockingQueue() {
 
 而使用`newScheduledThreadPool`和`newCachedThreadPool`他对于创建的线程数没有任和限制，也会导致OOM问题，如下源码所示
 
-```java
+```javajava
     public static ExecutorService newCachedThreadPool() {
         return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
                                       60L, TimeUnit.SECONDS,
@@ -929,7 +928,7 @@ public LinkedBlockingQueue() {
 1. ThreadPoolExecutor.AbortPolicy： 抛出 RejectedExecutionException来拒绝新任务的处理(默认就是使用这种拒绝策略)。
 2. ThreadPoolExecutor.CallerRunsPolicy： 如果线程和队列都满了的话，该策略则会调用执行自己的线程运行任务，也就是直接在调用execute方法的线程中运行(run)被拒绝的任务，如果执行程序已关闭，则会丢弃该任务。因此这种策略会降低对于新任务提交速度，影响程序的整体性能。如果您的应用程序可以承受此延迟并且你要求任何一个任务请求都要被执行的话，你可以选择这个策略。 可能这样讲不是很懂，我们可以拿以下这样一段示例代码说明
 
-```
+```java
 /**
  * 自定义线程任务
  */
@@ -959,7 +958,7 @@ public class MyTask implements Runnable {
 
 具体详见下述源码，注释已经保姆级的讲述了，通俗来说就是添加任务时会判断当前任务是否小于核心线程数，若小于则添加一个worker跑这个任务，如果大于则添加到队列中，若队列也容不下就开启应急线程，注意应急线程数不能大于`maximumPoolSize`，如果大于`maximumPoolSize`，则走拒绝策略了
 
-```java
+```javajava
  public void execute(Runnable command) {
         if (command == null)
             throw new NullPointerException();
