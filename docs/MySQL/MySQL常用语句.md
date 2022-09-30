@@ -654,6 +654,6 @@ revoke all on test.* from 'xiaoming'@'localhost';
 
 5.删除用户:
 
-```mysql常用语句大全
+```sql
 drop user'xiaoming'@'localhost';
 ```
