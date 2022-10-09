@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git 提交规约 | 麦俊轩的博客</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="">
+    <meta name="robots" content="all">
+    <meta name="author" content="mjx">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.f1d73ded.css" as="style"><link rel="preload" href="/assets/js/app.f5d3ea02.js" as="script"><link rel="preload" href="/assets/js/2.4efaf34b.js" as="script"><link rel="preload" href="/assets/js/51.9c3b01f5.js" as="script"><link rel="prefetch" href="/assets/js/10.32d7a261.js"><link rel="prefetch" href="/assets/js/11.2b495fbe.js"><link rel="prefetch" href="/assets/js/12.81ec2d38.js"><link rel="prefetch" href="/assets/js/13.c3d7e900.js"><link rel="prefetch" href="/assets/js/14.a8ca8fdd.js"><link rel="prefetch" href="/assets/js/15.733c8a07.js"><link rel="prefetch" href="/assets/js/16.43687adf.js"><link rel="prefetch" href="/assets/js/17.ca0a14f0.js"><link rel="prefetch" href="/assets/js/18.a4fb594c.js"><link rel="prefetch" href="/assets/js/19.3bec2689.js"><link rel="prefetch" href="/assets/js/20.299923e6.js"><link rel="prefetch" href="/assets/js/21.72de348c.js"><link rel="prefetch" href="/assets/js/22.cfdcca85.js"><link rel="prefetch" href="/assets/js/23.09b4cec9.js"><link rel="prefetch" href="/assets/js/24.b3546750.js"><link rel="prefetch" href="/assets/js/25.6adc1a57.js"><link rel="prefetch" href="/assets/js/26.7c280396.js"><link rel="prefetch" href="/assets/js/27.5314200c.js"><link rel="prefetch" href="/assets/js/28.656f0ad1.js"><link rel="prefetch" href="/assets/js/29.2f50de96.js"><link rel="prefetch" href="/assets/js/3.970caf17.js"><link rel="prefetch" href="/assets/js/30.6d1fa298.js"><link rel="prefetch" href="/assets/js/31.afbe7438.js"><link rel="prefetch" href="/assets/js/32.856269f4.js"><link rel="prefetch" href="/assets/js/33.27ee3ea1.js"><link rel="prefetch" href="/assets/js/34.bffa3c91.js"><link rel="prefetch" href="/assets/js/35.bc2198a4.js"><link rel="prefetch" href="/assets/js/36.2a9355b7.js"><link rel="prefetch" href="/assets/js/37.bef28023.js"><link rel="prefetch" href="/assets/js/38.5c8fff58.js"><link rel="prefetch" href="/assets/js/39.45fef2a6.js"><link rel="prefetch" href="/assets/js/4.739bcb3c.js"><link rel="prefetch" href="/assets/js/40.c582a938.js"><link rel="prefetch" href="/assets/js/41.851df4e3.js"><link rel="prefetch" href="/assets/js/42.e3fb687c.js"><link rel="prefetch" href="/assets/js/43.dda02ca5.js"><link rel="prefetch" href="/assets/js/44.3d100808.js"><link rel="prefetch" href="/assets/js/45.655a6e76.js"><link rel="prefetch" href="/assets/js/46.beeba115.js"><link rel="prefetch" href="/assets/js/47.c974f401.js"><link rel="prefetch" href="/assets/js/48.51abbe6b.js"><link rel="prefetch" href="/assets/js/49.ffc5c9f5.js"><link rel="prefetch" href="/assets/js/5.82538c28.js"><link rel="prefetch" href="/assets/js/50.99251df8.js"><link rel="prefetch" href="/assets/js/52.df1b1e0b.js"><link rel="prefetch" href="/assets/js/53.c74ef8c0.js"><link rel="prefetch" href="/assets/js/54.c3259b02.js"><link rel="prefetch" href="/assets/js/55.11e1b82f.js"><link rel="prefetch" href="/assets/js/56.d63eb237.js"><link rel="prefetch" href="/assets/js/57.e5183093.js"><link rel="prefetch" href="/assets/js/58.937115de.js"><link rel="prefetch" href="/assets/js/59.fd7f9f50.js"><link rel="prefetch" href="/assets/js/6.6bdbb857.js"><link rel="prefetch" href="/assets/js/60.26b932dd.js"><link rel="prefetch" href="/assets/js/61.b1c11fcc.js"><link rel="prefetch" href="/assets/js/62.c0bd30c1.js"><link rel="prefetch" href="/assets/js/63.db3b143b.js"><link rel="prefetch" href="/assets/js/7.745947cf.js"><link rel="prefetch" href="/assets/js/8.e8ed9066.js"><link rel="prefetch" href="/assets/js/9.d0a06e4e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f1d73ded.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">麦俊轩的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题.md/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别.md/" class="nav-link">
+  普通索引和唯一索引的区别.md
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题.md/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别.md/" class="nav-link">
+  普通索引和唯一索引的区别.md
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Git 提交规约</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#git-提交规约" class="sidebar-link">Git 提交规约</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#格式" class="sidebar-link">格式</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#type" class="sidebar-link">type</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#scope" class="sidebar-link">scope</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#subject" class="sidebar-link">subject</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#body" class="sidebar-link">body</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#footer" class="sidebar-link">footer</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html#示例" class="sidebar-link">示例</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="git-提交规约"><a href="#git-提交规约" class="header-anchor">#</a> Git 提交规约</h2> <h3 id="格式"><a href="#格式" class="header-anchor">#</a> 格式</h3> <div class="language-text line-numbers-mode"><pre class="language-text"><code>&amp;lt;type&gt;[scope]: &amp;lt;subject&gt;
+// 空一行
+[body]
+// 空一行
+[footer]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><strong>注：[]代表可选，&lt;&gt;代表必选。</strong></p> <h3 id="type"><a href="#type" class="header-anchor">#</a> type</h3> <p>必填，用于指定 commit 的类型。</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>feat：增加新功能
+fix：修复 bug
+docs：只改动了文档相关的内容
+style：格式修改，没有修改代码逻辑，比如格式化、换行等
+refactor：重构代码，既没有新增功能，也没有修复 bug，比如提取某段代码为一个方法、重构某个功能等
+perf：性能、体验优化等
+test：新增 test 用例或修改现有测试用例
+build：构造工具的或者外部依赖的改动，比如 maven
+ci：与 CI（持续集成服务）有关的改动
+chore：不修改 src 或者 test 的其余修改，例如构建过程或辅助工具的变动
+revert：执行 git revert 打印的 message
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p><strong>当同时有feat、fix和其他类型时，类型取feat、fix。</strong></p> <h3 id="scope"><a href="#scope" class="header-anchor">#</a> scope</h3> <p>非必填，用于描述改动的范围，格式一般为项目名/模块名，如果一次 commit 修改多个模块，建议拆分成多次 commit，以便更好追踪和维护。</p> <h3 id="subject"><a href="#subject" class="header-anchor">#</a> subject</h3> <p>必填，此次提交的简短描述，动词开头，第一人称现在时，比如add，而不用 added、adds，第一个字母小写，句尾不加句号（.）</p> <h3 id="body"><a href="#body" class="header-anchor">#</a> body</h3> <p>非必填，此次提交的详细描述，主要描述改动之前的情况及修改动机，对于小的修改不作要求，但是重大需求、更新等必须添加body来作说明。</p> <h3 id="footer"><a href="#footer" class="header-anchor">#</a> footer</h3> <p>footer只用于以下两种情况</p> <ul><li>break changes</li></ul> <p>break changes 指明是否产生了破坏性修改，涉及 break changes 的改动必须指明该项，类似版本升级、接口参数减少、接口删除、迁移等，以<code>BREAKING CHANGE：</code>开头，后面是变动的描述、变动的理由以及迁移的方法。</p> <ul><li>关闭 issue</li></ul> <p>当前提交修改了某个 issue</p> <h3 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h3> <div class="language-text line-numbers-mode"><pre class="language-text"><code>fix(ngStyle): correctly remove old style when new style value is invalid
+
+Since d6098ee, old styles were not removed if `newStyles` specified an
+invalid value for the style (e.g. `false`). The assumption was that the
+new style would overwrite the old style value, but using an invalid
+value made browsers ignore the new value and thus keep the old style.
+This would typically happen when guarding a style with a boolean flag;
+e.g.: `ng-style=&quot;{backgroundColor: isError &amp;amp;&amp;amp; 'red'}&quot;`
+
+This commit essentially revers commit d6098ee, whose main purpose was
+to work around jquery/jquery#4185. The jQuery issue has been fixed in
+3.4.0, so that should not be a problem any more.
+
+Fixes #16860
+
+Closes #16868
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.f5d3ea02.js" defer></script><script src="/assets/js/2.4efaf34b.js" defer></script><script src="/assets/js/51.9c3b01f5.js" defer></script>
+  </body>
+</html>
