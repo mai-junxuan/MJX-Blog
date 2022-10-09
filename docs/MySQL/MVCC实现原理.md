@@ -40,13 +40,13 @@ MySQL的大多数事务型存储引擎实现的都不是简单的行级锁。基
 
 不加锁的简单的 SELECT 都属于**快照读**，例如：
 
-```n1ql
+```sql
 `SELECT * FROM t WHERE id=1`
 ```
 
 与 **快照读** 相对应的则是 **当前读**，**当前读**就是读取最新数据，而不是历史版本的数据。加锁的 SELECT 就属于当前读，例如：
 
-```pgsql
+```sql
 SELECT * FROM t WHERE id=1 LOCK IN SHARE MODE;
 
 SELECT * FROM t WHERE id=1 FOR UPDATE;

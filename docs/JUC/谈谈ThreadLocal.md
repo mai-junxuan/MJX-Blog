@@ -71,7 +71,7 @@ public T get() {
 
 如果存在则直接返回很好理解, 那么对于如何初始化的代码又是怎样的呢?
 
-```reasonml
+```java
 private T setInitialValue() {
     T value = initialValue();
     Thread t = Thread.currentThread();
@@ -90,7 +90,7 @@ private T setInitialValue() {
 
 同时, ThreadLocal还提供了直接操作Thread对象中的threadLocals的方法
 
-```lasso
+```java
 public void set(T value) {
     Thread t = Thread.currentThread();
     ThreadLocalMap map = getMap(t);
@@ -103,7 +103,7 @@ public void set(T value) {
 
 这样我们也可以不实现`initialValue`, 将初始化工作放到`DBConnectionFactory`的`getConnection`方法中:
 
-```pgsql
+```java
 public Connection getConnection() {
     Connection connection = dbConnectionLocal.get();
     if (connection == null) {
@@ -342,7 +342,7 @@ public class ThreadLocalDemo {
 
 所以, 为了避免出现内存泄露的情况, ThreadLocal提供了一个清除线程中对象的方法, 即 `remove`, 其实内部实现就是调用 `ThreadLocalMap` 的`remove`方法:
 
-```maxima
+```java
 private void remove(ThreadLocal<?> key) {
     Entry[] tab = table;
     int len = tab.length;

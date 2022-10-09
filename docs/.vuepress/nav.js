@@ -1,5 +1,11 @@
 module.exports = [
     {
+        text: '日常',
+        items: [
+            {text: 'IDEA翻译插件报错更新TKK的问题', link: '/日常/IDEA翻译插件报错更新TKK的问题.md/'},
+        ]
+    },
+    {
         text: 'Java',
         items: [
             {text: 'Java基础小结', link: '/Java/Java基础小结/'},
@@ -72,7 +78,8 @@ module.exports = [
             },
             {
                 text: 'Docker', items: [
-                    {text: 'Docker常用命令', link: '/工具/Docker/Docker常用命令/'}
+                    {text: 'Docker常用命令', link: '/工具/Docker/Docker常用命令/'},
+                    {text: 'DokcerCompose简单使用', link: '/工具/Docker/DokcerCompose简单使用/'}
                 ]
             },
             {

@@ -435,7 +435,7 @@ INDEX [indexName] (username(length))
 
 **删除索引的语法**
 
-```delphi
+```sql
 DROP INDEX [indexName] ON mytable; 
 ```
 
