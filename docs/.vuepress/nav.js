@@ -3,6 +3,7 @@ module.exports = [
         text: '日常',
         items: [
             {text: 'IDEA翻译插件报错更新TKK的问题', link: '/日常/IDEA翻译插件报错更新TKK的问题.md/'},
+            {text: 'Vue3中为什么不能使用this', link: '/日常/Vue3中为什么不能使用this.md/'},
         ]
     },
     {
