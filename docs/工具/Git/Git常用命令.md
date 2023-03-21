@@ -1,6 +1,6 @@
 # Git常用命令
 
-![img](https://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png)
+![img](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png)
 
 几个专用名词的译名如下。
 

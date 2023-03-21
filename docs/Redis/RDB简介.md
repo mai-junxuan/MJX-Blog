@@ -36,7 +36,7 @@ bgsave的工作流程如下图所示，整体可以简述为:
 4. 子进程发送信号通知父进程本次任务完成
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022044305.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022044305.png)
 
 #### 自动触发
 
@@ -59,7 +59,7 @@ save 20 3
 
 需要注意的是`save 20 3`的20s是以redis的时间间隔为主，并不是用户第1次写入后的20s内再写入两次进行持久化。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022045621.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022045621.png)
 
 ## RDB配置参数详解
 
@@ -206,7 +206,7 @@ OK
 
 > redis的rdb持久化是基于cow(写时复制思想)，redis会fork一个子进程完成数据持久化，再次期间发生的原数据修改或者写入的新数据都会生成一个数据副本，被fork的bgsave子进程写入到快照文件中。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022044035.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022044035.png)
 
 1. 在进行快照操作的这段时间，如果发生服务崩溃怎么办？
 

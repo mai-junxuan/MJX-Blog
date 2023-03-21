@@ -111,13 +111,13 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 
 ### 2.2运行流程
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532087.webp)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532087.webp)
 
 ## 三、支持消息的模式
 
 ### 1. 简单模式(Hello World)
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532104.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532104.png)
 
 做最简单的事情，一个生产者对应一个消费者，RabbitMQ相当于一个消息代理，负责将A的消息转发给B。
 
@@ -133,7 +133,7 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 
 ### 2. 工作队列模式(Work queues)
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532481.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532481.png)
 
 在多个消费者之间分配任务(竞争的消费者模式)，一个生产者对应多个消费者。
 
@@ -153,7 +153,7 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 
 ### 3. 发布订阅模式(Publish/Subscribe)
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532573.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532573.png)
 
 一次向许多消费者发送消息，将消息将广播到所有的消费者。
 
@@ -173,7 +173,7 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 
 ### 4. 路由模式(Routing)
 
-![路由模式(Routing)](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532800.png)
+![路由模式(Routing)](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532800.png)
 
 根据Routing Key有选择地接收消息。
 
@@ -191,7 +191,7 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 
 ### 5. 主题模式(Topics)
 
-![主题模式(Topics)](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532250.png)
+![主题模式(Topics)](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532250.png)
 
 主题交换机方式接收消息，将routing key和模式进行匹配。
 
@@ -208,7 +208,7 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 
 ### 6. 远程过程调用(RPC)
 
-![远程过程调用(RPC)](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532576.png)
+![远程过程调用(RPC)](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532576.png)
 
 在远程计算机上运行功能并等待结果。
 
@@ -249,7 +249,7 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 
 **TTL标识**
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532420.webp)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532420.webp)
 
 ## 六、死信队列
 
@@ -261,4 +261,4 @@ DLX，全称为Dead-Letter-Exchange , 可以称之为死信交换机。当消息
 
 > DLX也是一个正常的交换机，和一般的交换机没有区别，它能在任何的队列上被指定，实际上就是设置某一个队列的属性。当这个队列中存在死信时，Rabbitmq就会自动地将这个消息重新发布到设置的DLX上去，进而被路由到另一个队列，即死信队列。要想使用死信队列，只需要在定义队列的时候设置队列参数 `x-dead-letter-exchange` 指定交换机即可
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209210532597.webp)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209210532597.webp)

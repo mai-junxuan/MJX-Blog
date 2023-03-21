@@ -42,11 +42,11 @@ public class AnnoDemo1 {
 
 使用`javadoc`命令进行文档生成
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252201609.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252201609.png)
 
 可以看到生成的类文档的作者、版本等都是我们注解后面编写的值。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252201978.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252201978.png)
 
 ## 代码分析
 
@@ -118,7 +118,7 @@ public @interface MyAnno3 {
 
 如下所示，我们将Target在字段上的注解用在方法上就报错了。
 
-![image-20220925220340811](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252203911.png)
+![image-20220925220340811](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252203911.png)
 
 ## @Retention
 
@@ -181,7 +181,7 @@ public class Worker {
 
 使用javadoc命令生成文档后，可以看到该类的myAnno3的注解都存在
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252201782.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252201782.png)
 
 ## @Inherited
 
@@ -370,7 +370,7 @@ public class Test {
 
 可以看到会输出userService，在查看项目文件中会出现下图这样一个文件
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252201542.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252201542.png)
 
 查看$Proxy1.class源码，我们可以看到这样一段代码，可以看到这两个变量`Class.forName("edu.zhku.mjx.interview.javaBase.annotation.Service").getMethod("scope")`、`Class.forName("edu.zhku.mjx.interview.javaBase.annotation.Service").getMethod("value")`不就是我们注解中定义的值吗？然后我们再找找他的调用处
 
@@ -407,11 +407,11 @@ public final String scope() throws  {
 
 这时候我们看到一个接口，没有看到具体实现，没关系，源码的设计者命名永远是合理的，所以，我们完完全全可以通过查找与注解命名相关的继承类
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252201260.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252201260.png)
 
 这时候笔者就发现了这个
 
-![image-20220925220207418](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252202792.png)
+![image-20220925220207418](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252202792.png)
 
 具体实现源码如下，关键笔者都在代码中注释了
 

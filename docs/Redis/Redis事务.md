@@ -14,7 +14,7 @@ redis的事务是一个单独隔离的操作，它会将一系列指令按需排
 
 如下图，通过multi，当前客户端就会开启事务，后续的指令都会安迅存到队列中。当用户键入exec后，这些指令都会按顺序执行。 若开启multi后输入若干指令，在键入discard，则之前的指令通通取消执行。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012248019.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012248019.png)
 
 ### 基础示例
 
@@ -108,13 +108,13 @@ QUEUED
     4. 另外两个线程此时复活，由于休眠前查询到库存为1，也都执行抢产品的逻辑，导致库存最终变为-2，出现超卖问题
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012248643.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012248643.png)
 
 ## 悲观锁
 
 **悲观锁(Pessimistic Lock)** 认为自己操作的数据很可能会被他人修改，所以每次进行操作前都会对数据上锁，常见的关系型数据库MySQL的行锁、表锁等都是基于这种锁机制。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012248871.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012248871.png)
 
 ## 乐观锁
 
@@ -122,7 +122,7 @@ QUEUED
 
 **乐观锁(Optimistic Lock)** 认为自己操作的数据不会被他人修改，当用户使用乐观锁锁住数据时，用户对拿到当前数据的版本号，修改完成后，会比较这个版本号和数据的版本号是否一致，若一致则说明别人没动过，提交修改操作。反之就是数据被他人动过，用户持有数据过期，提交失败。redis就是利用这种check and set机制实现事务的。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012248505.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012248505.png)
 
 ## 基于watch实现乐观锁
 
@@ -183,7 +183,7 @@ QUEUED
 
 可以上到两个客户端同时监听一个key值，第一个客户端修改后，第2个客户端的修改就无法成功提交，说明redis的watch是基于乐观锁机制的。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012248063.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012248063.png)
 
 ## 更深入的理解事务
 
@@ -303,7 +303,7 @@ OK
 
 可以看到代码正常运行并且库存被秒杀光了
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249600.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249600.png)
 
 秒杀成功的用户是这几个
 
@@ -368,11 +368,11 @@ OK
 
 可以看到库存出现负数，这就大名鼎鼎的超卖问题。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249770.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249770.png)
 
 如下图，由于查询库存，扣除库存，记录获奖用户三个指令对于每一个redis客户端来说都是独立的，所以又可能出现宏观上(即相差几毫秒)，n个用户查询到库存中有1个商品，然后各自执行扣除逻辑，导致库存出现超卖的情况。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249275.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249275.png)
 
 ### 改进(池化和增加事务解决超卖问题)
 
@@ -522,13 +522,13 @@ public boolean doSecKill(String uid, String productId) {
 
 再次压测就会发现，这次就不会再出现超卖问题
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249152.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249152.png)
 
 #### 存在问题
 
 库存遗留问题，由于redis事务使用的是乐观锁，有可能出现大量用户操作数据过期而导致大量库存并没有被秒杀完的情况，对此我们可以增加一定的库存量来模拟库存遗留问题
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249382.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249382.png)
 
 为了更好的演示这种情况，我们将库存设置为995个，开启1000个线程
 

@@ -292,7 +292,7 @@ OK
         2. 如下图所示，最终列表u:list只会剩下D C N三个值，重写会将这些值使用一条指令完成
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022043777.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022043777.png)
 
 ### 重写是否会阻塞线程
 
@@ -304,13 +304,13 @@ OK
 3. 重写aof新文件的名字，原子覆盖旧的aof文件
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022044090.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022044090.png)
 
 ### 重启加载
 
 由于redis持久化机制存在两种情况，所以重启redis加载磁盘数据文件就会先判断是否存在aof，若有aof优先加载aof文件，若没有才加载rdb文件。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022044237.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022044237.png)
 
 ### 文件校验
 
@@ -373,7 +373,7 @@ OK
 
 `Redis4.0`实现了RDB和AOF混合方式，即可在两次RDB之间使用AOF记录操作，RDB持久化数据之后清空两次rdb之间的aof文件记录。从而用到RDB快照恢复以及AOF简单记录的优势。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022044226.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022044226.png)
 
 ## 相关面试题
 

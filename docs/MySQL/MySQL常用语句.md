@@ -286,7 +286,7 @@ mysql> SELECT * from runoob_tbl;
 ```
 
 4.1 INNER JOIN（内连接,或等值连接）
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209060153100.gif)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209060153100.gif)
 
 ```sql
 mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count FROM runoob_tbl a INNER JOIN tcount_tbl b ON a.runoob_author = b.runoob_author;
@@ -302,7 +302,7 @@ mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count FROM runoob_tbl a INN
 ```
 
 4.2 LEFT JOIN（左连接）
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209060153798.gif)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209060153798.gif)
 
 ```sql
 mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count FROM runoob_tbl a LEFT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author;
@@ -319,7 +319,7 @@ mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count FROM runoob_tbl a LEF
 ```
 
 4.3 RIGHT JOIN（右连接）
-![img](https://img2018.cnblogs.com/blog/1196462/201912/1196462-20191225004509099-1149596663.gif)
+![img](http://img2018.cnblogs.com/blog/1196462/201912/1196462-20191225004509099-1149596663.gif)
 
 ```sql
 mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count FROM runoob_tbl a RIGHT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author;

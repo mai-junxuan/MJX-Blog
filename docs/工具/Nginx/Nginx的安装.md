@@ -98,4 +98,4 @@ firewall-cmd --list-ports
 
 ```
 
-![image-20220920053519138](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920053519138.png)
+![image-20220920053519138](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920053519138.png)

@@ -22,7 +22,7 @@
 
 例如FileInputStream，如果我们没有对其构造方法抛出的错误(即受检异常)进行处理，我们是无法通过编译的。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252159285.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252159285.png)
 
 ### 非受检异常
 
@@ -153,7 +153,7 @@ private int calculate(int  number,int divNum) throws ArithmeticException,FileNot
 
 使用|运算符之后e会变为final变量，用户无法改变引用的指向
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252159071.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252159071.png)
 
 ## throw于throws的区别
 
@@ -193,7 +193,7 @@ class Demo
 
 java异常层次结构如下图所示
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252159098.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252159098.png)
 
 # finally关键字
 

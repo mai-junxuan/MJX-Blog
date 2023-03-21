@@ -89,7 +89,7 @@ public static final List<Dish> menu =
 
 可以看到这种写法写起来就像sql语句一样，我们无需各种for循环的声明指令，而是像是一种声明式的操作，而流的工作原理也如下图所示，将集合中的一个个元素循环合并成一个流水线，最终构成一个新的list
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252202669.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252202669.png)
 
 ## 找出不重复元素
 
@@ -119,7 +119,7 @@ public static final List<Dish> menu =
 
 再来看看流的工作图，他的操作也同样如流水线一般
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252202553.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252202553.png)
 
 ## 限制筛选的元素数
 
@@ -224,7 +224,7 @@ words.stream()
 
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252202260.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252202260.png)
 
 打印以下输出结果
 
@@ -272,7 +272,7 @@ for (String[] strings : list) {
         System.out.println(list2);
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252202793.png)其实我们的写法可以更精简一些，如下所示
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252202793.png)其实我们的写法可以更精简一些，如下所示
 
 ```java
   words.stream()
@@ -359,7 +359,7 @@ private static Optional<Dish> findVegetarianDish() {
         System.out.println(sum);
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252202078.png)同样的java8为我们提供了一个强大的Integer API，即`sum`，他做的事情，就是让数字两两相加所以我们计算数字和的时候，代码可以简化成下图所示
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252202078.png)同样的java8为我们提供了一个强大的Integer API，即`sum`，他做的事情，就是让数字两两相加所以我们计算数字和的时候，代码可以简化成下图所示
 
 ```java
  int sum2 = numbers.stream().reduce(0, Integer::sum);

@@ -4,7 +4,7 @@
 
 总线风暴，听着真是一个帅气的词语，但如果发生在你的系统上那就不是很美丽了，废话不多说，先看图说结论。
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202207182244806.jpeg)img
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202207182244806.jpeg)img
 
 什么是总线风暴，先来看结论
 

@@ -53,7 +53,7 @@ abstract class AbstractStringBuilder implements Appendable, CharSequence {
 
 ```java
 public final class String
-    implements java.io.Serializable, Comparable<String>, CharSequence {
+        implements java.io.Serializable, Comparable<String>, CharSequence {
     /** The value is used for character storage. */
     private final char value[];
 }
@@ -80,33 +80,33 @@ public class StringTest {
 
 ```java
 INVOKESPECIAL java/lang/StringBuilder.<init> ()V
-    ALOAD 1
-    INVOKEVIRTUAL java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;
-    ALOAD 2
-    INVOKEVIRTUAL java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;
-    ALOAD 3
-    INVOKEVIRTUAL java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;
-    INVOKEVIRTUAL java/lang/StringBuilder.toString ()Ljava/lang/String;
-    ASTORE 4
+        ALOAD 1
+        INVOKEVIRTUAL java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;
+        ALOAD 2
+        INVOKEVIRTUAL java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;
+        ALOAD 3
+        INVOKEVIRTUAL java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;
+        INVOKEVIRTUAL java/lang/StringBuilder.toString ()Ljava/lang/String;
+        ASTORE 4
 ```
 
 但是在循环体内使用+=的情况下很可能造成性能灾难
 
 ```java
 @Test
-    public void addTest2() {
+public void addTest2() {
         String[] arr = {"hello", "world", "guys"};
         String string = "";
         for (int i = 0; i < arr.length; i++) {
-            string += arr[i];
+        string += arr[i];
         }
 
-    }
+        }
 ```
 
 可以看到在循环体内会不断创建StringBuilder进行拼接
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252200400.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200400.png)
 
 来看看我们手动创建StringBuilder 进行拼接和+=由jvm优化后的性能差距
 
@@ -201,7 +201,7 @@ public boolean equals(Object obj) {
 1. 创建String对象s1指向堆区的String对象
 2. 在字符串常量池中创建字符串abc
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252200115.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200115.png)
 
 # intern 方法
 
@@ -247,7 +247,7 @@ public boolean equals(Object obj) {
 
 这一点我们查看字节码文件就得以印证
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252200550.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200550.png)
 
 ## final+=的intern
 
@@ -267,7 +267,7 @@ final字符串会被jvm优化为常量，所以下面这段代码也会返回tru
 
 查看字节码得以印证
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252200076.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200076.png)
 
 ## 引用或者函数获取的+=
 
@@ -275,16 +275,16 @@ final字符串会被jvm优化为常量，所以下面这段代码也会返回tru
 
 ```java
 @Test
-    public void internTest3() {
-        final String s1 = "hello";
-        final String s2 = getStr();
+public void internTest3() {
+final String s1 = "hello";
+final String s2 = getStr();
         String s3 = s1 + s2;
         String s4 = "helloworld";
 
         System.out.println(s3 == s4);//false
-    }
+        }
 
-    private String getStr() {
+private String getStr() {
         return "world";
-    }
+        }
 ```

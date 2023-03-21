@@ -206,11 +206,11 @@ private Entry getEntry(ThreadLocal<?> key) {
 
 我们先讲下探测式清理，也就是`expungeStaleEntry`方法，遍历散列数组，从开始位置向后探测清理过期数据，将过期数据的`Entry`设置为`null`，沿途中碰到未过期的数据则将此数据`rehash`后重新在`table`数组中定位，如果定位的位置已经有了数据，则会将未过期的数据放到最靠近此位置的`Entry=null`的桶中，使`rehash`后的`Entry`数据距离正确的桶的位置更近一些。操作逻辑如下：
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209070319433.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209070319433.png)
 
 如上图，`set(27)` 经过 hash 计算后应该落到`index=4`的桶中，由于`index=4`桶已经有了数据，所以往后迭代最终数据放入到`index=7`的桶中，放入后一段时间后`index=5`中的`Entry`数据`key`变为了`null`
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209070319813.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209070319813.png)
 
 如果再有其他数据`set`到`map`中，就会触发**探测式清理**操作。
 
@@ -220,21 +220,21 @@ private Entry getEntry(ThreadLocal<?> key) {
 
 接着看下`expungeStaleEntry()`具体流程，我们还是以先原理图后源码讲解的方式来一步步梳理：
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209070319474.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209070319474.png)
 
 我们假设`expungeStaleEntry(3)` 来调用此方法，如上图所示，我们可以看到`ThreadLocalMap`中`table`的数据情况，接着执行清理操作：
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209070319691.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209070319691.png)
 
 第一步是清空当前`staleSlot`位置的数据，`index=3`位置的`Entry`变成了`null`。然后接着往后探测：
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209070319870.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209070319870.png)
 
 执行完第二步后，index=4 的元素挪到 index=3 的槽位中。
 
 继续往后迭代检查，碰到正常数据，计算该数据位置是否偏移，如果被偏移，则重新计算`slot`位置，目的是让正常数据尽可能存放在正确位置或离正确位置更近的位置
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209070319042.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209070319042.png)
 
 在往后迭代的过程中碰到空的槽位，终止探测，这样一轮探测式清理工作就完成了，接着我们继续看看具体**实现源代码**：
 

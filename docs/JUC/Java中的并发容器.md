@@ -470,7 +470,7 @@ void transfer(Entry[] newTable)
 
 了解了这些源码之后，我们不妨描述这样一个场景，我们现在声明了一个size为2的HashMap,添加3、7、5三个元素。 可以看到添加到5之后容量就超过2了。 所以我们需要进行元素迁移。 按照transfer代码来看，在单线程情况下3、7还是会被迁移到同一个槽位中。
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260011338.webp) 
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260011338.webp) 
 
 我们再来看看多线程情况下的bug。假如多线程情况下，我们线程1执行到`Entry<K,V> next = e.next; //记录迁移节点的后继节点`被挂起。线程完成像上文单线程的迁移操作。
 
@@ -480,7 +480,7 @@ void transfer(Entry[] newTable)
 2. 新容器指向key为3
 3. e指针指向7
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260021924.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260021924.png)
 
 然后在进行如下操作：
 
@@ -489,14 +489,14 @@ void transfer(Entry[] newTable)
 3. 新容器头指针指向7
 4. e指向3
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260021483.png) 
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260021483.png) 
 
 最后我们会执行这样一个步骤：
 
 1. next指向7
 2. `e.next = newTable[i]` 3的next指向新容器的next即7于是环形链形成，cpu就此被打爆。
 
-![image-20220926002148838](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260021836.png)
+![image-20220926002148838](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260021836.png)
 
 ### 为什么jdk8的HashMap会在链表长度超过8的时候转为红黑树
 
@@ -519,11 +519,11 @@ void transfer(Entry[] newTable)
 
 如下图所示，jdk7的concurentHashMap,可以看出jdk7版本的ConcurrentHashMap最外层是一个segment，内部结构就是和jdk7版本的HashMap一样的结构，依然是数组+链表形成的拉链法键值对。 而且每个segment都会持有一个reentrantLock,这使得各自的并发操作是互相不会影响的。所以你有几个segment就支持几个并发操作。 同样的缺点也很明显，正是因为这样的操作，导致我们若手动指定segment就会导致map无法进行扩容操作。
 
-![image-20220926005229747](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260052904.png) ![image-20220926005212047](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260052973.png) 
+![image-20220926005229747](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260052904.png) ![image-20220926005212047](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260052973.png) 
 
 相比之下jdk8版本的ConcurrentHashMap就与传统的HashMap无异了。
 
-![image-20220926005249580](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260052870.png)从源码中我们也能看出ConcurrentHashMap实现线程安全的核心核心
+![image-20220926005249580](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260052870.png)从源码中我们也能看出ConcurrentHashMap实现线程安全的核心核心
 
 ```java
 final V putVal(K key, V value, boolean onlyIfAbsent) {
@@ -687,7 +687,7 @@ public class ConcurrentHashMapDemo implements Runnable {
 
 通过源码我们就能发现它使用的添加操作工作原理和上述put差不多，锁也是锁节点，而不像我们一样锁一个类，减少了粒度，提高了性能。
 
-![image-20220926005327166](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260053186.png)
+![image-20220926005327166](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260053186.png)
 
 ## 阻塞队列
 
@@ -699,7 +699,7 @@ public class ConcurrentHashMapDemo implements Runnable {
 
 如下图所示，阻塞队列就是典型的生产者和消费者模式，当队列满时put就会阻塞，当队列为空时get就会为空。
 
-![image-20220926005337197](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260053188.png)
+![image-20220926005337197](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260053188.png)
 
 ### 阻塞队列常见方法
 
@@ -825,4 +825,4 @@ class Consumer1 implements Runnable {
 
 非阻塞队列，使用cas完成数据操作
 
-![image-20220926005358910](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209260054918.png)
+![image-20220926005358910](http://rrmrwrjnu.hn-bkt.clouddn.com/202209260054918.png)

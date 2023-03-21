@@ -12,7 +12,7 @@ cd ~
 
 然后键入ll查看所有非隐藏文件,注意笔者描述，是非隐藏文件哦，可以看到在每个文件最前方都有一个由10个字符构成的字符串，就以第一行为例`-rw-------.`，这就是文件类型和权限组成的字符串，由于笔者这里仅只对文件属性介绍，所以我们只对这个字符串的第一个字符串展开讨论(文件权限内容会在后文详尽讲述) 可以看到第一行的10字符的第一个字符是`-`，在Linux操作系统中，这个符号就代表着文件是一般文件，何为一般文件呢？通俗的理解就是你日常所能看到的txt、conf等各种各样没有任何特点，仅仅记录一些数据的文件就是一般文件了。
 
-![image-20220905194910182](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956663.png)
+![image-20220905194910182](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956663.png)
 
 除了最平凡的一般文件意外，每个文件第一栏的第一个字符还可能出现以下几种情况
 
@@ -41,7 +41,7 @@ ll /tmp/
 
 可以看到我们创建的文件夹是以d打头的
 
-![image-20220905194928297](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956368.png)
+![image-20220905194928297](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956368.png)
 
 上文还提到了一个b打头的文件，这个文件是提供系统存储的数据且可能硬盘也可能是其他存储设备的，这类型文件一般都在设备目录dev下，我们不妨使用如下命令查看
 
@@ -49,11 +49,11 @@ ll /tmp/
 ll /dev/sda
 ```
 
-![image-20220905194943467](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956293.png)
+![image-20220905194943467](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956293.png)
 
 而c打头的文件则是硬件设备，我们不妨键入 `ll /dev`查看一下，如下图所示的bus总线，以及cpu等这些都是硬件设备
 
-![image-20220905194953850](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956664.png)
+![image-20220905194953850](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956664.png)
 
 同样的在上文中我们也有提到关于隐藏文件的概念，在Linux中隐藏文件大多以.开头，这些文件使用常规的ll、ls等命令是看不到的，所以我们需要使用如下命令，注意这里的a就代表all的意思哦
 
@@ -63,7 +63,7 @@ ls -al查看
 
 可以看到，所有的隐藏文件也都显示出来了
 
-![image-20220905195033612](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956286.png)
+![image-20220905195033612](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956286.png)
 
 ## 文件名的限制
 
@@ -77,7 +77,7 @@ ls -al查看
 
 了解了文件相关属性之后，我们再深入研究Linux的文件结构吧，总的来说Linux的文件结构类似于一棵树，如下图，需要了解的是，无论是何种Linux系统，他的目录都会遵循一个标准，包括下图中的文件结构，而这个标准名为Filesystem Hierarchy Standard (FHS)
 
-![image-20220905195053633](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956218.png)
+![image-20220905195053633](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956218.png)
 
 FHS规定文件的整体结构应该是这样的：
 
@@ -89,19 +89,19 @@ FHS规定文件的整体结构应该是这样的：
 
 首先介绍一个根目录/，他的文件内容如下所示，可以看到他的子节点文件基本都是和系统开机相关、各种程序、库函数的文件夹，所以在根目录这一级是非常重要的，所以FHS希望后续使用Linux的时候尽量不要将文件夹、文件都无脑扔到这一级。假如你真的无脑扔到这了，将来有一天你的误操作导致根目录崩坏，很可能导致系统无法修复、还原、开机。
 
-![image-20220905195113144](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956610.png)
+![image-20220905195113144](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956610.png)
 
 了解了根目录之后，我们再来介绍一下根目录下对应的文件夹，首先是/bin，我们日常使用Linux的时候都会用到ls、cat、touch、mkdir等命令，其实这些命令都是一些可执行文件，存放于bin目录下，如下图
 
-![image-20220905195127851](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051957179.png)
+![image-20220905195127851](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051957179.png)
 
 接下来是/boot，这个目录存放的基本都是Linux开机会用到配置文件，像Linux kerne常用到的文件名`vmlinuz`就会存放在这个文件夹下
 
-![image-20220905195141265](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051957190.png)
+![image-20220905195141265](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051957190.png)
 
 接下来是/dev，这个文件夹基本存放的都是硬件设备，我们都知道Linux主张一切皆文件，所以所有的鼠标、键盘、硬盘的设备信息都是存放在这个文件夹下
 
-![image-20220905195204472](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051957806.png)
+![image-20220905195204472](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051957806.png)
 
 /etc目录则是存放配置文件的地方，常见我们的用户文件/etc/passwd,以及密码文件/etc/shadow，还有系统文件/etc/rc等都会存放在这个目录下。 除此之外还有一些文件夹，例如mnt存放挂载相关，lib存放库函数相关、sbin开机、系统还原、修复等众多指令，以及临时文件夹tmp等。
 
@@ -109,11 +109,11 @@ FHS规定文件的整体结构应该是这样的：
 
 首先来看看/usr/bin目录，这个目录实质上就fhs希望用户能够将一般用户所能够的使用的指令都放到这个目录下，需要补充的是bin目录下的命令大部分都以及软链接到这个文件夹下了，我们查看根目录就能看出这一点
 
-![image-20220905195219201](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051957299.png) 
+![image-20220905195219201](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051957299.png) 
 
 同样的我们也能够在usr/bin目录下看到这个指令
 
-![image-20220905195229225](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956803.png)
+![image-20220905195229225](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956803.png)
 
 /usr/lib/ 基本上，与 /lib 功能相同，所以 /lib 就是链接到此目录中的，不多赘述。而/usr/local/则是fhs希望用户将下载的软件都放到这个目录下统一管理。/usr/sbin/则是存放一些比较重要的系统指令，同理sbin下的指令也会被软链接到这个文件夹下。
 
@@ -129,7 +129,7 @@ cd /tmp
 
 假如我们在boot目录下，而tmp和他一样都属root的子节点，所以使用相对路径的方式是先退到root目录，然后再进入tmp文件夹，如下图，所以在boot目录下，我们进入tmp文件夹的命令为 `cd ../tmp/`
 
-![image-20220905195258808](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956629.png)
+![image-20220905195258808](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956629.png)
 
 需要补充的是，../代表着退到上一级，那么就会有这么一个指令`./`，代表当前目录，这个指令是干什么用的是，很简单，假如我们Linux中某个sh文件不在bin、sbin、/usr/bin这样的目录下，Linux规定我们执行可执行sh文件文件时都必须标明./，例如我在tmp目录下有个执行脚本test,那么我在test目录下执行这个脚本的格式就必须是
 
@@ -147,7 +147,7 @@ sh ./test.sh
 
 很简单，r代表读权限，w代表写权限，而x代表执行权限。
 
-![image-20220905195318293](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956614.png)
+![image-20220905195318293](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956614.png)
 
 那么问题来了，为什么rwx-这样的字符串，会重复三遍呢？这就是Linux系统对不同角色的权限划分，以第一行文件为例,我们把权限按照如下所示拆开，第一个字符代表他是给文件夹，2-4代表当前所有者权限为读写执行都有，而5-7代表所属组权限，即这个文件所属的组所拥有的权限为读和执行，最后一行代表其他人的权限也是读和执行。
 
@@ -174,7 +174,7 @@ chmod 766 testDir/
 
 所以当笔者以其他用户登录(这个用户不是所属者root也不属于root组)时，就会报出没有权限的问题
 
-![image-20220905195349968](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956701.png)
+![image-20220905195349968](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956701.png)
 
 这时候我们希望其他用户可以有执行的权限，要怎么做呢？很简单，我们也可以参考上面的数学公司对其他用户增加执行权限，即
 
@@ -203,7 +203,7 @@ chgrp zhangshiyu testDir/
 
 此时所属组就会改变了
 
-![image-20220905195404716](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956032.png)
+![image-20220905195404716](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956032.png)
 
 若你希望改变所有者则可以
 
@@ -214,7 +214,7 @@ chown zhangshiyu testDir/
 
 此时所有者就改变了
 
-![image-20220905195422099](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956109.png) 
+![image-20220905195422099](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956109.png) 
 
 当然，若你希望所有者和所属组都能改变则可以
 
@@ -223,7 +223,7 @@ chown zhangshiyu testDir/
 chown root:root testDir/
 ```
 
-![image-20220905195433739](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956155.png)
+![image-20220905195433739](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956155.png)
 
 回到原题，为了方便演示文件和文件夹可执行权限的区别，我们将文件夹所属者和所属者都改为root，并且所有用户都具备所有权限
 
@@ -232,7 +232,7 @@ chmod 777 testDir/
 chown root:root   testDir/
 ```
 
-![image-20220905195451605](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956371.png)
+![image-20220905195451605](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956371.png)
 
 然后进去该文件夹，创建一个file1的文件，权限设置为700，即可所属者才有权限，所属组和其他没有任何权限
 
@@ -248,11 +248,11 @@ cd testDir/
 ll -d  /tmp/testDir/ /tmp/testDir/file1
 ```
 
-![image-20220905195506527](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956106.png)
+![image-20220905195506527](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956106.png)
 
 所以我们使用别的账户可以进入路径，但是无法读写该文件如下图 
 
-![image-20220905195523013](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956548.png)
+![image-20220905195523013](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956548.png)
 
 ```
 vim file1 
@@ -262,7 +262,7 @@ vim file1
 
 以下这张表格就说明了操作文件夹下某些文件所需的最低权限，可以看到像删除、复制等这些无需读取文件内容的操作，文件所对应的文件夹甚至不一定需要rw的权限。用上面抽屉和文件的例子来说，我们删除完完全全可以看不到抽屉内部文件的具体的内容，复制文件不需要知道文件夹内有什么文件，我们完完全全可以瞎摸出来放到别的目录。
 
- ![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209051956835.png)
+ ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209051956835.png)
 
 ## 文件目录与默认权限以及隐藏权限
 

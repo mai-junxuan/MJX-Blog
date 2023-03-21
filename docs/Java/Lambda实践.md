@@ -29,7 +29,7 @@ Comparator<Apple> cmp=(a1,a2)->a1.getWeight().compareTo(a2.getWeight());
 
 在介绍lambda表达式之前我们需要先介绍一下函数式接口，因为lambda就是为缩写函数式的接口而生的。 如下图所示Runnable接口就是一个函数式接口，函数式接口的特征也很明显，他是一个接口，且有且只有一个方法。并且还有一个注解`@FunctionalInterface`,需要说明的是这个注解非必须的，他只是告知编译器这是个函数式接口而已，让编译器留点心 也正是因为方法为一，才能确保简洁的lambda表达式可以唯一确定匹配接口的方法。
 
-![image-20220905223204749](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209052232783.png)
+![image-20220905223204749](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052232783.png)
 
 ### 函数式描述符
 
@@ -213,7 +213,7 @@ public interface Function<T, R> {
 
 ### 更多函数式接口
 
-![image-20220905223123171](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209052231413.png) ![在这
+![image-20220905223123171](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052231413.png) ![在这
 
 ## lambda工作原理简析
 
@@ -235,7 +235,7 @@ boolean result = test("123", (String s) -> s.length() > 12);
 
 他的匹配过程就如下图所示，首先根据调用方法找到主方法，根据主方法的泛型得知入参是String，再查看predicate的唯一方法得知返回值是boolean，由此得知函数描述符为`String->boolean`,最终和调用的lambda匹配成功，校验通过 
 
-![image-20220905222806554](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209052228365.png)
+![image-20220905222806554](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052228365.png)
 
 ### 类型推断
 

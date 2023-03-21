@@ -23,7 +23,7 @@ AQS在底层实现了一个基于链表的FIFO队列，会在所有需要等待�
 static final class Node
 ```
 
-![image-20220925223339992](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252233102.png)
+![image-20220925223339992](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252233102.png)
 
 ## 获取和释放方法
 
@@ -107,31 +107,31 @@ public class CountDownLatchBaseUse {
 
 ### 先行步骤
 
-如图所示笔者在await和countdown都设置了断点，并且suspend设置为thread ![image-20220925222750622](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252227581.png)
+如图所示笔者在await和countdown都设置了断点，并且suspend设置为thread ![image-20220925222750622](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252227581.png)
 
 ### await如何阻塞主线程
 
 如下图所示，我们debug到main线程 
 
-![image-20220925222826904](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252228824.png)
+![image-20220925222826904](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252228824.png)
 
-我们步进看到调用sync调用的方法 ![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252228815.png)
+我们步进看到调用sync调用的方法 ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252228815.png)
 
 这时候他会尝试获取共享锁，我们步进看看 
 
-![image-20220925222855137](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252228901.png)
+![image-20220925222855137](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252228901.png)
 
 由于倒计时门闩设置为5，一次没扣，所以这里返回-1，上方代码会走到do逻辑，我们不妨看看do逻辑做了什么事情 
 
-![image-20220925222911326](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252229637.png)
+![image-20220925222911326](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252229637.png)
 
  可以看到，就是添加一个node节点，如果取锁失败，则添加到队列中，然后执行`shouldParkAfterFailedAcquire`和`parkAndCheckInterrupt()` 
 
-![image-20220925223314695](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252233785.png)
+![image-20220925223314695](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252233785.png)
 
 这时候main线程状态就被设置为wait，cpu时间片就让出给其他子线程了 
 
-![image-20220925222926890](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252229960.png) 
+![image-20220925222926890](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252229960.png) 
 
 第一个问题解决，我们继续debug的代码解决第二个问题
 
@@ -139,39 +139,39 @@ public class CountDownLatchBaseUse {
 
 可以看到线程执行到了thread-4 
 
-![image-20220925222959869](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252230775.png)
+![image-20220925222959869](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252230775.png)
 
-他调用了释放锁的逻辑 ![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252230737.png)
+他调用了释放锁的逻辑 ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252230737.png)
 
 调用`tryReleaseShared`尝试释放锁，我们步入看看 
 
-![image-20220925223254343](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252232578.png) 
+![image-20220925223254343](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252232578.png) 
 
 逻辑很简单，使用cas扣除state值。这里使用for循环的目的也很简单，考虑到可能存在cas操作失败的情况(即同样一个线程拿到当前c的值，先于本线程完成cas操作导致state设置失败的情况) 完成扣除操作返回当前count是否为0，如果为0就说明倒计时门闩倒计时，完成，就会执行上述do逻辑 
 
-![image-20220925223028988](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252230176.png) 
+![image-20220925223028988](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252230176.png) 
 
 我们不妨看看do逻辑做了什么 
 
-![image-20220925223051091](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252230242.png) 
+![image-20220925223051091](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252230242.png) 
 
 获取当前头节点状态，若为`SIGNAL`则执行cas操作讲h节点状态设置为0，再执行`unparkSuccessor`
 
-![image-20220925223106756](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252231768.png)
+![image-20220925223106756](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252231768.png)
 
 `unparkSuccessor`逻辑也很简单，即讲头节点之后的节点释放
 
-![image-20220925223127572](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252231652.png)
+![image-20220925223127572](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252231652.png)
 
-![image-20220925223149155](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252231203.png)
+![image-20220925223149155](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252231203.png)
 
 此时main线程就得以解脱，状态变为running 
 
-![image-20220925223209790](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252232739.png) 
+![image-20220925223209790](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252232739.png) 
 
 自此代码运行完成
 
- ![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209252232567.png)
+ ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252232567.png)
 
 # 自定义一把一次性门闩demo
 

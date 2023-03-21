@@ -69,7 +69,7 @@ SQL 标准定义了四种隔离级别，MySQL 全都支持。这四种隔离级�
 
 事务隔离其实就是为了解决上面提到的脏读、不可重复读、幻读这几个问题，下面展示了 4 种隔离级别对这三个问题的解决程度。
 
-![img](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209071634546.png)
+![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209071634546.png)
 
 ## 什么是ACID
 

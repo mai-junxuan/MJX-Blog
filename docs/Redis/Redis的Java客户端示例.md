@@ -172,7 +172,7 @@
 
 使用上文的方式操作redis会使得每次操作都会新建TCP连接，如果用户操作不当很可能导致连接泄露，所以我们推荐通过jedis连接池的方式建立连接。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022045901.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022045901.png)
 
 #### 使用示例
 
@@ -217,7 +217,7 @@
 
 至于为什么close不是关闭连接资源而是归还连接资源，从jedis源码我们就可以看出，当datasource不为空时，jedis做的就是将连接资源归还，而不是关闭。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249400.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249400.png)
 
 ## 基于jedis完成短信验证码
 
@@ -304,15 +304,15 @@ private void verify(String phoneNum, String code) {
 
 首先得到验证码
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249502.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249502.png)
 
 再进行校验
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249971.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249971.png)
 
 ###### 测试申请3次验证码
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012249854.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012249854.png)
 
 ## spring boot整合Redis使用示例
 
@@ -446,4 +446,4 @@ public class TestController {
 }
 ```
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209012250625.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209012250625.png)

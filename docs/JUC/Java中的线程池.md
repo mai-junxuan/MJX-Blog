@@ -11,7 +11,7 @@ java -XX:+UnlockDiagnosticVMOptions -XX:NativeMemoryTracking=summary -XX:+PrintN
 
 可以从控制台看出，平均一个线程的大小是1M 
 
-![image-20220920053221748](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920053221748.png)
+![image-20220920053221748](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920053221748.png)
 
 ## 提高响应速度，由于我们统一使用线程池进行管理了，所以无需等待线程的创建时间
 
@@ -221,7 +221,7 @@ public class Test {
 
 ## 工作流程
 
-![image-20220920053242776](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920053242776.png)
+![image-20220920053242776](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920053242776.png)
 
 ## 核心参数
 
@@ -775,7 +775,7 @@ public class ThreadPoolExecutorDemo {
 
 在使用线程池过程中，我们必须记得将父线程和子线程进行线程池隔离，否则可能出现所有父线程都在执行过程中，则子线程都在排队，导致父线程必须等待子线程执行完才能释放线程，而子线程必须等待父线程归还线程才能从任务队列中被取出执行，这就是著名的线程死锁。 
 
-![image-20220920053312954](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920053312954.png)
+![image-20220920053312954](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920053312954.png)
 
 # 如何debug线程池
 
@@ -817,7 +817,7 @@ public class DebugRunnable implements Runnable{
 
 如下图所示，只要设置thread断点+指定条件我们即可完成专注于debug一个线程了
 
-![image-20220920040020396](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920040020396.png)
+![image-20220920040020396](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920040020396.png)
 
 # 关于线程池的相关面试题
 

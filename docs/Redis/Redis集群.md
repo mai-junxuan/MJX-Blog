@@ -7,11 +7,11 @@
 
 redis集群还需要特别注意的问题 3. 由于为了保证高可用，我们的集群可能还采取了主从复制的方案，所以因为主节点宕机导致ip地址发生变化，使得应用程序必须通过修改主机地址等方式连接新主节点，虽然我们可以通过代理的方式解决问题，如下图
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022042732.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022042732.png)
 
 于是，问题又来了，代理挂了怎么办？我们是不是有需要再去考虑一下代理的高可用呢?所以redis集群采用的无中心化配置解决集群高可用问题，如下三个主从复制，彼此量量相连，客户端可以通过任意一个节点找到目标节点获取数据，而且就尽可能的实现了高可用
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022043104.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022043104.png)
 
 ## Redis集群的概念
 
@@ -23,7 +23,7 @@ redis集群还需要特别注意的问题 3. 由于为了保证高可用，我�
 
 如下图笔者为了方便演示，就是用不同的端口号模拟不同服务器上的master和slave构成一个集群。
 
-![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image@master/image/202209022043505.png)
+![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022043505.png)
 
 ### 创建多个redis配置文件
 
