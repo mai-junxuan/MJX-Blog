@@ -414,7 +414,7 @@ docker run -it --privileged=true -v /宿主机绝对路径目录:/容器内目�
 docker inspect 容器id
 ```
 
-![](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022310004.png)
+![](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209022310004.png)
 ##### 容器默认挂载是双向可读可写的
 
 ```bash

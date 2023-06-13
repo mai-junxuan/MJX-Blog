@@ -30,4 +30,4 @@ ping translate.google.cn
 
 可以看到问题得以解决
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202210100203190.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/Ym2LzgKuUovqiBf.png)

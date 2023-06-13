@@ -4,7 +4,7 @@
 
 # 二、canal的工作原理
 
-![canal的工作原理](http://rrmrwrjnu.hn-bkt.clouddn.com/202208080239150.webp)
+![canal的工作原理](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202208080239150.webp)
 
 **步骤：**
 
@@ -431,7 +431,7 @@ show binlog events in 'mysql-bin.000026' from 4 limit 5;
 
 4、修改`instance`下的 `instance.properties`下的如下配置
 
-![canal instance配置文件修改](http://rrmrwrjnu.hn-bkt.clouddn.com/202209022334753.webp)
+![canal instance配置文件修改](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209022334753.webp)
 
 ```properties
 # mysql主库链接时起始的binlog文件

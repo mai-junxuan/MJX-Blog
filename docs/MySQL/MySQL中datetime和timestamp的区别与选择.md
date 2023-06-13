@@ -32,23 +32,23 @@
 
 ##### **1、查看当前时区，并创建表test_date,一个是timestamp列，一个是datetime列**
 
-![image-20220715205303324](http://rrmrwrjnu.hn-bkt.clouddn.com/202207152053364.png)
+![image-20220715205303324](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207152053364.png)
 
 查看当前时区可以看到是跟随系统时区，接着我们去设置里查看系统时区
 
-![image-20220715205321817](http://rrmrwrjnu.hn-bkt.clouddn.com/202207152053850.png)
+![image-20220715205321817](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207152053850.png)
 
 创建表
 
-![image-20220715205540516](http://rrmrwrjnu.hn-bkt.clouddn.com/202207152055552.png)
+![image-20220715205540516](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207152055552.png)
 
 ##### 2、插入数据
 
-![image-20220715205904674](http://rrmrwrjnu.hn-bkt.clouddn.com/202207152059706.png)
+![image-20220715205904674](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207152059706.png)
 
-![image-20220715205936281](http://rrmrwrjnu.hn-bkt.clouddn.com/202207152059320.png)
+![image-20220715205936281](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207152059320.png)
 
 ##### 3.修改时区发现会时间变化了
 
-![image-20220715131103783](http://rrmrwrjnu.hn-bkt.clouddn.com/202207152111817.png)
+![image-20220715131103783](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207152111817.png)
 

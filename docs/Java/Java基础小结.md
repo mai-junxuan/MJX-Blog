@@ -369,25 +369,25 @@ System.out.println("Hello World");
 
 如下图二进制转为十进制的结果
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252156114.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/iwfF56St18QRBx2.png)
 
 ### 二进制转十进制
 
 如下图将二进制转为十进制
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252206758.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/FtW746kQlPvBfYZ.png)
 
 ### 其他进制间的转换
 
 二进制转十六进制，如下图二进制的4个位相当于一个十六进制，所以我们可以4个位置先换算成十进制再转为十六进制即可。八进制同理不多赘述。
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252156284.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/NcFYQ5V8gTeGKxz.png)
 
 ### 负数的二进制表现形式
 
 **规律**：正数的最高位为0，负数则为1
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252156608.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/elH6ADIzM45Epgq.png)
 
 # 变量
 
@@ -425,9 +425,9 @@ boolean:1个字节，true或false
 
 ## 精度丢失问题
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252156978.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/2SnpYjVkmcqUP3g.png)
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252156794.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/WcDXsPeq7Jyx8GR.png)
 
 那为何byte b=3可以通过呢？
 
@@ -932,7 +932,7 @@ remain:0.3999999999999999   itemCount:3
 
 ### 算数运算符种类
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252158827.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/MaN1JgwVFD6xjmS.png)
 
 ### 算数运算符使用技巧
 
@@ -1042,11 +1042,11 @@ short s=4; s=s+5;//会报错 s+=5;//不报错
 
 # 比较运算符
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252158744.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/leDd9RZB7y3xTwI.png)
 
 # 逻辑运算符
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252158552.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/br9IyBUS5iPxZcA.png)
 
 注意事项
 
@@ -1075,21 +1075,21 @@ short s=4; s=s+5;//会报错 s+=5;//不报错
 
 ## 位运算符简介
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252158466.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/pzLf7TjGv385brU.png)
 
 ## 左移右移运算
 
 1. 左移<<，左移为乘，移几位就乘2的几次方
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252204943.png)2.
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/solgcYSJPe3InFD.png)2.
 
 右移>> 右移为除，移几位就除2的几次方
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252204592.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/Nc2kIl1gouO4Yvr.png)
 
 1. 无符号右移> > > 和 >>的区别
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252204824.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/G1jKclp2n6AJh4T.png)
 
 ## 取反运算符和负数的关系
 
@@ -1191,11 +1191,11 @@ public static void main(String[] args) {
 
 1. 传统二进制计算2*8 ，一位位乘过去
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252159945.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/7VRw46BHMjfEnWL.png)
 
 1. 使用位运算 2<<3，提高效率
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252207919.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/ovmTHge3aAKFduw.png)
 
 # 程序流程控制
 

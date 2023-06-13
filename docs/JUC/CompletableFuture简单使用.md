@@ -33,15 +33,15 @@ public static void main(String[] args) throws ExecutionException, InterruptedExc
 
 可以看到如果任务没有结果就`waitingGet` 
 
-![image-20220920052933117](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920052933117.png)
+![image-20220920052933117](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920052933117.png)
 
 我们再来看看`waitingGet`，他所作的也很简单，就是无限自旋等待结果返回而已
 
-![image-20220920052953726](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920052953726.png)
+![image-20220920052953726](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920052953726.png)
 
 然后调用`postComplete`再返回结果
 
-![image-20220920053008955](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920053008955.png) 
+![image-20220920053008955](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920053008955.png) 
 
 而`postComplete`做的事情也很简单，使用变量f指向this，如果this有返回值就cas取出下一个任务压入任务栈
 
@@ -122,7 +122,7 @@ ForkJoinPool.commonPool-worker-1结束工作了，总执行时间：1010
 ## 将异步任务提交给自己的线程池处理
 
 上文的异步任务都没有指定线程池，从输出结果中我们就可以看到使用的线程都是来自默认的线程池ForkJoinPool。注意CompletableFuture在没有指定线程池的情况下，若计算机是单核的那么默认的线程池是`ThreadPerTaskExecutor`，这一点我们完全可以在源码中得到印证，如下所示，这里的useCommonPool在计算机多核情况下是true，反之为false，感兴趣的读者可以自行去看看CompletableFuture的源码
-![image-20220920053028803](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220920053028803.png) 
+![image-20220920053028803](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220920053028803.png) 
 
 话不多说，我们接下来就来介绍一下如何指定自定义线程池，代码如下，可以看到笔者将自定的线程池executorService作为入参作为supplyAsync 的第2个参数
 

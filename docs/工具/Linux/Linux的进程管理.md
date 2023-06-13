@@ -25,7 +25,7 @@ F S   UID    PID   PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 
 父进程会fork出一个进程，ppid为自己的pid，然后基于fork出来的进程执行exec命令从磁盘中将文件加载到内存中成为当前进程的子进程，而子进程的就是以暂存进程的ppid、pid作为自己的ppid、pid作为程序运行。
 
-![image-20220905201417116](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052014841.png)
+![image-20220905201417116](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209052014841.png)
 
 ### 后台进程
 

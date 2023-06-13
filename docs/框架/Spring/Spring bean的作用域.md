@@ -8,7 +8,7 @@
 
   在`Spring`官方文档中，共提到了`6`种不同的`Bean`作用域，分别是：
 
-![image-20220715175906301](http://rrmrwrjnu.hn-bkt.clouddn.com/202207151759375.png)
+![image-20220715175906301](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207151759375.png)
 
   需要注意的是，前两种是`Spring`中`bean`的基本作用域，而后四种，算是扩展的作用域，只能在`web`应用中使用。下面我就来分别介绍一下这`6`种不同的作用域。
 

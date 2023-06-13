@@ -952,7 +952,7 @@ Address: 110.242.68.3
 4. g键：按住g输入网址后可进入另一个页面
 ```
 
-![image-20220905205056722](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052050361.png)
+![image-20220905205056722](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209052050361.png)
 
 将百度的网页导到本地文件中
 

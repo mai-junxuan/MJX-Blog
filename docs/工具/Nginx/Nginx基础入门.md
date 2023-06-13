@@ -98,7 +98,7 @@ location / {
 
 网站建立后，用户希望只需通过一个url即可访问网站。但是网站所使的服务器可能远不止一台(考虑到用户的访问量在多台服务器上配置tomcat)，所以如何访问通过一个url且还能保证服务器负载均衡的情况下完成用户访问我们的网站呢？nginx的反向代理就是最好的解决方案。 如下图所示，用户通过`www.xxx.com`交由dns解析到而访问到nginx，此时nginx就是一个反向代理的角色，nginx这时候就会工具服务器详情动态的决定访问哪台服务器。
 
-![image-20220903002420204](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030024451.png)
+![image-20220903002420204](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030024451.png)
 
 ### 反向代理示例1
 
@@ -121,13 +121,13 @@ C:\Windows\System32\drivers\etc
 ```
 
 1. 编辑该配置文件，内容如下，这里的ip地址是和本机桥接的虚拟机ip地址 
-1. ![image-20220903002442301](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030024240.png)
+1. ![image-20220903002442301](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030024240.png)
 
 #### nginx配置步骤
 
 配置nginx请求转发 如下图所示，编辑`/usr/local/nginx/conf/nginx.conf`将内容改为如下所示 
 
-![image-20220903002502384](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030025806.png)
+![image-20220903002502384](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030025806.png)
 
 重启nginx
 
@@ -136,7 +136,7 @@ C:\Windows\System32\drivers\etc
 ./nginx -s reload
 ```
 
-查看结果 ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030025517.png)
+查看结果 ![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030025517.png)
 
 ### 反向代理示例2
 
@@ -144,23 +144,23 @@ C:\Windows\System32\drivers\etc
 
 使用 nginx 反向代理，根据访问的路径跳转到不同端口的服务中，nginx 监听端口为 9001。即访问`192.168.1.29:9001/test1/index.html`和`192.168.1.29:9001/test2/index.html`访问结果是不同的
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030025867.png)
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030025867.png)
 
 #### 步骤
 
 1. 增加一台tomcat，如之前所示，注意修改相关端口与之区分，修改的端口如下所示： 
 
-![image-20220903002548213](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030026552.png)
+![image-20220903002548213](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030026552.png)
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030025267.png))![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030026920.png)
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030025267.png))![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030026920.png)
 
 1. 启动tomcat
 2. 为两个tomcat配置不同的页面,即在分别在两台tomcat服务器下`webapp`下,第一台tomcat参见test1目录并添加index网页，第二台tomcat服务器参见test2目录添加index网页。
 3. 测试两台tomcat
 
-![image-20220903002636221](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030026407.png)
+![image-20220903002636221](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030026407.png)
 
-![image-20220903002653947](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030026433.png)
+![image-20220903002653947](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030026433.png)
 
 1. 进行反向代理配置 进入nginx.conf进行如下配置
 
@@ -193,9 +193,9 @@ systemctl start firewalld.service
 
 3. 测试 
 
-![image-20220903002810057](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030028159.png)
+![image-20220903002810057](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030028159.png)
 
-![image-20220903002825015](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030028558.png)
+![image-20220903002825015](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030028558.png)
 
 ## 负载均衡
 
@@ -211,7 +211,7 @@ systemctl start firewalld.service
 
    ![image-20220903002900385](C:\Users\MJX\AppData\Roaming\Typora\typora-user-images\image-20220903002900385.png)
 
-   ![image-20220903002909832](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030029388.png)
+   ![image-20220903002909832](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030029388.png)
 
 3. 配置nginx负载均衡配置 如下所示，`upstream` 即负载服务器，下文将`upstream`起名为myserver，然后在server中配置负载服务器名myserver即可完成负载均衡配置。
 
@@ -240,7 +240,7 @@ systemctl start firewalld.service
 
 1. 测试
 
-   ![image-20220903001416365](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030029013.png)
+   ![image-20220903001416365](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030029013.png)
 
    ### nginx 分配服务器策略
 
@@ -273,21 +273,21 @@ systemctl start firewalld.service
 1. data文件夹下创建动态文件和静态文件目录并添加文件
 2. nginx添加如下配置
 
-![image-20220903002941796](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030029668.png)
+![image-20220903002941796](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030029668.png)
 
 3. 测试
 
-   ![image-20220903003003145](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030030900.png)
+   ![image-20220903003003145](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030030900.png)
 
-![image-20220903003017327](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030030572.png)
+![image-20220903003017327](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030030572.png)
 
 ## 高可用配置
 
 ### 介绍
 
-如下图，若只有一台nginx时，常规情况下发起http请求由nginx代理是正常的。当这台nginx服务器出现故障宕机了怎么办呢？ ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030030100.png) 面对这种情况，我们预想的最好解决方案就是增加一台nginx服务器作为备用代理服务器，从而做到高可用配置。 如下图所示，用户使用192.168.1.50发起请求，若master主服务器正常则会交由主服务器代理http请求，若主服务器出现故障则由备用服务器进行http代理请求
+如下图，若只有一台nginx时，常规情况下发起http请求由nginx代理是正常的。当这台nginx服务器出现故障宕机了怎么办呢？ ![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030030100.png) 面对这种情况，我们预想的最好解决方案就是增加一台nginx服务器作为备用代理服务器，从而做到高可用配置。 如下图所示，用户使用192.168.1.50发起请求，若master主服务器正常则会交由主服务器代理http请求，若主服务器出现故障则由备用服务器进行http代理请求
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030030539.png)
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030030539.png)
 
 ### 配置
 
@@ -368,7 +368,7 @@ systemctl stop keepalived.service
 
 ```
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030030238.png)
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030030238.png)
 
 ## nginx原理解析
 
@@ -379,9 +379,9 @@ ps -ef |grep nginx
 
 ```
 
-![image-20220903003104104](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030031746.png)
+![image-20220903003104104](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030031746.png)
 
-可以看出nginx占用了两个进程，一个是master，一个是worker，在我们发起请求到nginx时，nginx的master会收到该请求，并将请求发送给每个worker，所有worker会参与争抢。某个worker得到该请求后，若该请求是个代理请求，worker则会转发该请求到目标服务器。如下图所示： ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209030031942.png) 那么问题来了，一个master搭配多个worker的好处有哪些呢？
+可以看出nginx占用了两个进程，一个是master，一个是worker，在我们发起请求到nginx时，nginx的master会收到该请求，并将请求发送给每个worker，所有worker会参与争抢。某个worker得到该请求后，若该请求是个代理请求，worker则会转发该请求到目标服务器。如下图所示： ![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030031942.png) 那么问题来了，一个master搭配多个worker的好处有哪些呢？
 
 1. 热部署时，刷新配置不影响正在工作的worker。比如，我们当前这台nginx正在工作。某个worker正在担任某个服务器代理。此时，我们在nginx配置中添加一个新的代理工作。使用 `./nginx -s reload`完成nginx重新加载，这时候就会又新的worker争抢这份工作。而之前已有工作的worker却不会收到影响。
 2. 每个worker是独立的进程。当某个worker出现问题时，其他worker不会收到影响。

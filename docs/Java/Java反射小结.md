@@ -387,7 +387,7 @@ public class ModifyGenerics {
 
 要了解Class类我们必须了解一下jvm的工作机制，当你通过一个new创建一个对象时，它实际的工作如下图所示，即jvm会去加载经过编译后生成的class文件，然后创建一个Class对象，并将其放至内存中。然后在堆区创建对象。 而反射的工作原理也很简单，它也只是将jvm通过`defClass`生成的Class对象取出来，拿到该类的所有信息，然后创建对象的一个过程。
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252156804.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/KYyIvo5EjMQiqah.png)
 
 # 总结反射的优缺点
 
@@ -639,4 +639,4 @@ public class Main {
 
 在《精通spring4.x》一书中，我们可以知道，jdk生成的代理对象性能远远差于cglib生成代理对象，但cglib创建代理对象花费的时间却远远高于jdk代理创建的对象。所以在spring框架的使用中，如果是单例的bean需要实现aop等操作，我们建议是使用cglib动态代理技术。
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252156031.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/cuaeNJSK5iU9x3w.png)

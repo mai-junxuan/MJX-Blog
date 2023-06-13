@@ -28,7 +28,7 @@ docker-compose --version
 
 如下图所示，显示版本号即说明安装成功了
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010152067.png)
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010152067.png)
 
 ### 安装命令补全工具
 
@@ -44,7 +44,7 @@ curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose versio
 
 这里使用书本中参考的源码，具体可以去这里下载 [https://github.com/itmuch/spring-cloud-docker-microservice-book-code-docker.git](http://github.com/itmuch/spring-cloud-docker-microservice-book-code-docker.git) 如下图所示，将这个eureka的项目打成jar扔到自己的服务器上 
 
-![image-20221001015252436](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010153309.png)
+![image-20221001015252436](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010153309.png)
 
 ### 编写一个Dockerfile
 
@@ -78,7 +78,7 @@ docker-compose up
 
 如下图所示，使用ip:8761即可进入eureka界面，说明配置完成了
 
-![image-20221001015321845](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010153027.png)
+![image-20221001015321845](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010153027.png)
 
 # 来聊聊Docker-compose.yml常用指令
 
@@ -265,7 +265,7 @@ dns_search:
 
 根据笔者了解的资料，为了专注于了解Docker编排微服务，笔者这个实验只用两个服务进行演示，即源码中的eureka模块和user模块，如下图所示两个 
 
-![image-20221001015418328](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010154468.png)
+![image-20221001015418328](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010154468.png)
 
 ## 步骤
 
@@ -425,13 +425,13 @@ docker-compose up
 
 #### 8761访问eureka界面成功并且可以看到user服务
 
-![image-20221001015544306](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010155442.png) 键入8000端口的网址可以得到如下结果，说明部署成功了
+![image-20221001015544306](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010155442.png) 键入8000端口的网址可以得到如下结果，说明部署成功了
 
 ```bash
 http://ip:8000/1
 ```
 
-![image-20221001015557123](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010155122.png)
+![image-20221001015557123](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010155122.png)
 
 # 更进一步，使用Docker编排高可用eureka
 
@@ -513,7 +513,7 @@ docker-compose up
 
 ### 使用8761 8762端口访问查看结果
 
-如下图所示，可以看到彼此都注册到彼此中心了 ![image-20221001015642614](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010156974.png)![image-20221001015713309](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010157381.png)
+如下图所示，可以看到彼此都注册到彼此中心了 ![image-20221001015642614](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010156974.png)![image-20221001015713309](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010157381.png)
 
 # 编排高可用spring cloud集群动态伸缩
 
@@ -597,7 +597,7 @@ user
 
 从上文配置中我们已经实现了两个服务注册中心，所以我们这里需要为user模块配置两个注册中心保证高可用
 
-![image-20221001015750531](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010157507.png)
+![image-20221001015750531](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010157507.png)
 
 ```yaml
 server:
@@ -656,7 +656,7 @@ services:
 
 ### 将这些模块的文件扔到服务器上
 
-![image-20221001015814769](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010158793.png)
+![image-20221001015814769](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010158793.png)
 
 ### 打包
 
@@ -674,7 +674,7 @@ docker-compose up
 
 ### 查看服务是否都起来
 
-![image-20221001015836118](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010158061.png)
+![image-20221001015836118](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010158061.png)
 
 ### 动态扩容
 
@@ -684,4 +684,4 @@ docker-compose up
 docker-compose scale microservice-provider-user=3
 ```
 
-![image-20221001015911008](http://rrmrwrjnu.hn-bkt.clouddn.com/202210010159431.png)
+![image-20221001015911008](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202210010159431.png)

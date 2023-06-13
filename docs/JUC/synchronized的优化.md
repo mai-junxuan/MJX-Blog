@@ -16,8 +16,8 @@ Mark Word：用于存储对象自身的运行时数据，如哈希码、GC 分�
 
   Mark Word 的结构如下图所示：
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202207271726954.png)
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202207271726890.png)
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207271726954.png)
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202207271726890.png)
 
   以 32 位虚拟机为例，总结下在不同锁状态下，Mark Word 的字节码分配情况。
 

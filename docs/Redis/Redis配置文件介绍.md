@@ -75,7 +75,7 @@ protected-mode yes
 
 如下我们将bind注释，保护模式开启，使用远程连接工具时发现，redis-server拒绝访问了
 
-![image-20220901033637212](http://rrmrwrjnu.hn-bkt.clouddn.com/image-20220901033637212.png)
+![image-20220901033637212](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/image-20220901033637212.png)
 
 ```
 #bind 127.0.0.1 -::1

@@ -106,7 +106,7 @@ public void addTest2() {
 
 可以看到在循环体内会不断创建StringBuilder进行拼接
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200400.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/zGbBZWUiAuE4oYl.png)
 
 来看看我们手动创建StringBuilder 进行拼接和+=由jvm优化后的性能差距
 
@@ -201,7 +201,7 @@ public boolean equals(Object obj) {
 1. 创建String对象s1指向堆区的String对象
 2. 在字符串常量池中创建字符串abc
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200115.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/QgjmB8r5t4MVpDh.png)
 
 # intern 方法
 
@@ -247,7 +247,7 @@ public boolean equals(Object obj) {
 
 这一点我们查看字节码文件就得以印证
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200550.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/EHp4fY6tkjJZc2z.png)
 
 ## final+=的intern
 
@@ -267,7 +267,7 @@ final字符串会被jvm优化为常量，所以下面这段代码也会返回tru
 
 查看字节码得以印证
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209252200076.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/jgozKYPMSlhAIWi.png)
 
 ## 引用或者函数获取的+=
 

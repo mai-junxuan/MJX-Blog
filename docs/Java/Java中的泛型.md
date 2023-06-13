@@ -86,7 +86,7 @@ public class GenericObj<T> {
 
 泛型大部分是应用于项目开发中通用对象例如我们常用的Map 
 
-![image-20220906000146969](http://rrmrwrjnu.hn-bkt.clouddn.com/202209060001687.png)
+![image-20220906000146969](https://s2.loli.net/2023/06/14/qeaxh1pIVO83wEy.png)
 
 ## 什么是泛型擦除，为什么要泛型擦除呢
 
@@ -110,7 +110,7 @@ java本质就一门伪泛型语言，泛型的作用仅仅在编译期间进行�
 
 我们都知道泛型擦除是编译器行为，为了保证引入泛型而不创建新的类型，以及节省虚拟机没必要的开销，jvm会自动将泛型擦除。 这一点我们用如下的例子就能看出，相同参数不通泛型的方法根本不能重载
 
-![img](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052355157.png)
+![img](https://s2.loli.net/2023/06/14/2lSnYwpeBMbkzOu.png)
 
 ## 既然编译器要把泛型擦除，为什么还要用泛型呢？用Object不行吗？
 
@@ -129,7 +129,7 @@ public class Test2 {
 
 ```
 
-![image-20220905235453573](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052354031.png)
+![image-20220905235453573](https://s2.loli.net/2023/06/14/pmZwGd5MbDAkjKU.png)
 
 ## 什么是桥方法
 
@@ -164,11 +164,11 @@ public class MyNode extends Node<Integer>{
 
 ### 泛型不可以被实例化，如下所示
 
-![image-20220905235435825](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052354225.png)
+![image-20220905235435825](https://s2.loli.net/2023/06/14/hmywftuSKlvDOzj.png)
 
 ### 泛型参数不可以是基本类型
 
-我们都知道泛型仅在编译器存在，当编译结束泛型就会被擦除，对象就会编程Object类型，所以基本类型作为泛型参数ide就会直接报错 ![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052354579.png)
+我们都知道泛型仅在编译器存在，当编译结束泛型就会被擦除，对象就会编程Object类型，所以基本类型作为泛型参数ide就会直接报错 ![在这里插入图片描述](https://s2.loli.net/2023/06/14/ZXbLQeKtdwi9myE.png)
 
 ### 泛型无法被实例化，无论是泛型变量还是泛型数组
 
@@ -176,7 +176,7 @@ public class MyNode extends Node<Integer>{
 
 ### 不能抛出或者捕获T类型的泛型异常
 
-![image-20220905235406238](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052354457.png)
+![image-20220905235406238](https://s2.loli.net/2023/06/14/36Zyf5gDSsWXwGQ.png)
 
 ### 不能声明两个参数一样泛型不同的方法
 
@@ -184,7 +184,7 @@ public class MyNode extends Node<Integer>{
 
 ### 泛型不能被声明为static
 
-![在这里插入图片描述](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052353651.png)
+![在这里插入图片描述](https://s2.loli.net/2023/06/14/DawRgzKd63SlANE.png)
 
 ## 以下代码是否能编译，为什么？
 
@@ -266,7 +266,7 @@ public class TestParttern {
 
 如上代码所示，当我们用上界通配符`? extends Fruit`，我们用其子类作为泛型参数，这只能保证我们get到的都是这个子类的对象。 但我们却忘了一点，当我们用子类apple作为泛型参数时，泛型的工作机制仅仅是对这个对象加个一个编号`CAP#1`，当我set一个新的对象，编译器无法识别这个对象类型是否和编号匹配。
 
-![image-20220905235325646](http://rrmrwrjnu.hn-bkt.clouddn.com/202209052353210.png)
+![image-20220905235325646](https://s2.loli.net/2023/06/14/bJxzLB9T5mYOCZ1.png)
 
 ### 下界通配符
 
