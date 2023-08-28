@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /public/me.jpg
+heroImage: https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202308280853421.jpg
 heroText: 欢迎来到我的博客
 tagline: 🚀Talk is cheap. Show me the code.
 features:

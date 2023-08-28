@@ -2,10 +2,10 @@ module.exports = [
     {
         text: '日常',
         items: [
-            {text: 'IDEA翻译插件报错更新TKK的问题', link: '/日常/IDEA翻译插件报错更新TKK的问题.md/'},
-            {text: 'Vue3中为什么不能使用this', link: '/日常/Vue3中为什么不能使用this.md/'},
-            {text: 'windows端口冲突解决', link: '/日常/windows端口冲突解决.md/'},
-            {text: '解决依赖冲突', link: '/日常/解决依赖冲突.md/'},
+            {text: 'IDEA翻译插件报错更新TKK的问题', link: '/日常/IDEA翻译插件报错更新TKK的问题/'},
+            {text: 'Vue3中为什么不能使用this', link: '/日常/Vue3中为什么不能使用this/'},
+            {text: 'windows端口冲突解决', link: '/日常/windows端口冲突解决/'},
+            {text: '解决依赖冲突', link: '/日常/解决依赖冲突/'},
         ]
     },
     {
@@ -33,7 +33,6 @@ module.exports = [
             {text: 'CompletableFuture简单使用', link: '/JUC/CompletableFuture简单使用/'},
             {text: 'AQS简述', link: '/JUC/AQS简述/'},
             {text: 'JUC常用工具类', link: '/JUC/JUC常用工具类/'},
-            {text: 'Java中的并发容器', link: '/JUC/Java中的并发容器/'},
         ]
     },
     {
@@ -43,7 +42,7 @@ module.exports = [
             {text: 'MySQL中的事务', link: '/MySQL/MySQL中的事务/'},
             {text: '一条SQL的执行过程', link: '/MySQL/一条SQL的执行过程/'},
             {text: 'MySQL中datetime和timestamp的区别与选择', link: '/MySQL/MySQL中datetime和timestamp的区别与选择/'},
-            {text: '普通索引和唯一索引的区别.md', link: '/MySQL/普通索引和唯一索引的区别.md/'},
+            {text: '普通索引和唯一索引的区别', link: '/MySQL/普通索引和唯一索引的区别/'},
             {text: 'Explain语句', link: '/MySQL/Explain语句/'},
             {text: 'MySQL的执行成本怎么算', link: '/MySQL/MySQL的执行成本怎么算/'},
             {text: 'MVCC实现原理', link: '/MySQL/MVCC实现原理/'},
@@ -95,7 +94,7 @@ module.exports = [
                 text: '其他', items: [
                     {text: 'Arthas使用小结', link: '/工具/其他/Arthas使用小结/'},
                     {text: 'Nginx基础入门', link: '/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/'},
-                    {text: '基于jmeter完成压测.md', link: '/工具/其他/基于jmeter完成压测/'},
+                    {text: '基于jmeter完成压测', link: '/工具/其他/基于jmeter完成压测/'},
                 ]
             },
         ]
