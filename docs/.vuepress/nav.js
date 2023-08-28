@@ -4,6 +4,8 @@ module.exports = [
         items: [
             {text: 'IDEA翻译插件报错更新TKK的问题', link: '/日常/IDEA翻译插件报错更新TKK的问题.md/'},
             {text: 'Vue3中为什么不能使用this', link: '/日常/Vue3中为什么不能使用this.md/'},
+            {text: 'windows端口冲突解决', link: '/日常/windows端口冲突解决.md/'},
+            {text: '解决依赖冲突', link: '/日常/解决依赖冲突.md/'},
         ]
     },
     {
@@ -89,6 +91,13 @@ module.exports = [
                     {text: 'Nginx基础入门', link: '/工具/Nginx/Nginx基础入门/'}
                 ]
             },
+            {
+                text: '其他', items: [
+                    {text: 'Arthas使用小结', link: '/工具/其他/Arthas使用小结/'},
+                    {text: 'Nginx基础入门', link: '/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/'},
+                    {text: '基于jmeter完成压测.md', link: '/工具/其他/基于jmeter完成压测/'},
+                ]
+            },
         ]
     },
     {
@@ -97,6 +106,7 @@ module.exports = [
             {text: 'CAP和BASE理论', link: '/分布式/CAP和BASE理论/'},
             {text: '分布式事务的解决方案', link: '/分布式/分布式事务的解决方案/'},
             {text: '分布式锁的几种实现方式', link: '/分布式/分布式锁的几种实现方式/'},
+            {text: '什么是xxl-job，它解决什么问题', link: '/分布式/什么是xxl-job，它解决什么问题/'},
         ]
     },
     {
@@ -109,6 +119,11 @@ module.exports = [
                     {text: 'SpringBean的作用域', link: '/框架/Spring/SpringBean的作用域/'},
                     {text: 'Spring三级缓存与循环依赖', link: '/框架/Spring/Spring三级缓存与循环依赖/'},
                     {text: 'JDK动态代理和CGlib代理', link: '/框架/Spring/JDK动态代理和CGlib代理/'},
+                ]
+            },
+            {
+                text: 'Netty', items: [
+                    {text: 'Netty基础概念入门小结', link: '/框架/Netty/Netty基础概念入门小结/'},
                 ]
             },
 
