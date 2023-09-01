@@ -93,7 +93,7 @@ module.exports = [
             {
                 text: '其他', items: [
                     {text: 'Arthas使用小结', link: '/工具/其他/Arthas使用小结/'},
-                    {text: 'Nginx基础入门', link: '/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/'},
+                    {text: '基于Gitee实现Jenkins自动化部署SpringBoot项目', link: '/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/'},
                     {text: '基于jmeter完成压测', link: '/工具/其他/基于jmeter完成压测/'},
                 ]
             },
