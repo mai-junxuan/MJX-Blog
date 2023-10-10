@@ -68,7 +68,8 @@ module.exports = [
         items: [
             {
                 text: 'Git', items: [
-                    {text: 'Git常用命令', link: '/工具/Git/Git常用命令/'}
+                    {text: 'Git常用命令', link: '/工具/Git/Git常用命令/'},
+                    {text: 'Git 提交规约', link: '/工具/Git/Git 提交规约/'}
                 ]
             },
             {
