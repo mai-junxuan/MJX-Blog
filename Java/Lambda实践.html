@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lambda实践 | 麦俊轩的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="">
+    <meta name="robots" content="all">
+    <meta name="author" content="mjx">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.38934ce7.css" as="style"><link rel="preload" href="/assets/js/app.66e71283.js" as="script"><link rel="preload" href="/assets/js/2.2d1cac8d.js" as="script"><link rel="preload" href="/assets/js/1.ab819bd9.js" as="script"><link rel="preload" href="/assets/js/37.440103ea.js" as="script"><link rel="prefetch" href="/assets/js/10.84d14364.js"><link rel="prefetch" href="/assets/js/11.045a0a60.js"><link rel="prefetch" href="/assets/js/12.6f0e9932.js"><link rel="prefetch" href="/assets/js/13.fb842719.js"><link rel="prefetch" href="/assets/js/14.f4937493.js"><link rel="prefetch" href="/assets/js/15.f4b2583c.js"><link rel="prefetch" href="/assets/js/16.41b572be.js"><link rel="prefetch" href="/assets/js/17.8f245198.js"><link rel="prefetch" href="/assets/js/18.4c44bfad.js"><link rel="prefetch" href="/assets/js/19.46b03286.js"><link rel="prefetch" href="/assets/js/20.756867c9.js"><link rel="prefetch" href="/assets/js/21.2957c140.js"><link rel="prefetch" href="/assets/js/22.b345e7c5.js"><link rel="prefetch" href="/assets/js/23.d83d718a.js"><link rel="prefetch" href="/assets/js/24.d9975f36.js"><link rel="prefetch" href="/assets/js/25.7a4b71c9.js"><link rel="prefetch" href="/assets/js/26.cee50e0c.js"><link rel="prefetch" href="/assets/js/27.2bd584b7.js"><link rel="prefetch" href="/assets/js/28.40a4b61a.js"><link rel="prefetch" href="/assets/js/29.b28882d0.js"><link rel="prefetch" href="/assets/js/3.9afe9595.js"><link rel="prefetch" href="/assets/js/30.cbf9f923.js"><link rel="prefetch" href="/assets/js/31.9e279d6d.js"><link rel="prefetch" href="/assets/js/32.de890c1b.js"><link rel="prefetch" href="/assets/js/33.2edb4675.js"><link rel="prefetch" href="/assets/js/34.b10912b9.js"><link rel="prefetch" href="/assets/js/35.72464f81.js"><link rel="prefetch" href="/assets/js/36.0170a5ad.js"><link rel="prefetch" href="/assets/js/38.fe4d020a.js"><link rel="prefetch" href="/assets/js/39.00806ff5.js"><link rel="prefetch" href="/assets/js/4.7daf21de.js"><link rel="prefetch" href="/assets/js/40.f91742c2.js"><link rel="prefetch" href="/assets/js/41.36d0ea03.js"><link rel="prefetch" href="/assets/js/42.c7dc16b4.js"><link rel="prefetch" href="/assets/js/43.84214d9d.js"><link rel="prefetch" href="/assets/js/44.2537628d.js"><link rel="prefetch" href="/assets/js/45.6588b1e4.js"><link rel="prefetch" href="/assets/js/46.20177a10.js"><link rel="prefetch" href="/assets/js/47.0dcf0b55.js"><link rel="prefetch" href="/assets/js/48.fb38c2ca.js"><link rel="prefetch" href="/assets/js/49.31712729.js"><link rel="prefetch" href="/assets/js/5.ae530a1a.js"><link rel="prefetch" href="/assets/js/50.4230d5ad.js"><link rel="prefetch" href="/assets/js/51.bda4cdd5.js"><link rel="prefetch" href="/assets/js/52.ab24e96b.js"><link rel="prefetch" href="/assets/js/53.c273b7a8.js"><link rel="prefetch" href="/assets/js/54.16f3f38e.js"><link rel="prefetch" href="/assets/js/55.a37b8f6c.js"><link rel="prefetch" href="/assets/js/56.b59cdd58.js"><link rel="prefetch" href="/assets/js/57.fcc7b064.js"><link rel="prefetch" href="/assets/js/58.c26f6871.js"><link rel="prefetch" href="/assets/js/59.f8b14dda.js"><link rel="prefetch" href="/assets/js/6.d389c045.js"><link rel="prefetch" href="/assets/js/60.02142959.js"><link rel="prefetch" href="/assets/js/61.7cbefbdb.js"><link rel="prefetch" href="/assets/js/62.c1c42d03.js"><link rel="prefetch" href="/assets/js/63.9cf5c587.js"><link rel="prefetch" href="/assets/js/64.15de1976.js"><link rel="prefetch" href="/assets/js/65.2f4c079e.js"><link rel="prefetch" href="/assets/js/66.47253488.js"><link rel="prefetch" href="/assets/js/67.68a40463.js"><link rel="prefetch" href="/assets/js/68.cbfe3485.js"><link rel="prefetch" href="/assets/js/69.4e7fb2ee.js"><link rel="prefetch" href="/assets/js/7.c9f32eab.js"><link rel="prefetch" href="/assets/js/70.dded6a7a.js"><link rel="prefetch" href="/assets/js/71.31edd10e.js"><link rel="prefetch" href="/assets/js/72.1d6ce636.js"><link rel="prefetch" href="/assets/js/73.ae696eea.js"><link rel="prefetch" href="/assets/js/74.f547417c.js"><link rel="prefetch" href="/assets/js/75.caf8c871.js"><link rel="prefetch" href="/assets/js/76.702c7c76.js"><link rel="prefetch" href="/assets/js/77.4d49b55f.js"><link rel="prefetch" href="/assets/js/78.feebbb09.js"><link rel="prefetch" href="/assets/js/79.f45d29b6.js"><link rel="prefetch" href="/assets/js/80.9f2161de.js"><link rel="prefetch" href="/assets/js/81.820b8dd7.js"><link rel="prefetch" href="/assets/js/82.68ccd80c.js"><link rel="prefetch" href="/assets/js/83.3386f6f3.js"><link rel="prefetch" href="/assets/js/84.a781d39d.js"><link rel="prefetch" href="/assets/js/85.79b5e63f.js"><link rel="prefetch" href="/assets/js/86.6f22b386.js"><link rel="prefetch" href="/assets/js/87.e2fac3f5.js"><link rel="prefetch" href="/assets/js/88.e98f5936.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.1d2fbb22.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.38934ce7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">麦俊轩的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
+  Vue3中为什么不能使用this
+</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
+  windows端口冲突解决
+</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
+  解决依赖冲突
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
+  普通索引和唯一索引的区别
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
+  Git 提交规约
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
+  Arthas使用小结
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
+  基于Gitee实现Jenkins自动化部署SpringBoot项目
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
+  基于jmeter完成压测
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
+  什么是xxl-job，它解决什么问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Netty
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
+  Netty基础概念入门小结
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Sharding-JDBC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
+  Sharding-JDBC的简单使用
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
+  对支付系统的个人理解
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
+  Vue3中为什么不能使用this
+</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
+  windows端口冲突解决
+</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
+  解决依赖冲突
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
+  普通索引和唯一索引的区别
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
+  Git 提交规约
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
+  Arthas使用小结
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
+  基于Gitee实现Jenkins自动化部署SpringBoot项目
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
+  基于jmeter完成压测
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
+  什么是xxl-job，它解决什么问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Netty
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
+  Netty基础概念入门小结
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Sharding-JDBC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
+  Sharding-JDBC的简单使用
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
+  对支付系统的个人理解
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Lambda实践</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#java8以前的comparator和java8的comparator" class="sidebar-link">java8以前的comparator和java8的comparator</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#lambda的优势" class="sidebar-link">lambda的优势</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#lambda的使用场景" class="sidebar-link">lambda的使用场景</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#函数式接口" class="sidebar-link">函数式接口</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#函数式描述符" class="sidebar-link">函数式描述符</a></li></ul></li><li><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#使用lambda优化环绕执行模式的调用" class="sidebar-link">使用lambda优化环绕执行模式的调用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#需求描述" class="sidebar-link">需求描述</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#代码实现" class="sidebar-link">代码实现</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#项目演进" class="sidebar-link">项目演进</a></li></ul></li><li><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#现成的轮子-java8自带的函数式接口" class="sidebar-link">&quot;现成的轮子&quot; java8自带的函数式接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#简介" class="sidebar-link">简介</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#predicate" class="sidebar-link">Predicate</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#consumer" class="sidebar-link">Consumer</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#function" class="sidebar-link">Function</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#更多函数式接口" class="sidebar-link">更多函数式接口</a></li></ul></li><li><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#lambda工作原理简析" class="sidebar-link">lambda工作原理简析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#类型检查" class="sidebar-link">类型检查</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#类型推断" class="sidebar-link">类型推断</a></li><li class="sidebar-sub-header"><a href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html#使用限制-使用lambda使用局部变量" class="sidebar-link">使用限制(使用lambda使用局部变量)</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="lambda实践"><a href="#lambda实践" class="header-anchor">#</a> Lambda实践</h1> <h2 id="java8以前的comparator和java8的comparator"><a href="#java8以前的comparator和java8的comparator" class="header-anchor">#</a> java8以前的comparator和java8的comparator</h2> <p>可以看到使用lambda表达式，使得对象的创建以及声明变得简单且优雅</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//老版本的比较器声明方式
+Comparator&lt;Apple&gt; comparator=new Comparator&lt;Apple&gt;() {
+    @Override
+    public int compare(Apple a1, Apple a2) {
+        return a1.getWeight().compareTo(a2.getWeight());
+    }
+};
+//java8的比较器的声明方式
+Comparator&lt;Apple&gt; cmp=(a1,a2)-&gt;a1.getWeight().compareTo(a2.getWeight());
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="lambda的优势"><a href="#lambda的优势" class="header-anchor">#</a> lambda的优势</h2> <ol><li>匿名：使用lambda声明方法无需像普通方法需要很多明确的东西，它给了我们一种写得少但是想得多的优雅</li> <li>函数：lambda表达式用起来就和方法一样，有参数列表、函数主体、返回值等</li> <li>传递：lambda可以作为参数传递或者存储在变量中</li> <li>简洁：如上文所示的代码，使用lambda可以避免没必要的模板编写，优雅且简洁</li></ol> <h2 id="lambda的使用场景"><a href="#lambda的使用场景" class="header-anchor">#</a> lambda的使用场景</h2> <h3 id="函数式接口"><a href="#函数式接口" class="header-anchor">#</a> 函数式接口</h3> <p>在介绍lambda表达式之前我们需要先介绍一下函数式接口，因为lambda就是为缩写函数式的接口而生的。 如下图所示Runnable接口就是一个函数式接口，函数式接口的特征也很明显，他是一个接口，且有且只有一个方法。并且还有一个注解<code>@FunctionalInterface</code>,需要说明的是这个注解非必须的，他只是告知编译器这是个函数式接口而已，让编译器留点心 也正是因为方法为一，才能确保简洁的lambda表达式可以唯一确定匹配接口的方法。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209052232783.png" alt="image-20220905223204749"></p> <h3 id="函数式描述符"><a href="#函数式描述符" class="header-anchor">#</a> 函数式描述符</h3> <p>了解了函数式接口，了解函数描述符就很简单了，以Runnable为例，他的方法是 <code>public abstract void run();</code> 所以他是一个没有参数且没有返回值的方法。 那么它的函数描述符就是<code>() -&gt; void</code>，后续我们使用lambda表达式的时候只要遵循这个表达式即可。 再看看一个例子，这也是笔者自定义的一个函数式接口，可以看出他的入参是一个苹果类，返回值是boolean，所以它的函数描述符是**(Apple)-&gt;boolean**</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>interface ApplePredicate{
+         boolean test(Apple a);
+    }
+ApplePredicate applePredicate=(a)-&gt;true;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>这就是为什么我们声明ApplePredicate可以缩写成下文所示</p> <h2 id="使用lambda优化环绕执行模式的调用"><a href="#使用lambda优化环绕执行模式的调用" class="header-anchor">#</a> 使用lambda优化环绕执行模式的调用</h2> <h3 id="需求描述"><a href="#需求描述" class="header-anchor">#</a> 需求描述</h3> <p>我们现在有个文件data.txt,它的内容为</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Java
+8
+Lambdas
+In
+Action
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>我们希望编写的代码只读取第1行的结果然后返回即可</p> <h3 id="代码实现"><a href="#代码实现" class="header-anchor">#</a> 代码实现</h3> <p>可以看到这个需求实现也非常简单，如下所示</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> public static String processFileLimited() throws IOException {
+        try (BufferedReader br =
+                     new BufferedReader(new FileReader(&quot;F:\\github\\src\\main\\resources\\lambdasinaction\\chap3\\data.txt&quot;))) {
+            return br.readLine();
+        }
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="项目演进"><a href="#项目演进" class="header-anchor">#</a> 项目演进</h3> <h4 id="需求描述-2"><a href="#需求描述-2" class="header-anchor">#</a> 需求描述</h4> <p>现在需求变了，我们希望能够读取两行，后续可能还会发生变化，这时候警觉的你就会发现读取文件这个行为可能多变无常，我们需要对变化进行封装</p> <h4 id="声明函数式接口"><a href="#声明函数式接口" class="header-anchor">#</a> 声明函数式接口</h4> <p>所以我们将读取文件这个行为封装成一个函数式接口，代码如下所示</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface BufferedReaderProcessor{
+         String process(BufferedReader b) throws IOException;
+
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="修改原有方法逻辑"><a href="#修改原有方法逻辑" class="header-anchor">#</a> 修改原有方法逻辑</h4> <p>这时候我们在进行行为参数化，将读取文件内容这个逻辑参数化，后续我们就可以大展身手了</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static String processFile(BufferedReaderProcessor p) throws IOException {
+        try(BufferedReader br = new BufferedReader(new FileReader(&quot;F:\\github\\Java8InAction\\src\\main\\resources\\lambdasinaction\\chap3\\data.txt&quot;))){
+            return p.process(br);
+        }
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h4 id="调用并查看测试结果"><a href="#调用并查看测试结果" class="header-anchor">#</a> 调用并查看测试结果</h4> <p>这时候我们就可以使用lambda进行调用测试了</p> <p>测试读取1行</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//        测试读取1行 输出结果 Java
+        String s = processFile(b -&gt; b.readLine());
+        System.out.println(s);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>测试读取2行</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//        测试读取2行 输出结果 Java 8
+        String s2 = processFile(b -&gt; b.readLine()+&quot; &quot;+b.readLine());
+        System.out.println(s2);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>测试读取1行并行尾加上 &quot;本人已读&quot;</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>        //测试读取1行并行尾加上 &quot;本人已读&quot; 输出结果 Java 本人已读
+        String s3 = processFile(b -&gt; b.readLine()+&quot; 本人已读&quot;);
+        System.out.println(s3);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="现成的轮子-java8自带的函数式接口"><a href="#现成的轮子-java8自带的函数式接口" class="header-anchor">#</a> &quot;现成的轮子&quot; java8自带的函数式接口</h2> <h3 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h3> <p>其实面对常见的行为参数化，java已经考虑到这些情况了，他也为我们提供了不少的现有轮子，下面我们就来一一介绍几个常见的轮子</p> <h3 id="predicate"><a href="#predicate" class="header-anchor">#</a> Predicate</h3> <p>这个接口就是针对于那些需要传入指定类型，并返回Boolean行的行为，例如：我们需要一组对字符串进行判断操作的行为，我们可以先这样写一个方法，通过Predicate将行为参数化</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static boolean test(String s,Predicate&lt;String&gt; p){
+        return p.test(s);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>假如我们需要判断字符串是大于2，我们就可以这样调用</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> boolean result = test(&quot;123&quot;, (s) -&gt; s.length() &gt; 12);
+        System.out.println(result);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>假如我们需要判断字符串是否为test，我们可以这样调用</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>  boolean result=test(&quot;test&quot;,(s)-&gt;&quot;test&quot;.equals(s));
+        System.out.println(result);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="consumer"><a href="#consumer" class="header-anchor">#</a> Consumer</h3> <p>与上同理，Consumer的函数描述符为<code>(T)-&gt;void</code>,即传入任意类型，无返回值的操作。 例如我们现在要遍历并输出不同类型的元素，我们可以先定义一个方法，将consumer行为参数化</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> public static &lt;T&gt; void   forEach(List&lt;T&gt; list, Consumer&lt;T&gt; consumer){
+        for (T t : list) {
+            consumer.accept(t);
+        }
+    } 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>假如我们要遍历整形数组，我们可以这样</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> List&lt;Integer&gt; integerList=new ArrayList&lt;&gt;();
+        integerList.add(1);
+        integerList.add(2);
+        integerList.add(3);
+        integerList.add(4);
+        forEach(integerList,(i)-&gt; System.out.println(i));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="function"><a href="#function" class="header-anchor">#</a> Function</h3> <p>通过查看源码，function的定义如下，不难看出，它适用于那些传入T类型返回R类型的行为</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@FunctionalInterface
+public interface Function&lt;T, R&gt; {
+    R apply(T t);
+
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>假如我们要求传入一个字符串，返回它的长度或者字符串第1位unocode码值，我们就可以使用Function做到。 首先我们定义一个方法，将返回整型的行为参数化，如下所示</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> public static Integer StringCalculate(String s, Function&lt;String,Integer&gt; function){
+        return function.apply(s);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>调用如下所示</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>        //获取字符串长度
+        System.out.println(StringCalculate(&quot;123&quot;, (s) -&gt; s.length()));
+//        获取字符串第1位unicode
+        System.out.println(StringCalculate(&quot;132&quot;, (s) -&gt; s.codePointAt(0)));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="更多函数式接口"><a href="#更多函数式接口" class="header-anchor">#</a> 更多函数式接口</h3> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209052231413.png" alt="image-20220905223123171"> ![在这</p> <h2 id="lambda工作原理简析"><a href="#lambda工作原理简析" class="header-anchor">#</a> lambda工作原理简析</h2> <h3 id="类型检查"><a href="#类型检查" class="header-anchor">#</a> 类型检查</h3> <p>那么问题来了，lambda表达式如此精简，请问它是如何完成类型检查的呢？我们就以下面代码为例，可以看到这段代码就是根据传入的String返回相应的boolean值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static &lt;T&gt; boolean test(T s, Predicate&lt;T&gt; p) {
+        return p.test(s);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>假如我们这样调用</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>boolean result = test(&quot;123&quot;, (String s) -&gt; s.length() &gt; 12);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>他的匹配过程就如下图所示，首先根据调用方法找到主方法，根据主方法的泛型得知入参是String，再查看predicate的唯一方法得知返回值是boolean，由此得知函数描述符为<code>String-&gt;boolean</code>,最终和调用的lambda匹配成功，校验通过</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209052228365.png" alt="image-20220905222806554"></p> <h3 id="类型推断"><a href="#类型推断" class="header-anchor">#</a> 类型推断</h3> <p>因为函数式接口方法是唯一的，我们也可以对类型进行省略，让java编译器去自动推断类型</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> boolean result = test(&quot;123&quot;, (s) -&gt; s.length() &gt; 12);
+        System.out.println(result);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="使用限制-使用lambda使用局部变量"><a href="#使用限制-使用lambda使用局部变量" class="header-anchor">#</a> 使用限制(使用lambda使用局部变量)</h3> <p>如下代码所示，这样一段代码在idea中会报红，原因很简单，局部变量分配在栈上，而r线程可能会在该变量被回收之后才使用这个变量，所以java在让线程r访问这个变量的时候，实际上访问到的num是num的副本，所以假如lambda访问变量num，再给num赋值就会爆红，因为如下所示代码若能正常执行，那么r线程最终输出的num很可能前后不一致是随机，进而导致线程安全问题。</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code> <span class="token keyword">int</span> num<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+ <span class="token class-name">Runnable</span> r<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ r<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ num<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.66e71283.js" defer></script><script src="/assets/js/2.2d1cac8d.js" defer></script><script src="/assets/js/1.ab819bd9.js" defer></script><script src="/assets/js/37.440103ea.js" defer></script>
+  </body>
+</html>

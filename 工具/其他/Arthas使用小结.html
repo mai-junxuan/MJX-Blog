@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Arthas使用小结 | 麦俊轩的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="">
+    <meta name="robots" content="all">
+    <meta name="author" content="mjx">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.38934ce7.css" as="style"><link rel="preload" href="/assets/js/app.66e71283.js" as="script"><link rel="preload" href="/assets/js/2.2d1cac8d.js" as="script"><link rel="preload" href="/assets/js/1.ab819bd9.js" as="script"><link rel="preload" href="/assets/js/76.702c7c76.js" as="script"><link rel="prefetch" href="/assets/js/10.84d14364.js"><link rel="prefetch" href="/assets/js/11.045a0a60.js"><link rel="prefetch" href="/assets/js/12.6f0e9932.js"><link rel="prefetch" href="/assets/js/13.fb842719.js"><link rel="prefetch" href="/assets/js/14.f4937493.js"><link rel="prefetch" href="/assets/js/15.f4b2583c.js"><link rel="prefetch" href="/assets/js/16.41b572be.js"><link rel="prefetch" href="/assets/js/17.8f245198.js"><link rel="prefetch" href="/assets/js/18.4c44bfad.js"><link rel="prefetch" href="/assets/js/19.46b03286.js"><link rel="prefetch" href="/assets/js/20.756867c9.js"><link rel="prefetch" href="/assets/js/21.2957c140.js"><link rel="prefetch" href="/assets/js/22.b345e7c5.js"><link rel="prefetch" href="/assets/js/23.d83d718a.js"><link rel="prefetch" href="/assets/js/24.d9975f36.js"><link rel="prefetch" href="/assets/js/25.7a4b71c9.js"><link rel="prefetch" href="/assets/js/26.cee50e0c.js"><link rel="prefetch" href="/assets/js/27.2bd584b7.js"><link rel="prefetch" href="/assets/js/28.40a4b61a.js"><link rel="prefetch" href="/assets/js/29.b28882d0.js"><link rel="prefetch" href="/assets/js/3.9afe9595.js"><link rel="prefetch" href="/assets/js/30.cbf9f923.js"><link rel="prefetch" href="/assets/js/31.9e279d6d.js"><link rel="prefetch" href="/assets/js/32.de890c1b.js"><link rel="prefetch" href="/assets/js/33.2edb4675.js"><link rel="prefetch" href="/assets/js/34.b10912b9.js"><link rel="prefetch" href="/assets/js/35.72464f81.js"><link rel="prefetch" href="/assets/js/36.0170a5ad.js"><link rel="prefetch" href="/assets/js/37.440103ea.js"><link rel="prefetch" href="/assets/js/38.fe4d020a.js"><link rel="prefetch" href="/assets/js/39.00806ff5.js"><link rel="prefetch" href="/assets/js/4.7daf21de.js"><link rel="prefetch" href="/assets/js/40.f91742c2.js"><link rel="prefetch" href="/assets/js/41.36d0ea03.js"><link rel="prefetch" href="/assets/js/42.c7dc16b4.js"><link rel="prefetch" href="/assets/js/43.84214d9d.js"><link rel="prefetch" href="/assets/js/44.2537628d.js"><link rel="prefetch" href="/assets/js/45.6588b1e4.js"><link rel="prefetch" href="/assets/js/46.20177a10.js"><link rel="prefetch" href="/assets/js/47.0dcf0b55.js"><link rel="prefetch" href="/assets/js/48.fb38c2ca.js"><link rel="prefetch" href="/assets/js/49.31712729.js"><link rel="prefetch" href="/assets/js/5.ae530a1a.js"><link rel="prefetch" href="/assets/js/50.4230d5ad.js"><link rel="prefetch" href="/assets/js/51.bda4cdd5.js"><link rel="prefetch" href="/assets/js/52.ab24e96b.js"><link rel="prefetch" href="/assets/js/53.c273b7a8.js"><link rel="prefetch" href="/assets/js/54.16f3f38e.js"><link rel="prefetch" href="/assets/js/55.a37b8f6c.js"><link rel="prefetch" href="/assets/js/56.b59cdd58.js"><link rel="prefetch" href="/assets/js/57.fcc7b064.js"><link rel="prefetch" href="/assets/js/58.c26f6871.js"><link rel="prefetch" href="/assets/js/59.f8b14dda.js"><link rel="prefetch" href="/assets/js/6.d389c045.js"><link rel="prefetch" href="/assets/js/60.02142959.js"><link rel="prefetch" href="/assets/js/61.7cbefbdb.js"><link rel="prefetch" href="/assets/js/62.c1c42d03.js"><link rel="prefetch" href="/assets/js/63.9cf5c587.js"><link rel="prefetch" href="/assets/js/64.15de1976.js"><link rel="prefetch" href="/assets/js/65.2f4c079e.js"><link rel="prefetch" href="/assets/js/66.47253488.js"><link rel="prefetch" href="/assets/js/67.68a40463.js"><link rel="prefetch" href="/assets/js/68.cbfe3485.js"><link rel="prefetch" href="/assets/js/69.4e7fb2ee.js"><link rel="prefetch" href="/assets/js/7.c9f32eab.js"><link rel="prefetch" href="/assets/js/70.dded6a7a.js"><link rel="prefetch" href="/assets/js/71.31edd10e.js"><link rel="prefetch" href="/assets/js/72.1d6ce636.js"><link rel="prefetch" href="/assets/js/73.ae696eea.js"><link rel="prefetch" href="/assets/js/74.f547417c.js"><link rel="prefetch" href="/assets/js/75.caf8c871.js"><link rel="prefetch" href="/assets/js/77.4d49b55f.js"><link rel="prefetch" href="/assets/js/78.feebbb09.js"><link rel="prefetch" href="/assets/js/79.f45d29b6.js"><link rel="prefetch" href="/assets/js/80.9f2161de.js"><link rel="prefetch" href="/assets/js/81.820b8dd7.js"><link rel="prefetch" href="/assets/js/82.68ccd80c.js"><link rel="prefetch" href="/assets/js/83.3386f6f3.js"><link rel="prefetch" href="/assets/js/84.a781d39d.js"><link rel="prefetch" href="/assets/js/85.79b5e63f.js"><link rel="prefetch" href="/assets/js/86.6f22b386.js"><link rel="prefetch" href="/assets/js/87.e2fac3f5.js"><link rel="prefetch" href="/assets/js/88.e98f5936.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.1d2fbb22.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.38934ce7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">麦俊轩的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
+  Vue3中为什么不能使用this
+</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
+  windows端口冲突解决
+</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
+  解决依赖冲突
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
+  普通索引和唯一索引的区别
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
+  Git 提交规约
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
+  Arthas使用小结
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
+  基于Gitee实现Jenkins自动化部署SpringBoot项目
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
+  基于jmeter完成压测
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
+  什么是xxl-job，它解决什么问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Netty
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
+  Netty基础概念入门小结
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Sharding-JDBC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
+  Sharding-JDBC的简单使用
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
+  对支付系统的个人理解
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
+  Vue3中为什么不能使用this
+</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
+  windows端口冲突解决
+</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
+  解决依赖冲突
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
+  普通索引和唯一索引的区别
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
+  Git 提交规约
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
+  Arthas使用小结
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
+  基于Gitee实现Jenkins自动化部署SpringBoot项目
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
+  基于jmeter完成压测
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
+  什么是xxl-job，它解决什么问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Netty
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
+  Netty基础概念入门小结
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Sharding-JDBC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
+  Sharding-JDBC的简单使用
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
+  对支付系统的个人理解
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Arthas使用小结</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#前言" class="sidebar-link">前言</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#实践" class="sidebar-link">实践</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#快速开始" class="sidebar-link">快速开始</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#定位cpu-100-问题" class="sidebar-link">定位CPU 100%问题</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#定位线程死锁问题" class="sidebar-link">定位线程死锁问题</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#反编译查看代码" class="sidebar-link">反编译查看代码</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#定位字段信息-不常用" class="sidebar-link">定位字段信息(不常用)</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#查看方法列表-不常用" class="sidebar-link">查看方法列表(不常用)</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#静态变量监控-常用" class="sidebar-link">静态变量监控(常用)</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#运行耗时性能问题排查" class="sidebar-link">运行耗时性能问题排查</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#方法耗时统计" class="sidebar-link">方法耗时统计</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#定位出入参错误问题" class="sidebar-link">定位出入参错误问题</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#监控方法调用路径" class="sidebar-link">监控方法调用路径</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#获取方法调用的过程" class="sidebar-link">获取方法调用的过程</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#oom问题" class="sidebar-link">oom问题</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#线上替换代码" class="sidebar-link">线上替换代码</a></li><li class="sidebar-sub-header"><a href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html#获取spring上下文进行进一步分析操作" class="sidebar-link">获取spring上下文进行进一步分析操作</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="arthas使用小结"><a href="#arthas使用小结" class="header-anchor">#</a> Arthas使用小结</h1> <h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>可能由于日常开发的不注意，所以项目部署到生产环境时不时会出现一些奇奇怪怪的问题，这时候我们就需要一款便捷且轻量的工具监控并排查问题。</p> <p>这时候我们就不得不提一下Arthas,Arthas是一款强大的开源Java诊断程序，它可以非常方便的启动并以界面式的方式和Java程序进行交互,支持监控程序的内存使用情况、线程信息、gc情况、甚至可以反编译并修改现上代码等。</p> <p>如下图，arthas的运行原理大致是以下几个步骤:</p> <ol><li>启动arthas选择目标Java程序后，artahs会向目标程序注入一个代理。</li> <li>代理会创建一个集HTTP和Telnet的服务器与客户端建立连接。</li> <li>客户端与服务端建立连接。</li> <li>后续客户端需要监控或者调整程序都可以通过服务端Java Instrumentation机制和应用程序产生交互。</li></ol> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913847.png" alt="在这里插入图片描述"></p> <p>为了让读者可以快速了并熟练掌握Arhtas的基本使用，笔者就以几个比较常见的例子来演示一下Arthas的日常使用的常规套路。</p> <h2 id="实践"><a href="#实践" class="header-anchor">#</a> 实践</h2> <h3 id="快速开始"><a href="#快速开始" class="header-anchor">#</a> 快速开始</h3> <p>在介绍几个典型的案例之前，我们需要先下载一下Arthas，并了解Arthas的一些简单的使用方式(注意:笔者为了方便演示所用的环境都是基于win 10，对于Linux环境而言操作也差不多)，Arthas的官方地址如下:</p> <p><a href="https://arthas.aliyun.com/" target="_blank" rel="noopener noreferrer">https://arthas.aliyun.com/(opens new window)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>考虑到方便笔者一般是使用命令行的方式下载:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">curl</span> <span class="token parameter variable">-O</span> https://arthas.aliyun.com/arthas-boot.jar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>完成后我们通过下面这个命令就可以将Arthas启动了。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">java</span> <span class="token parameter variable">-jar</span> arthas-boot.jar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>可以看到刚刚进入界面时，Arthas就会分别为每个服务器中正在运行的Java程序标上序号，我们只需输入对应序号并点击回车即可进行对目标程序的监控，为了演示笔者任意选择一个2，并点击回车。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913853.png" alt="在这里插入图片描述"></p> <p>随后我们就进入的交互界面，如下图:</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913034.png" alt="在这里插入图片描述"></p> <p>Arthas最常用的监控指令就是dashboard，对于dashboard的使用说明，我们可以像使用Linux一下在dashboard命令后面追加一个--help。</p> <p>如下图所示，可以看出dashboard的用法大抵是这样的:</p> <ol><li>默认参数都不加，每隔5s刷新一次面板。</li> <li>-i 指定刷新面板间隔。</li> <li>-n 指定刷新次数。</li></ol> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913798.png" alt="在这里插入图片描述"></p> <p>所以假如我们希望每10s刷新一次，重复执行3次的指令就是:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>dashboard <span class="token parameter variable">-i</span> <span class="token number">10000</span> <span class="token parameter variable">-n</span> <span class="token number">3</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>此时面板就会每隔10s刷新一次界面，监控界面如下图所示，从图中不难看出dashboard大抵范围3个板块:</p> <ol><li>线程信息版块，对应的列名分别是:id、线程名、所属线程组、优先级、线程运行状态、cpu使用率、延迟时间、运行时间、是否被打断。</li> <li>内存使用版块，大体都是记录着各代内存和gc情况。</li> <li>服务器运行参数版块，这一版块记录着程序当前运行服务器的内核版本信息、jdk版本等。</li></ol> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913509.png" alt="在这里插入图片描述"></p> <p>在Arthas中，如果我们希望退出dashboard直接按ctrl+c即可，如果我们希望退出当前Java程序的交互界面，输入exit即可。</p> <h3 id="定位cpu-100-问题"><a href="#定位cpu-100-问题" class="header-anchor">#</a> 定位CPU 100%问题</h3> <p>CPU 100%问题算是生产环境下最难排查的问题了，在没有Arthas之前，我们常规的排查思路大致为:</p> <ol><li>使用top确定是否为java进程。</li> <li>如果是，则使用jps定位Java进程号。</li> <li>找到最吃资源的线程号。</li> <li>将线程号转为十六进制。</li> <li>通过jstack导出日志并使用全局搜索十六进制线程号定位到问题代码段。</li></ol> <p>如上所述，是不是很繁琐呢？有了Arthas之后，问题的定位就会简单快速许多，为了演示这个例子，笔者使用Spring Boot项目编写了一段模拟CPU 100%问题的代码段，可以看到笔者使用</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+     * 一个线程数只有1的线程池
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">ExecutorService</span> threadPool <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newCachedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;cpu-100&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">cpu</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">loopThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">cpuHigh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 极度消耗CPU的线程
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">cpuHigh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 添加到线程</span>
+        threadPool<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;cpu working&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment">/**
+     * 无限循环的线程
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">loopThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;死循环线程工作中&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                        <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;thread&quot;</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><p>完成编写后，我们将项目启动并请求该地址，不久后你就会发现CPU直接飙升接近100%，此时我们的arthas就派上用场了，首先我们自然是将arthas启动。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">java</span> <span class="token parameter variable">-jar</span> arthas-boot.jar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>此时控制台会出现下面几个选项，它通过不同序号标明不同的Java程序，我们看到我们的目标程序ArthasExampleApplication，序号为1，所以我们输入1按回车。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>F:<span class="token punctuation">\</span>github<span class="token operator">&gt;</span>java <span class="token parameter variable">-jar</span> arthas-boot.jar
+<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> JAVA_HOME: D:<span class="token punctuation">\</span>myinstall<span class="token punctuation">\</span>jdk8<span class="token punctuation">\</span>jre8
+<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> arthas-boot version: <span class="token number">3.6</span>.9
+<span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Found existing <span class="token function">java</span> process, please choose one and input the serial number of the process, eg <span class="token builtin class-name">:</span> <span class="token number">1</span>. Then hit ENTER.
+* <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: <span class="token number">18720</span> com.example.arthasExample.ArthasExampleApplication
+  <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>: <span class="token number">19300</span> org.jetbrains.jps.cmdline.Launcher
+  <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>: <span class="token number">7876</span> org.jetbrains.idea.maven.server.RemoteMavenServer
+  <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span>: <span class="token number">14488</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>进入控制台，我们直接键入thread命令可以看到，有一个名为 pool-1-thread-1的线程CPU使用率非常高，所以我们需要定位它所工作的代码段。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913572.png" alt="在这里插入图片描述"></p> <p>由控制台可知，它的序号为59，所以我们直接键入:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> thread <span class="token number">59</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>很快的，我们直接定位到了问题代码段，在TestController的42行。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202308280838765.png" alt="在这里插入图片描述"></p> <p>知道了代码的位置之后，我们根据类的包路径<code>com.example.arthasExample.TestController</code>直接通过Arthas反编译查看源码，命令如下:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>jad --source-only  com.example.arthasExample.TestController
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>最终我们定位到了问题代码，即时修复即可。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913367.png" alt="在这里插入图片描述"></p> <h3 id="定位线程死锁问题"><a href="#定位线程死锁问题" class="header-anchor">#</a> 定位线程死锁问题</h3> <p>对于线程死锁问题，我们也给出下面这样一段示例代码，线程1先取锁1再取锁2，线程2反之，两者取锁顺序构成环路造成死锁。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> //两把锁
+    private Object lock1 <span class="token operator">=</span> new Object<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    private Object lock2 <span class="token operator">=</span> new Object<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    @RequestMapping<span class="token punctuation">(</span><span class="token string">&quot;dead-lock&quot;</span><span class="token punctuation">)</span>
+    public void <span class="token function-name function">deadLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        //线程1先取得锁1，休眠后取锁2
+        new Thread<span class="token punctuation">((</span><span class="token punctuation">)</span> -<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            synchronized <span class="token punctuation">(</span>lock1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                try <span class="token punctuation">{</span>
+                    log.info<span class="token punctuation">(</span><span class="token string">&quot;t1 successfully acquired the lock1......&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    TimeUnit.<span class="token environment constant">SECONDS</span>.sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> catch <span class="token punctuation">(</span>InterruptedException e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e.printStackTrace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+
+                synchronized <span class="token punctuation">(</span>lock2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    log.info<span class="token punctuation">(</span><span class="token string">&quot;t1 successfully acquired the lock1......&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>, <span class="token string">&quot;t1&quot;</span><span class="token punctuation">)</span>.start<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        //线程2先取得锁2，休眠后取锁1
+        new Thread<span class="token punctuation">((</span><span class="token punctuation">)</span> -<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            synchronized <span class="token punctuation">(</span>lock2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                try <span class="token punctuation">{</span>
+                    log.info<span class="token punctuation">(</span><span class="token string">&quot;t2 successfully acquired the lock2......&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    TimeUnit.<span class="token environment constant">SECONDS</span>.sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> catch <span class="token punctuation">(</span>InterruptedException e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e.printStackTrace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+
+                synchronized <span class="token punctuation">(</span>lock1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    log.info<span class="token punctuation">(</span><span class="token string">&quot;t2 successfully acquired the lock1......&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>, <span class="token string">&quot;t2&quot;</span><span class="token punctuation">)</span>.start<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><p>了解代码流程之后，我们直接调用这个接口，打开Arthas查看键入thread线程信息可以看到我们的t1和t2两个线程处于等待状态，大概率存在问题。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913618.png" alt="在这里插入图片描述"></p> <p>随后我们直接键入<code>thread -b</code>，发现t2线程被锁住了，由此断定这两个线程看定存在死锁，</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913230.png" alt="在这里插入图片描述"></p> <p>由上述结果我们可知两个线程的id分别是65和66，所以使用<code>thread id号</code>的命令直接定位到问题代码段并解决问题即可。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913040.png" alt="在这里插入图片描述"></p> <h3 id="反编译查看代码"><a href="#反编译查看代码" class="header-anchor">#</a> 反编译查看代码</h3> <p>上文我们其实已经用到了jad这个反编译命令，对于笔者来说，jad有两种比较常见的用法，除了上述那种反编译类的指令<code>jad --source-only 类的包路径</code>，还有一种定位方法代码段的命令<code>jad --source-only 类的包路径 方法名</code>。</p> <p>例如笔者想定位TestController的deadLock代码，我们就可以键入:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>jad --source-only  com.example.arthasExample.TestController deadLock
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如下图，我们可以直接看到的方法的代码:</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913501.png" alt="在这里插入图片描述"></p> <h3 id="定位字段信息-不常用"><a href="#定位字段信息-不常用" class="header-anchor">#</a> 定位字段信息(不常用)</h3> <p>我们希望看到某个类下所有字段的详情，我们就可以使用这条命令</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>sc <span class="token parameter variable">-d</span> <span class="token parameter variable">-f</span> 类的包路径
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>例如笔者想查看TestController的字段详情，就可以键入这条命令</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>sc <span class="token parameter variable">-d</span> <span class="token parameter variable">-f</span> com.example.arthasExample.TestController
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>可以看到这条指令不仅可以查看字段的定义和注解，还可以查看线程池的使用情况以及集合内部的value。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913330.png" alt="在这里插入图片描述"></p> <h3 id="查看方法列表-不常用"><a href="#查看方法列表-不常用" class="header-anchor">#</a> 查看方法列表(不常用)</h3> <p>这条命令笔者不是很常用，为了教程的完整性笔者也演示一下，假如我们希望查看某个类的方法，可以使用:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>sm 类的包路径
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>以笔者为例,查看TestController的方法为:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> sm com.example.arthasExample.TestController
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>输出结果如下:</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913238.png" alt="在这里插入图片描述"></p> <h3 id="静态变量监控-常用"><a href="#静态变量监控-常用" class="header-anchor">#</a> 静态变量监控(常用)</h3> <p>Arthas提供了对静态变量的分析，以下面这段代码为例，如果笔者希望看到list 内部详情，我们就可以使用ognl。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> private static List<span class="token operator">&lt;</span>String<span class="token operator">&gt;</span> list <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    @RequestMapping<span class="token punctuation">(</span><span class="token string">&quot;add&quot;</span><span class="token punctuation">)</span>
+    public void <span class="token function-name function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            list.add<span class="token punctuation">(</span><span class="token string">&quot;val&quot;</span> + i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>在我们执行完接口完成添加操作之后，我们可以直接使用ognl进行监控。例如我们希望查看上述list的内容，我们就可以使用命令:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> ognl <span class="token string">'@类的包路径@变量名'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>所以如果笔者查看list的命令为:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> ognl <span class="token string">'@com.example.arthasExample.TestController@list'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>输出结果如下</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913978.png" alt="在这里插入图片描述"></p> <p>当然ognl还有一些比较特殊的用法，例如查看集合的长度，添加元素到集合中等操作，具体可以参考GitHub这个issue:</p> <p><a href="https://github.com/alibaba/arthas/issues/71" target="_blank" rel="noopener noreferrer">https://github.com/alibaba/arthas/issues/71(opens new window)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="运行耗时性能问题排查"><a href="#运行耗时性能问题排查" class="header-anchor">#</a> 运行耗时性能问题排查</h3> <p>对于统计耗时的操作我们经常会用打日志的方式来监控，在环境复杂的生产环境，我们常因为欠缺考虑而忘记对某些方法进行监控。 同样的Arthas也为我们提供了一些便捷的命令来完成对方法耗时的监控与统计:</p> <p>笔者这里给出一段UserServiceImpl 模拟用户查询时进行参数校验、其他service调用、redis调用、MySQL调用。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>@Service
+@Slf4j
+public class UserServiceImpl <span class="token punctuation">{</span>
+
+    public JSONObject queryUser<span class="token punctuation">(</span>Integer uid<span class="token punctuation">)</span> throws Exception <span class="token punctuation">{</span>
+        check<span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        service<span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        redis<span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token builtin class-name">return</span> mysql<span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    public void service<span class="token punctuation">(</span>Integer uid<span class="token punctuation">)</span> throws Exception <span class="token punctuation">{</span>
+        log.info<span class="token punctuation">(</span><span class="token string">&quot;调用其他service。。。。。&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TimeUnit.<span class="token environment constant">SECONDS</span>.sleep<span class="token punctuation">(</span>RandomUtil.randomLong<span class="token punctuation">(</span><span class="token number">1</span>, <span class="token number">2</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    public void redis<span class="token punctuation">(</span>Integer uid<span class="token punctuation">)</span> throws Exception <span class="token punctuation">{</span>
+        log.info<span class="token punctuation">(</span><span class="token string">&quot;查看redis缓存数据。。。。。&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TimeUnit.MILLISECONDS.sleep<span class="token punctuation">(</span>RandomUtil.randomInt<span class="token punctuation">(</span><span class="token number">100</span>, <span class="token number">200</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    public JSONObject mysql<span class="token punctuation">(</span>Integer uid<span class="token punctuation">)</span> throws Exception <span class="token punctuation">{</span>
+        log.info<span class="token punctuation">(</span><span class="token string">&quot;查询MySQL数据......&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TimeUnit.<span class="token environment constant">SECONDS</span>.sleep<span class="token punctuation">(</span>RandomUtil.randomInt<span class="token punctuation">(</span><span class="token number">3</span>, <span class="token number">4</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+        JSONObject jsonObject <span class="token operator">=</span> new JSONObject<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jsonObject.putOnce<span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span>, <span class="token string">&quot;xiaoming&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jsonObject.putOnce<span class="token punctuation">(</span><span class="token string">&quot;age&quot;</span>, <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token builtin class-name">return</span> jsonObject<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    public boolean check<span class="token punctuation">(</span>Integer uid<span class="token punctuation">)</span> throws Exception <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>uid <span class="token operator">==</span> null <span class="token operator">||</span> uid <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            log.error<span class="token punctuation">(</span><span class="token string">&quot;非法用户id，uid:{}&quot;</span>, uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            throw new Exception<span class="token punctuation">(</span><span class="token string">&quot;非法用户id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token builtin class-name">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><p>对应的controller代码如下，假如我们在生产环境下发现这个接口非常耗时，我们又没有日志，那么我们如何利用Arthas排查耗时问题呢？</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> @Autowired
+    private UserServiceImpl userService<span class="token punctuation">;</span>
+
+    @GetMapping<span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;/user&quot;</span><span class="token punctuation">)</span>
+    public JSONObject queryUser<span class="token punctuation">(</span>Integer uid<span class="token punctuation">)</span> throws Exception <span class="token punctuation">{</span>
+        <span class="token builtin class-name">return</span> userService.queryUser<span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>我们可以用trace命令，我们首先用trace追踪一下TestController 的queryUser耗时的调用:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>trace com.example.arthasExample.TestController queryUser
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>可以发现TestController 并无异常，所有的耗时都在UserServiceImpl</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913210.png" alt="在这里插入图片描述"></p> <p>所以我们再对UserServiceImpl 的queryUser进行追钟。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> trace com.example.arthasExample.UserServiceImpl queryUser
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>完成命令键入后，控制台就会阻塞监控这个方法，然后我们调用一下这个接口，可以发现原来是MySQL查询非常耗时，由此我们就可以进一步去推断问题了。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913234.png" alt="在这里插入图片描述"></p> <h3 id="方法耗时统计"><a href="#方法耗时统计" class="header-anchor">#</a> 方法耗时统计</h3> <p>有时候我们希望监控某个方法单位时间内请求的耗时和调用情况，我们就可以使用monitor命令，例如我们希望每5s查看TestController 的queryUser的情况，我们就可以键入:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> monitor  <span class="token parameter variable">-c</span> <span class="token number">5</span> com.example.arthasExample.TestController queryUser
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>可以看到控制台会每5s输入请求次数、成功和失败次数以及平均耗时等信息。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913144.png" alt="在这里插入图片描述"></p> <h3 id="定位出入参错误问题"><a href="#定位出入参错误问题" class="header-anchor">#</a> 定位出入参错误问题</h3> <p>有时候我们希望定位某个日志没有打到的方法的出入参详情，例如上面的mysql()的出入参，我们完全可以通过Arthas的watch方法做到，对应命令为:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">watch</span> com.example.arthasExample.UserServiceImpl mysql <span class="token string">'{params[0],returnObj}'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>可以看到，我们的入参为1，出参是一个对象。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913828.png" alt="在这里插入图片描述"></p> <p>更进一步，假如我们希望可以打印出对象的内容，那么我们就可以使用toString方法做到</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">watch</span> com.example.arthasExample.UserServiceImpl mysql <span class="token string">'{params[0],returnObj.toString()}'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913920.png" alt="在这里插入图片描述"></p> <p>除此之外watch 还支持很多的骚操作，具体可以参考官方文档:</p> <p><a href="https://arthas.aliyun.com/doc/watch.html" target="_blank" rel="noopener noreferrer">https://arthas.aliyun.com/doc/watch.html(opens new window)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="监控方法调用路径"><a href="#监控方法调用路径" class="header-anchor">#</a> 监控方法调用路径</h3> <p>还是以上文mysql方法为例，如果我们希望快速定位到它的调用路径，我们可以使用stack方法:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>stack com.example.arthasExample.UserServiceImpl mysql
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>可以看到详细的调用路径直接输出到控制台。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913207.png" alt="在这里插入图片描述"></p> <h3 id="获取方法调用的过程"><a href="#获取方法调用的过程" class="header-anchor">#</a> 获取方法调用的过程</h3> <p>我们希望查看方法调用时出现异常的原因，出参和入参时，可以使用tt这条指令,例如我们想查看check方法为何会报错，我们就可以使用tt</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>tt <span class="token parameter variable">-t</span> com.example.arthasExample.UserServiceImpl check
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>从输出结果来看，第二次抛出异常了，我们可以基于1001这个索引去定位问题。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913879.png" alt="在这里插入图片描述"></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> tt <span class="token parameter variable">-i</span> <span class="token number">1001</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>最终可以得出，入参为-1</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913198.png" alt="在这里插入图片描述"></p> <p>如果我们想重新发起调用，可以直接使用</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>tt <span class="token parameter variable">-i</span> <span class="token number">1001</span> <span class="token parameter variable">-p</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="oom问题"><a href="#oom问题" class="header-anchor">#</a> oom问题</h3> <p>以下面这段代码为例，笔者将堆内存改为100m，命令为<code>-Xms100m -Xmx100m</code>,启动后直接重现oom问题</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>final ThreadPoolExecutor poolExecutor <span class="token operator">=</span> new ThreadPoolExecutor<span class="token punctuation">(</span><span class="token number">100</span>, <span class="token number">100</span>, <span class="token number">1</span>, TimeUnit.MINUTES,
+            new LinkedBlockingQueue<span class="token operator">&lt;&gt;</span><span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>// 创建线程池，通过线程池，保证创建的线程存活
+
+    @RequestMapping<span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;/oom&quot;</span><span class="token punctuation">)</span>
+    public String oom<span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        poolExecutor.execute<span class="token punctuation">((</span><span class="token punctuation">)</span> -<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            Byte<span class="token punctuation">[</span><span class="token punctuation">]</span> c <span class="token operator">=</span> new Byte<span class="token punctuation">[</span><span class="token number">4</span>* <span class="token number">1024</span>* <span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            localVariable.set<span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>// 为线程添加变量
+
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token builtin class-name">return</span> <span class="token string">&quot;success&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>然后通过arthas发现老年代内存几乎已满，gc也十分频繁。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913599.png" alt="在这里插入图片描述"></p> <p>由此我们可以直接使用Arthas的heapdump 导出文件到mat中进行进一步分析。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> heapdump D://heap.hprof
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>导出的结果如下，后续我们就可以点击detail推断到问题的源头了。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913359.png" alt="在这里插入图片描述"></p> <p>最终我们很快速的定位到了问题代码:</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913281.png" alt="在这里插入图片描述"></p> <h3 id="线上替换代码"><a href="#线上替换代码" class="header-anchor">#</a> 线上替换代码</h3> <p>有时候我们测试难免会遗漏一些情况，如下所示，我们业务要求id小于1才抛出异常，但是我们因为粗心而将判断条件写成id&lt;2，结果懵懵懂懂的就将这段代码部到了生产环境，导致业务查询出了问题。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>@GetMapping<span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&quot;/user/{id}&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    public JSONObject findUserById<span class="token punctuation">(</span>@PathVariable Integer <span class="token function">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        log.info<span class="token punctuation">(</span><span class="token string">&quot;id: {}&quot;</span>,id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token function">id</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             throw new IllegalArgumentException<span class="token punctuation">(</span><span class="token string">&quot;id &lt; 1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token builtin class-name">return</span> new JSONObject<span class="token punctuation">(</span><span class="token punctuation">)</span>.putOnce<span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span>,<span class="token string">&quot;user&quot;</span>+id<span class="token punctuation">)</span>.putOnce<span class="token punctuation">(</span><span class="token string">&quot;age&quot;</span>,18<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>对于生产环境，我们肯定是无法立刻重启替换jar包的，对于这类问题，我们完全可以使用arthas实现在线热更新。</p> <p>首先第一步，我们将生产环境的字节码反编译并导出到本地，如下所示</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>jad  --source-only com.example.arthasExample.TestController <span class="token operator">&gt;</span>  d://TestController.java
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>然后我们修改一下对应的代码段</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913293.png" alt="在这里插入图片描述"></p> <p>然后我们需要找到这个类对应类加载器的hash码</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>sc <span class="token parameter variable">-d</span> *TestController <span class="token operator">|</span> <span class="token function">grep</span> classLoaderHash
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913527.png" alt="在这里插入图片描述"></p> <p>找到对应hash码之后，我们就可以基于这个类加载器将修改后的Java文件编译成字节码文件:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> <span class="token function">mc</span> <span class="token parameter variable">-c</span> 18b4aac2 d://TestController.java <span class="token parameter variable">-d</span> d://
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>最后我们将代码热更新到正在运行的程序</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>redefine d://com/example/arthasExample/TestController.class
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>此时我们传1作为参数就不会报错了，说明代码热更新成功了。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913841.png" alt="在这里插入图片描述"></p> <h3 id="获取spring上下文进行进一步分析操作"><a href="#获取spring上下文进行进一步分析操作" class="header-anchor">#</a> 获取spring上下文进行进一步分析操作</h3> <p>有时候我们希望在线上获取Spring容器分析定位问题，我们完全可以通过arthas拦截到这个类并进行进一步调用和分析。</p> <p>读过Spring MVC源码的读者可能都知道，每当又HTTP请求发送到web容器时请求进行映射转发处理时都会经过RequestMappingHandlerAdapter，从下面的类图不难看出它继承了WebApplicationObjectSupport，而该类有一个方法getWebApplicationContext可以让我们获取到spring容器的上下文，进而去分析管理spring容器。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913364.png" alt="在这里插入图片描述"></p> <p>所以我们可以使用arthas的tt指令追踪这个类的调用：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>tt <span class="token parameter variable">-t</span> org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter invokeHandlerMethod
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>然后我们随便调用一个接口，得到调用记录</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913661.png" alt="在这里插入图片描述"></p> <p>我们就以索引为1000的调用记录，通过-w指定ognl获取到spring上下文并获取到testController然后完成一个方法调用。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>tt <span class="token parameter variable">-i</span> <span class="token number">1000</span> <span class="token parameter variable">-w</span> <span class="token string">'target.getApplicationContext().getBean(&quot;testController&quot;).findUserById(3)'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如下图，可以看到，我们成功的完成了调用并得到了返回结果。</p> <p><img src="https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/img202307050913634.png" alt="在这里插入图片描述"></p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.66e71283.js" defer></script><script src="/assets/js/2.2d1cac8d.js" defer></script><script src="/assets/js/1.ab819bd9.js" defer></script><script src="/assets/js/76.702c7c76.js" defer></script>
+  </body>
+</html>

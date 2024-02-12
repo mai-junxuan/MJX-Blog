@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redis的安装与基本操作 | 麦俊轩的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="">
+    <meta name="robots" content="all">
+    <meta name="author" content="mjx">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.38934ce7.css" as="style"><link rel="preload" href="/assets/js/app.66e71283.js" as="script"><link rel="preload" href="/assets/js/2.2d1cac8d.js" as="script"><link rel="preload" href="/assets/js/1.ab819bd9.js" as="script"><link rel="preload" href="/assets/js/53.c273b7a8.js" as="script"><link rel="prefetch" href="/assets/js/10.84d14364.js"><link rel="prefetch" href="/assets/js/11.045a0a60.js"><link rel="prefetch" href="/assets/js/12.6f0e9932.js"><link rel="prefetch" href="/assets/js/13.fb842719.js"><link rel="prefetch" href="/assets/js/14.f4937493.js"><link rel="prefetch" href="/assets/js/15.f4b2583c.js"><link rel="prefetch" href="/assets/js/16.41b572be.js"><link rel="prefetch" href="/assets/js/17.8f245198.js"><link rel="prefetch" href="/assets/js/18.4c44bfad.js"><link rel="prefetch" href="/assets/js/19.46b03286.js"><link rel="prefetch" href="/assets/js/20.756867c9.js"><link rel="prefetch" href="/assets/js/21.2957c140.js"><link rel="prefetch" href="/assets/js/22.b345e7c5.js"><link rel="prefetch" href="/assets/js/23.d83d718a.js"><link rel="prefetch" href="/assets/js/24.d9975f36.js"><link rel="prefetch" href="/assets/js/25.7a4b71c9.js"><link rel="prefetch" href="/assets/js/26.cee50e0c.js"><link rel="prefetch" href="/assets/js/27.2bd584b7.js"><link rel="prefetch" href="/assets/js/28.40a4b61a.js"><link rel="prefetch" href="/assets/js/29.b28882d0.js"><link rel="prefetch" href="/assets/js/3.9afe9595.js"><link rel="prefetch" href="/assets/js/30.cbf9f923.js"><link rel="prefetch" href="/assets/js/31.9e279d6d.js"><link rel="prefetch" href="/assets/js/32.de890c1b.js"><link rel="prefetch" href="/assets/js/33.2edb4675.js"><link rel="prefetch" href="/assets/js/34.b10912b9.js"><link rel="prefetch" href="/assets/js/35.72464f81.js"><link rel="prefetch" href="/assets/js/36.0170a5ad.js"><link rel="prefetch" href="/assets/js/37.440103ea.js"><link rel="prefetch" href="/assets/js/38.fe4d020a.js"><link rel="prefetch" href="/assets/js/39.00806ff5.js"><link rel="prefetch" href="/assets/js/4.7daf21de.js"><link rel="prefetch" href="/assets/js/40.f91742c2.js"><link rel="prefetch" href="/assets/js/41.36d0ea03.js"><link rel="prefetch" href="/assets/js/42.c7dc16b4.js"><link rel="prefetch" href="/assets/js/43.84214d9d.js"><link rel="prefetch" href="/assets/js/44.2537628d.js"><link rel="prefetch" href="/assets/js/45.6588b1e4.js"><link rel="prefetch" href="/assets/js/46.20177a10.js"><link rel="prefetch" href="/assets/js/47.0dcf0b55.js"><link rel="prefetch" href="/assets/js/48.fb38c2ca.js"><link rel="prefetch" href="/assets/js/49.31712729.js"><link rel="prefetch" href="/assets/js/5.ae530a1a.js"><link rel="prefetch" href="/assets/js/50.4230d5ad.js"><link rel="prefetch" href="/assets/js/51.bda4cdd5.js"><link rel="prefetch" href="/assets/js/52.ab24e96b.js"><link rel="prefetch" href="/assets/js/54.16f3f38e.js"><link rel="prefetch" href="/assets/js/55.a37b8f6c.js"><link rel="prefetch" href="/assets/js/56.b59cdd58.js"><link rel="prefetch" href="/assets/js/57.fcc7b064.js"><link rel="prefetch" href="/assets/js/58.c26f6871.js"><link rel="prefetch" href="/assets/js/59.f8b14dda.js"><link rel="prefetch" href="/assets/js/6.d389c045.js"><link rel="prefetch" href="/assets/js/60.02142959.js"><link rel="prefetch" href="/assets/js/61.7cbefbdb.js"><link rel="prefetch" href="/assets/js/62.c1c42d03.js"><link rel="prefetch" href="/assets/js/63.9cf5c587.js"><link rel="prefetch" href="/assets/js/64.15de1976.js"><link rel="prefetch" href="/assets/js/65.2f4c079e.js"><link rel="prefetch" href="/assets/js/66.47253488.js"><link rel="prefetch" href="/assets/js/67.68a40463.js"><link rel="prefetch" href="/assets/js/68.cbfe3485.js"><link rel="prefetch" href="/assets/js/69.4e7fb2ee.js"><link rel="prefetch" href="/assets/js/7.c9f32eab.js"><link rel="prefetch" href="/assets/js/70.dded6a7a.js"><link rel="prefetch" href="/assets/js/71.31edd10e.js"><link rel="prefetch" href="/assets/js/72.1d6ce636.js"><link rel="prefetch" href="/assets/js/73.ae696eea.js"><link rel="prefetch" href="/assets/js/74.f547417c.js"><link rel="prefetch" href="/assets/js/75.caf8c871.js"><link rel="prefetch" href="/assets/js/76.702c7c76.js"><link rel="prefetch" href="/assets/js/77.4d49b55f.js"><link rel="prefetch" href="/assets/js/78.feebbb09.js"><link rel="prefetch" href="/assets/js/79.f45d29b6.js"><link rel="prefetch" href="/assets/js/80.9f2161de.js"><link rel="prefetch" href="/assets/js/81.820b8dd7.js"><link rel="prefetch" href="/assets/js/82.68ccd80c.js"><link rel="prefetch" href="/assets/js/83.3386f6f3.js"><link rel="prefetch" href="/assets/js/84.a781d39d.js"><link rel="prefetch" href="/assets/js/85.79b5e63f.js"><link rel="prefetch" href="/assets/js/86.6f22b386.js"><link rel="prefetch" href="/assets/js/87.e2fac3f5.js"><link rel="prefetch" href="/assets/js/88.e98f5936.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.1d2fbb22.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.38934ce7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">麦俊轩的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
+  Vue3中为什么不能使用this
+</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
+  windows端口冲突解决
+</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
+  解决依赖冲突
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
+  普通索引和唯一索引的区别
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
+  Git 提交规约
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
+  Arthas使用小结
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
+  基于Gitee实现Jenkins自动化部署SpringBoot项目
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
+  基于jmeter完成压测
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
+  什么是xxl-job，它解决什么问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Netty
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
+  Netty基础概念入门小结
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Sharding-JDBC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
+  Sharding-JDBC的简单使用
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
+  对支付系统的个人理解
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
+  IDEA翻译插件报错更新TKK的问题
+</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
+  Vue3中为什么不能使用this
+</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
+  windows端口冲突解决
+</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
+  解决依赖冲突
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
+  Java基础小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
+  Java注解小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
+  Java反射小结
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
+  Java中的泛型
+</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
+  谈谈Java的异常
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
+  Lambda实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
+  Stream流实践
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
+  Java中的字符串
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
+  Java中的线程池
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
+  Java中的并发容器
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
+  谈谈ThreadLocal
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
+  synchronized的优化
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
+  CAS和原子类
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
+  volatile和CAS的弊端
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
+  CompletableFuture简单使用
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
+  AQS简述
+</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
+  JUC常用工具类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
+  MySQL常用语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
+  MySQL中的事务
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
+  一条SQL的执行过程
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
+  MySQL中datetime和timestamp的区别与选择
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
+  普通索引和唯一索引的区别
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
+  Explain语句
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
+  MySQL的执行成本怎么算
+</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
+  MVCC实现原理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
+  Redis的安装与基本操作
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
+  Redis的3种特殊类型
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
+  Redis配置文件介绍
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
+  Redis的Java客户端示例
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
+  Redis事务
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
+  RDB简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
+  AOF简介
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
+  主从复制及哨兵
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
+  Redis集群
+</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
+  使用缓存会存在哪些问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
+  Git常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
+  Git 提交规约
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Linux
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
+  Linux的文件结构
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
+  Linux的进程管理
+</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
+  Linux常用网络命令
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
+  Docker常用命令
+</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
+  DokcerCompose简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
+  Nginx的安装
+</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
+  Nginx基础入门
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
+  Arthas使用小结
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
+  基于Gitee实现Jenkins自动化部署SpringBoot项目
+</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
+  基于jmeter完成压测
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
+  CAP和BASE理论
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
+  分布式事务的解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
+  分布式锁的几种实现方式
+</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
+  什么是xxl-job，它解决什么问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
+  Spring的常用注解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
+  @Autowired注解详解
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
+  SpringBean的作用域
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
+  Spring三级缓存与循环依赖
+</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
+  JDK动态代理和CGlib代理
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Netty
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
+  Netty基础概念入门小结
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
+  RabbitMQ简单使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Canal
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
+  Canal的使用
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Sharding-JDBC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
+  Sharding-JDBC的简单使用
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
+  对支付系统的个人理解
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Redis的安装与基本操作</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#什么是redis" class="sidebar-link">什么是Redis</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#redis特性" class="sidebar-link">Redis特性</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#redis支持的场景" class="sidebar-link">Redis支持的场景</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#不建议使用redis的场景" class="sidebar-link">不建议使用Redis的场景</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#redis安装" class="sidebar-link">redis安装</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#启动" class="sidebar-link">启动</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#redis常用操作" class="sidebar-link">Redis常用操作</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#字符串操作" class="sidebar-link">字符串操作</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#哈希" class="sidebar-link">哈希</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#列表" class="sidebar-link">列表</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#集合" class="sidebar-link">集合</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html#有序集合" class="sidebar-link">有序集合</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="redis的安装与基本操作"><a href="#redis的安装与基本操作" class="header-anchor">#</a> Redis的安装与基本操作</h1> <h2 id="什么是redis"><a href="#什么是redis" class="header-anchor">#</a> 什么是Redis</h2> <ol><li>基于键值对的NoSql数据库，支持stirng、hash、list、set、zset、bitmaps、HyperLogLog、GEO等数据结构极其算法。</li> <li>读写性能非常好。</li> <li>有将数据存到快照或者日志上的机制，便于数据恢复。</li> <li>提供键过期、发布订阅、事务、流水线、lua脚本等附加功能。</li></ol> <h2 id="redis特性"><a href="#redis特性" class="header-anchor">#</a> Redis特性</h2> <ol><li>读写速度据统计可达10w/s。</li> <li>支持列表、哈希、集合、有序集合等数据结构的操作和算法。</li> <li>功能丰富，支持键值过期、发布订阅、lua脚本创造新的Redis命令、客户端支持流水线操作，将一系列命令传给redis，避免多次网络io。</li> <li>简单稳定</li> <li>支持多种语言的客户端。</li> <li>有RDB和AOF两种持久化策略。</li> <li>支持主从复制。</li> <li>支持高可用和分布式。</li></ol> <h2 id="redis支持的场景"><a href="#redis支持的场景" class="header-anchor">#</a> Redis支持的场景</h2> <ol><li>缓存</li> <li>排行榜系统</li> <li>计数器应用</li> <li>社交网络点赞等功能</li> <li>消息队列(不常用)</li></ol> <h2 id="不建议使用redis的场景"><a href="#不建议使用redis的场景" class="header-anchor">#</a> 不建议使用Redis的场景</h2> <ol><li>几亿用户行为的数据不建议使用redis进行维护管理。</li> <li>不经常被使用的冷数据不建议使用redis管理。</li></ol> <h2 id="redis安装"><a href="#redis安装" class="header-anchor">#</a> redis安装</h2> <h4 id="安装c-语言的编译环境"><a href="#安装c-语言的编译环境" class="header-anchor">#</a> 安装C 语言的编译环境</h4> <div class="language-java line-numbers-mode"><pre class="language-java"><code>yum install centos<span class="token operator">-</span>release<span class="token operator">-</span>scl scl<span class="token operator">-</span>utils<span class="token operator">-</span>build
+yum install <span class="token operator">-</span>y devtoolset<span class="token operator">-</span><span class="token number">8</span><span class="token operator">-</span>toolchain
+scl enable devtoolset<span class="token operator">-</span><span class="token number">8</span> bash
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="完成之后设置gcc版本"><a href="#完成之后设置gcc版本" class="header-anchor">#</a> 完成之后设置gcc版本</h4> <div class="language-java line-numbers-mode"><pre class="language-java"><code>gcc <span class="token operator">--</span>version
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="下载redis-6-2-1-tar-gz放-opt目录"><a href="#下载redis-6-2-1-tar-gz放-opt目录" class="header-anchor">#</a> 下载redis-6.2.1.tar.gz放/opt目录</h4> <h4 id="解压redis"><a href="#解压redis" class="header-anchor">#</a> 解压redis</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>tar -zxvf redis-6.2.1.tar.gz
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="解压完成后进入目录-cd-redis-6-2-1"><a href="#解压完成后进入目录-cd-redis-6-2-1" class="header-anchor">#</a> 解压完成后进入目录：cd redis-6.2.1</h4> <h4 id="键入make"><a href="#键入make" class="header-anchor">#</a> 键入<code>make</code></h4> <p>注意：2.2.2.6.如果没有准备好C语言编译环境，make 会报错—Jemalloc/jemalloc.h：没有那个文件，可以运行<code>make distclean</code>，再次运行<code>make</code>即可解决问题</p> <h4 id="运行make-install"><a href="#运行make-install" class="header-anchor">#</a> 运行<code>make install</code></h4> <h4 id="小结"><a href="#小结" class="header-anchor">#</a> 小结</h4> <p>自此，redis安装已经全部完成，redis会被默认安装在<code>/usr/local/bin</code>目录，所以为了方便后续各种操作，我们可以运行如下命令，创建一个redis配置目录方便后续各种实验操作</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>## 创建配置文件实验文件夹
+mkdir myredis
+进入redis解压目录
+cd <span class="token operator">/</span>opt<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6.2</span><span class="token number">.1</span><span class="token operator">/</span>
+复制配置文件到新文件夹
+cp redis<span class="token punctuation">.</span>conf <span class="token operator">/</span>myredis<span class="token operator">/</span>
+## 进入redis命令目录
+cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin<span class="token operator">/</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="启动"><a href="#启动" class="header-anchor">#</a> 启动</h2> <h4 id="前台启动"><a href="#前台启动" class="header-anchor">#</a> 前台启动</h4> <p>一旦按ctrl+c进程直接结束</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>redis<span class="token operator">-</span>server <span class="token operator">/</span>myredis<span class="token operator">/</span>redis<span class="token punctuation">.</span>conf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="后台启动-推荐"><a href="#后台启动-推荐" class="header-anchor">#</a> 后台启动(推荐)</h4> <h6 id="运行一下命令配置文件"><a href="#运行一下命令配置文件" class="header-anchor">#</a> 运行一下命令配置文件</h6> <div class="language-java line-numbers-mode"><pre class="language-java"><code>vim <span class="token operator">/</span>myredis<span class="token operator">/</span>redis<span class="token punctuation">.</span>conf
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>按<code>/daemonize</code>找到<code>daemonize</code>，将此参数设置为yes，如下图所示</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>## 启动redis
+<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin<span class="token operator">/</span>redis<span class="token operator">-</span>server <span class="token operator">/</span>myredis<span class="token operator">/</span>redis<span class="token punctuation">.</span>conf
+## 检查redis是否启动
+ ps <span class="token operator">-</span>ef<span class="token operator">|</span>grep redis
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="启动客户端"><a href="#启动客户端" class="header-anchor">#</a> 启动客户端</h4> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin<span class="token operator">/</span>redis<span class="token operator">-</span>cli
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="cli键入ping"><a href="#cli键入ping" class="header-anchor">#</a> cli键入<code>ping</code></h4> <p>若输出PONG，则说明redis客户端已经与服务端连通。</p> <h4 id="关闭服务端"><a href="#关闭服务端" class="header-anchor">#</a> 关闭服务端</h4> <ol><li>客户端运行<code>shutdown</code></li> <li><code>/usr/local/bin/redis-cli -p 6379 shutdown</code></li></ol> <h2 id="redis常用操作"><a href="#redis常用操作" class="header-anchor">#</a> Redis常用操作</h2> <h4 id="查看所有键值"><a href="#查看所有键值" class="header-anchor">#</a> 查看所有键值</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; keys *
+(empty list or set)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="添加或者删除键值"><a href="#添加或者删除键值" class="header-anchor">#</a> 添加或者删除键值</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 添加字符串
+127.0.0.1:6379&gt; set hello world
+OK
+127.0.0.1:6379&gt; set java jedis
+OK
+127.0.0.1:6379&gt; set python redis-py
+OK
+
+## 添加一个key名为mylist的键,存储一堆元素a b c d e f g
+127.0.0.1:6379&gt; RPUSH mylist a b c d e f g
+(integer) 7
+
+## 使用keys * ,查看我们刚刚添加的key
+127.0.0.1:6379&gt; KEYS *
+1) &quot;python&quot;
+2) &quot;java&quot;
+3) &quot;hello&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h4 id="查看当前键的数"><a href="#查看当前键的数" class="header-anchor">#</a> 查看当前键的数</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; DBSIZE
+(integer) 3
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="查看key是否存在"><a href="#查看key是否存在" class="header-anchor">#</a> 查看key是否存在</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 存在返回1 不存在返回0
+127.0.0.1:6379&gt; EXISTS java
+(integer) 1
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="设置键过期"><a href="#设置键过期" class="header-anchor">#</a> 设置键过期</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 添加一个键hello 设置10秒过期
+127.0.0.1:6379&gt; set hello world
+OK
+## 查看是否存在
+127.0.0.1:6379&gt; EXPIRE hello 10
+(integer) 1
+## 我们也可以用tts判断是否存在,若过期则返回-2
+127.0.0.1:6379&gt; ttl  hello
+(integer) -2
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h4 id="查看键值对的数据类型"><a href="#查看键值对的数据类型" class="header-anchor">#</a> 查看键值对的数据类型</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; type mylist
+list
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="字符串操作"><a href="#字符串操作" class="header-anchor">#</a> 字符串操作</h2> <h4 id="操作指令"><a href="#操作指令" class="header-anchor">#</a> 操作指令</h4> <h6 id="设置值"><a href="#设置值" class="header-anchor">#</a> 设置值</h6> <p>赋值指令如下所示，<code>]</code>为可选项</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>set key value ex  value 秒级过期时间] px value 设置当前键值对的毫秒级过期时间]  nx 若键值存在才能赋值] xx 若键值存在才能赋值]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例 设置一个key为str，value为hello的字符串</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; set str hello
+OK
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>设置一个10s过期的字符串str2，值为str2</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; set str2 str2 ex 10
+OK
+## 10s内值还在
+127.0.0.1:6379&gt; get str2
+&quot;str2&quot;
+
+## 10s后键值对消失
+127.0.0.1:6379&gt; get str2
+(nil)
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h6 id="setnx、setxx、setex"><a href="#setnx、setxx、setex" class="header-anchor">#</a> setnx、setxx、setex</h6> <p>setnx和set的nx选项类似，值不存在时才能建立键值对</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>setnx key value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 判断hello是否存在
+127.0.0.1:6379&gt; EXISTS hello
+(integer) 0
+## 设置hello
+127.0.0.1:6379&gt; set hello world
+OK
+## 如果hello不存在 则设置一个key为hello value为h的键值对
+127.0.0.1:6379&gt; SETNX hello h
+(integer) 0
+## 发现值没变还是原本set指令的
+127.0.0.1:6379&gt; get hello
+&quot;world&quot;
+## h不存在
+127.0.0.1:6379&gt; EXISTS h
+(integer) 0
+## 使用setnx赋值，在使用get指令查看，发现存在
+127.0.0.1:6379&gt; SETNX h hello
+(integer) 1
+127.0.0.1:6379&gt; get h
+&quot;hello&quot;
+127.0.0.1:6379&gt;
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>setxx相对set指令的xx选项，这里就不多赘述了</p> <p>setex相当于set指令的ex选项</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 设置一个10s过期的键为key 值为value的键值对
+127.0.0.1:6379&gt; SETEX key 10 value
+OK
+127.0.0.1:6379&gt; get key
+&quot;value&quot;
+## 10s后过期
+127.0.0.1:6379&gt; get key
+(nil)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h6 id="获取值"><a href="#获取值" class="header-anchor">#</a> 获取值</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>get key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h6 id="批量设置值和获取值"><a href="#批量设置值和获取值" class="header-anchor">#</a> 批量设置值和获取值</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 批量设置
+mset key value key value] key value] key value]
+## 批量获取
+mget key1 key2 ....
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; MSET a 1 b 2 c 3
+OK
+127.0.0.1:6379&gt; MGET a b c
+1) &quot;1&quot;
+2) &quot;2&quot;
+3) &quot;3&quot;
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>注意:如果我们某个业务需要获取redis中大量的key值，建议使用mget，原因：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>使用set获取1000个key: 1000个网络io时间+1000个指令执行时间
+使用mget获取1000个key:1个网络io时间+1000个指令执行时间
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>get指令请求模型</p> <p>mget指令请求模型</p> <h6 id="计数"><a href="#计数" class="header-anchor">#</a> 计数</h6> <p>自增指令，若值不存在，则创建并初始值为1，若存在且为整数则自增，若存在且为字符文字则报错。 因为redis是单线程的，所以计数指令无需考虑线程安全问题，无需使用cas等手段来修改值而是顺序执行自增，所以性能相当优秀。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>incr key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; INCR k
+(integer) 1
+127.0.0.1:6379&gt; INCR k
+(integer) 2
+127.0.0.1:6379&gt; set str str
+OK
+127.0.0.1:6379&gt; incr str
+(error) ERR value is not an integer or out of range
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>其他计数指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 自减
+decr key
+## 自增自己指定的值
+incrby key increment
+## 自减指定的值
+decrby key decrement
+## 自增小数值
+incrbyfloat key increment
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h6 id="不常用指令"><a href="#不常用指令" class="header-anchor">#</a> 不常用指令</h6> <p>追加值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>append key value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 对key为hello的值增加一个world字符串
+127.0.0.1:6379&gt; set hello hello
+OK
+127.0.0.1:6379&gt; APPEND hello world
+(integer) 10
+127.0.0.1:6379&gt; get hello
+&quot;helloworld&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>获取字符串长度</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>strlen key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; strlen hello
+(integer) 10
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>设置并返回原先的值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>getset key value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; set hello world
+OK
+127.0.0.1:6379&gt; GETSET hello redis
+&quot;world&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>获取指定范围</p> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> GETRANGE key start  end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; set str 0123456789
+OK
+127.0.0.1:6379&gt; GETRANGE str 0  2
+&quot;012&quot;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h4 id="不同长度的字符串的内部编码"><a href="#不同长度的字符串的内部编码" class="header-anchor">#</a> 不同长度的字符串的内部编码</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 8位数的长整型为int
+127.0.0.1:6379&gt; set str 111
+OK
+127.0.0.1:6379&gt; object encoding str
+&quot;int&quot;
+
+## 小于39字节的字符串为embstr
+127.0.0.1:6379&gt; set str helloworld
+OK
+127.0.0.1:6379&gt; object encoding str
+&quot;embstr&quot;
+
+## 大于39字节为raw
+127.0.0.1:6379&gt; set str abcdefghijklmnopqrstudksajdlksadklsdaskdjlkasdjasdjajdlksadadjl
+OK
+127.0.0.1:6379&gt; object encoding str
+&quot;raw&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h4 id="使用场景"><a href="#使用场景" class="header-anchor">#</a> 使用场景</h4> <h6 id="用户信息缓存"><a href="#用户信息缓存" class="header-anchor">#</a> 用户信息缓存</h6> <p>如下所示，可将常见的数据库数据存到redis中提高访问数据，建议使用的key为<code>表名:对象名:id</code>,例如<code>userInfo:user:1</code></p> <p>伪代码示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>UserInfo getUserInfo(long id){
+userRedisKey = &quot;user:info:&quot; + id
+value = redis.get(userRedisKey);
+UserInfo userInfo;
+if (value != null) {
+userInfo = deserialize(value);
+} else {
+userInfo = mysql.get(id);
+if (userInfo != null)
+redis.setex(userRedisKey, 3600, serialize(userInfo));
+}
+return userInfo;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h6 id="视频播放量计数"><a href="#视频播放量计数" class="header-anchor">#</a> 视频播放量计数</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>long incrVideoCounter(long id) {
+key = &quot;video:playCount:&quot; + id;
+return redis.incr(key);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="共享session"><a href="#共享session" class="header-anchor">#</a> 共享session</h6> <p>为了保证用户在集群场景下能够公用一个会话session，我们会另起一台服务器搭建redis服务保存会话session，避免用户因为负载均衡在各个服务器之间时重复登录。</p> <h6 id="短信限速"><a href="#短信限速" class="header-anchor">#</a> 短信限速</h6> <p>避免单用户一分钟不能超过5次访问</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>phoneNum = &quot;138xxxxxxxx&quot;;
+key = &quot;shortMsg:limit:&quot; + phoneNum;
+// SET key value EX 60 NX
+isExists = redis.set(key,1,&quot;EX 60&quot;,&quot;NX&quot;);
+if(isExists != null || redis.incr(key) &lt;=5){
+//  通过
+}else{
+//  限速
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="哈希"><a href="#哈希" class="header-anchor">#</a> 哈希</h2> <h4 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h4> <p>存储键值对的数据结构，也叫映射，字典</p> <h4 id="操作"><a href="#操作" class="header-anchor">#</a> 操作</h4> <h6 id="设置值和取值"><a href="#设置值和取值" class="header-anchor">#</a> 设置值和取值</h6> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 设置值
+HSET key field value
+## 获取值
+HGET key field
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; HSET hashmap key1 value1 key2 value2
+(integer) 2
+127.0.0.1:6379&gt; HGET hashmap key1
+&quot;value1&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h6 id="删除哈希一个键"><a href="#删除哈希一个键" class="header-anchor">#</a> 删除哈希一个键</h6> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>HDEL key field
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>格式</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 删除hashmap的key1
+127.0.0.1:6379&gt; HDEL hashmap key1
+(integer) 1
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h6 id="计算哈希的key的个数"><a href="#计算哈希的key的个数" class="header-anchor">#</a> 计算哈希的key的个数</h6> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>HLEN key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; HLEN hashmap
+(integer) 1
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="批量设置哈希的值和批量获取哈希的值"><a href="#批量设置哈希的值和批量获取哈希的值" class="header-anchor">#</a> 批量设置哈希的值和批量获取哈希的值</h6> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> HMSET key  field value field value] field value]
+ HMGET key  field field] field] field]
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; HMSET user:1 name xiaoming age 18 city fujian
+OK
+127.0.0.1:6379&gt; HMGET user:1 name age city
+1) &quot;xiaoming&quot;
+2) &quot;18&quot;
+3) &quot;fujian&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h6 id="判断键值对是否存在"><a href="#判断键值对是否存在" class="header-anchor">#</a> 判断键值对是否存在</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; HEXISTS key field
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; HEXISTS user:1 name
+(integer) 1
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="获取所有key、获取所有value、获取所有的key-value"><a href="#获取所有key、获取所有value、获取所有的key-value" class="header-anchor">#</a> 获取所有key、获取所有value、获取所有的key-value</h6> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 获取所有key
+HKEYS key
+
+## 获取所有value
+ HVALS  key
+
+## 获取所有key-value
+HGETALL key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; HKEYS user:1
+1) &quot;name&quot;
+2) &quot;age&quot;
+3) &quot;city&quot;
+127.0.0.1:6379&gt; HVALS user:1
+1) &quot;xiaoming&quot;
+2) &quot;18&quot;
+3) &quot;fujian&quot;
+127.0.0.1:6379&gt; HGETALL user:1
+1) &quot;name&quot;
+2) &quot;xiaoming&quot;
+3) &quot;age&quot;
+4) &quot;18&quot;
+5) &quot;city&quot;
+6) &quot;fujian&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>建议:若哈希中存在多个键值对且我们需要一次性获取，建议使用hscan而不是hmget，避免造成redis阻塞</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 使用hscan从0位置获取所有键值对
+127.0.0.1:6379&gt; HSCAN user:1 0
+1) &quot;0&quot;
+2) 1) &quot;name&quot;
+   2) &quot;xiaoming&quot;
+   3) &quot;age&quot;
+   4) &quot;18&quot;
+   5) &quot;city&quot;
+   6) &quot;fujian&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h6 id="hincrby-hincrbyfloat"><a href="#hincrby-hincrbyfloat" class="header-anchor">#</a> hincrby hincrbyfloat</h6> <p>和incr类似，只不过增长的是field的值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>hincrby key field
+hincrbyfloat key field
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h6 id="计算field的长度"><a href="#计算field的长度" class="header-anchor">#</a> 计算field的长度</h6> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>hstrlen key field
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>获取user:1 的name的长度
+127.0.0.1:6379&gt; HSTRLEN user:1 name
+(integer) 8
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h6 id="内部编码"><a href="#内部编码" class="header-anchor">#</a> 内部编码</h6> <p>在键值对个数小于512且所有值都小于64字节时，哈希的内部编码为ziplist，当超过这些限制时使用的就是hashtable(超过限制后使用这种数据结构时间复杂度更低,查询效率为O(1))。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 小于64字节为ziplist
+127.0.0.1:6379&gt; hset user:1 name xiaoming
+(integer) 0
+127.0.0.1:6379&gt; object encoding user:1
+&quot;ziplist&quot;
+## 超过后为hashtable
+127.0.0.1:6379&gt; hset user:1 name djdjkhdjhdhdhwhquehqhdjksdhqjhdjkojhdlksadsahdjsalkhdjlksahdjoaehduioqwajwksdhjaksdhjsahdsajkdhjslkadhjlksahdjksahdjksahdjk
+(integer) 0
+127.0.0.1:6379&gt; object encoding user:1
+&quot;hashtable&quot;
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h4 id="使用场景-2"><a href="#使用场景-2" class="header-anchor">#</a> 使用场景</h4> <p>如果我们要缓存某行用户信息，使用哈希非常合适不过</p> <p>原因如下:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> 1. 相较于字符串(占用过多的键)，哈希内聚更好更易于维护大量的用户信息
+ 2. 如果使用字符串进行序列化存储，就会造成网络io时序列化和反序列化的开销
+ 3. 操作简单，修改用户字段更加方便
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>需要注意:哈希存储相对二维表更加稀疏，如上图，二维表中null的数据，在哈希表中key是完全不存在的用户使用时需要考虑到这一点。</p> <h2 id="列表"><a href="#列表" class="header-anchor">#</a> 列表</h2> <h4 id="简介-2"><a href="#简介-2" class="header-anchor">#</a> 简介</h4> <p>线性结构，允许重复元素，可以充当队列和栈。</p> <h4 id="操作-2"><a href="#操作-2" class="header-anchor">#</a> 操作</h4> <h6 id="添加"><a href="#添加" class="header-anchor">#</a> 添加</h6> <p>从右边插入，语法:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>RPUSH key value value]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 右边一次插入a b c
+127.0.0.1:6379&gt; RPUSH list a b c
+(integer) 3
+## 查看list的元素
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a&quot;
+2) &quot;b&quot;
+3) &quot;c&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>从左边插入元素 lpush</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>LPUSH key value value...]
+## 从左边依次插入
+127.0.0.1:6379&gt; LPUSH arr a b c
+(integer) 3
+## 查看最终的元素值
+127.0.0.1:6379&gt; LRANGE arr 0 -1
+1) &quot;c&quot;
+2) &quot;b&quot;
+3) &quot;a&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>向元素前或者后添加元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>linsert key before|after pivot value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例：向a后面添加一个元素a+</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a&quot;
+2) &quot;b&quot;
+3) &quot;c&quot;
+127.0.0.1:6379&gt; LINSERT list after a a+
+(integer) 4
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a&quot;
+2) &quot;a+&quot;
+3) &quot;b&quot;
+4) &quot;c&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h6 id="查询"><a href="#查询" class="header-anchor">#</a> 查询</h6> <p>查找指定范围的元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>lrange key start end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 查看list的所有元素
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a&quot;
+2) &quot;a+&quot;
+3) &quot;b&quot;
+4) &quot;c&quot;
+##  查看一个不存在的key的元素
+127.0.0.1:6379&gt; LRANGE key 1 2
+(empty array)
+## 查看list 2-3的元素
+127.0.0.1:6379&gt; LRANGE list 1 2
+1) &quot;a+&quot;
+2) &quot;b&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>获取指定索引的元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>lindex key index
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例:查看key为list第0个元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a&quot;
+2) &quot;a+&quot;
+3) &quot;b&quot;
+4) &quot;c&quot;
+127.0.0.1:6379&gt; LINDEX list 0
+&quot;a&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>获取列表长度</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>llen key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a&quot;
+2) &quot;a+&quot;
+3) &quot;b&quot;
+4) &quot;c&quot;
+127.0.0.1:6379&gt; LLEN list
+(integer) 4
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h6 id="删除"><a href="#删除" class="header-anchor">#</a> 删除</h6> <p>从列表左侧弹出元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>lpop key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a&quot;
+2) &quot;a+&quot;
+3) &quot;b&quot;
+4) &quot;c&quot;
+127.0.0.1:6379&gt; LPOP list
+&quot;a&quot;
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a+&quot;
+2) &quot;b&quot;
+3) &quot;c&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>同理右侧为rpop，不多赘述</p> <p>删除元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>lrem key count value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>count的大小有以下几种情况</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 大于0，从左到右删除count个元素
+2. 小于0，从右到左删除count个元素
+3. =0 删除所有元素
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>示例:从左到右删除一个为a的元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a+&quot;
+2) &quot;b&quot;
+3) &quot;c&quot;
+127.0.0.1:6379&gt; LREM list 1 b
+(integer) 1
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;a+&quot;
+2) &quot;c&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>修剪列表至指定索引范围</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>ltrim key start end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例，将列表修剪为只有2 15索引范围内的元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; LRANGE list 0 -1
+ 1) &quot;a+&quot;
+ 2) &quot;z&quot;
+ 3) &quot;a&quot;
+ 4) &quot;b&quot;
+ 5) &quot;c&quot;
+ 6) &quot;d&quot;
+ 7) &quot;e&quot;
+ 8) &quot;f&quot;
+ 9) &quot;g&quot;
+10) &quot;h&quot;
+11) &quot;i&quot;
+12) &quot;j&quot;
+13) &quot;k&quot;
+14) &quot;l&quot;
+15) &quot;m&quot;
+16) &quot;n&quot;
+127.0.0.1:6379&gt; LTRIM list 2 15
+OK
+127.0.0.1:6379&gt; LRANGE list 0 -1
+ 1) &quot;a&quot;
+ 2) &quot;b&quot;
+ 3) &quot;c&quot;
+ 4) &quot;d&quot;
+ 5) &quot;e&quot;
+ 6) &quot;f&quot;
+ 7) &quot;g&quot;
+ 8) &quot;h&quot;
+ 9) &quot;i&quot;
+10) &quot;j&quot;
+11) &quot;k&quot;
+12) &quot;l&quot;
+13) &quot;m&quot;
+14) &quot;n&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><h6 id="修改"><a href="#修改" class="header-anchor">#</a> 修改</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>lset key index newValue
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h6 id="阻塞操作"><a href="#阻塞操作" class="header-anchor">#</a> 阻塞操作</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>blpop key key ...] timeout
+brpop key key ...] timeout
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>brpop 示例，当timeout大于0时，若有元素立即返回，若没有则等到对应时间为止 若timeout设置为0，则无限等待，如下所示，笔者使用另一个客户端push一个元素进来，这个阻塞就会立刻将这个元素弹出。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; BRPOP arr 3
+1) &quot;arr&quot;
+2) &quot;a&quot;
+127.0.0.1:6379&gt; BRPOP arr 3
+1) &quot;arr&quot;
+2) &quot;b&quot;
+127.0.0.1:6379&gt; BRPOP arr 3
+1) &quot;arr&quot;
+2) &quot;c&quot;
+127.0.0.1:6379&gt; BRPOP arr 3
+(nil)
+(3.04s)
+127.0.0.1:6379&gt; BRPOP arr 3
+(nil)
+(3.07s)
+127.0.0.1:6379&gt; BRPOP arr 0
+1) &quot;arr&quot;
+2) &quot;a&quot;
+(43.69s)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h6 id="内部编码-2"><a href="#内部编码-2" class="header-anchor">#</a> 内部编码</h6> <p>当内部元素个数小于512，且每个元素小于64字节，列表默认使用ziplist，反之就会使用linklist</p> <h6 id="使用场景-3"><a href="#使用场景-3" class="header-anchor">#</a> 使用场景</h6> <p>Redis的lpush+brpop命令组合即可实现阻塞队列，如下图，每个消费者只需要关注自己感兴趣的专题即可，作为生产者只需不断使lpush添加专题即可。</p> <p>关于列表更多用法可以参见以下口诀</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. lpush+lpop=Stack（栈）
+2. lpush+rpop=Queue（队列）
+3. lpsh+ltrim=Capped Collection（有限集合）
+4. lpush+brpop=Message Queue（消息队列）
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="集合"><a href="#集合" class="header-anchor">#</a> 集合</h2> <h4 id="特点"><a href="#特点" class="header-anchor">#</a> 特点</h4> <ol><li>最多可存储2^32-1个元素</li> <li>集合内部元素不重复</li></ol> <h4 id="命令"><a href="#命令" class="header-anchor">#</a> 命令</h4> <h6 id="添加元素"><a href="#添加元素" class="header-anchor">#</a> 添加元素</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>sadd key element element ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例，可以看到第2次添加的元素并没有成功</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; SADD set a b c
+(integer) 3
+127.0.0.1:6379&gt; SADD set a b
+(integer) 0
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h6 id="删除元素"><a href="#删除元素" class="header-anchor">#</a> 删除元素</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>srem key element element ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h6 id="计算集合大小"><a href="#计算集合大小" class="header-anchor">#</a> 计算集合大小</h6> <p>注意，这个计算的时间复杂度为O(1)，因为获得的这个集合的大小并不是计算来的，而是通过redis维护的一个内部变量得来的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>scard key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h6 id="判断元素是否在集合中"><a href="#判断元素是否在集合中" class="header-anchor">#</a> 判断元素是否在集合中</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>sismember key element
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; SISMEMBER set a
+(integer) 1
+127.0.0.1:6379&gt; SISMEMBER set ac
+(integer) 0
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h6 id="随机获取集合内的元素"><a href="#随机获取集合内的元素" class="header-anchor">#</a> 随机获取集合内的元素</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>srandmember key count]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; SRANDMEMBER set 1
+1) &quot;a&quot;
+127.0.0.1:6379&gt; SRANDMEMBER set 1
+1) &quot;c&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h6 id="随机弹出一个元素"><a href="#随机弹出一个元素" class="header-anchor">#</a> 随机弹出一个元素</h6> <p>与srandmember 差不多，只不过该操作会将元素输出并将集合中的这个元素删除</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>spop key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; SPOP set
+&quot;c&quot;
+127.0.0.1:6379&gt; SPOP set
+&quot;a&quot;
+127.0.0.1:6379&gt; SPOP set
+&quot;b&quot;
+127.0.0.1:6379&gt; SPOP set
+(nil)
+127.0.0.1:6379&gt; SPOP set
+(nil)
+127.0.0.1:6379&gt; SPOP set
+(nil)
+127.0.0.1:6379&gt; SPOP set
+(nil)
+127.0.0.1:6379&gt; SPOP set
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h6 id="获取所有元素"><a href="#获取所有元素" class="header-anchor">#</a> 获取所有元素</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>smembers key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h6 id="获取两个集合之间的交集"><a href="#获取两个集合之间的交集" class="header-anchor">#</a> 获取两个集合之间的交集</h6> <p>语法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sinter key key ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例，可以看出set1和set2的交集为a</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; SADD set1 a b c d
+(integer) 4
+127.0.0.1:6379&gt; SADD set2 a e f g h
+(integer) 5
+127.0.0.1:6379&gt; SINTER set1 set2
+1) &quot;a&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h6 id="求并集"><a href="#求并集" class="header-anchor">#</a> 求并集</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>suinon key key ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h6 id="求差集"><a href="#求差集" class="header-anchor">#</a> 求差集</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>sdiff key key ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例，注意这个差集指的是第一个集合有，其他集合没有的元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; SDIFF set1 set2
+1) &quot;b&quot;
+2) &quot;d&quot;
+3) &quot;c&quot;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h6 id="将交集、差集、并集结果保存"><a href="#将交集、差集、并集结果保存" class="header-anchor">#</a> 将交集、差集、并集结果保存</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>sinterstore destination key key ...]
+suionstore destination key key ...]
+sdiffstore destination key key ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>示例:将并集的结果保存</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; SADD set1 a b c d
+(integer) 4
+127.0.0.1:6379&gt; SADD set2 a e f g h
+(integer) 5
+127.0.0.1:6379&gt; SINTERstore set3 set1 set2
+(integer) 1
+127.0.0.1:6379&gt; SMEMBERS set3
+1) &quot;a&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h4 id="内部编码-3"><a href="#内部编码-3" class="header-anchor">#</a> 内部编码</h4> <p>当元素为整数且大小小于512时会使用intset(节省内存)，反之就会转为hashtable提高效率。</p> <h4 id="使用场景-4"><a href="#使用场景-4" class="header-anchor">#</a> 使用场景</h4> <ol><li>sadd=Tagging（标签,例如交友网站个人标签）</li> <li>spop/srandmember=Random item（生成随机数，比如抽奖）</li> <li>sadd+sinter=Social Graph（社交需求，与附近的人爱好匹配）</li></ol> <h2 id="有序集合"><a href="#有序集合" class="header-anchor">#</a> 有序集合</h2> <h4 id="简介-3"><a href="#简介-3" class="header-anchor">#</a> 简介</h4> <ol><li>相较于集合，增加一个score属性，使得整体有序。</li> <li>集合元素不可重复，但是score可以重复。</li></ol> <h4 id="指令"><a href="#指令" class="header-anchor">#</a> 指令</h4> <h6 id="添加成员"><a href="#添加成员" class="header-anchor">#</a> 添加成员</h6> <p>命令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zadd key score member score member ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; zadd zset 1 tom 2 jack 3 lucy
+(integer) 3
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>可选项</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. nx：member必须不存在，才可以设置成功，用于添加。
+2. xx：member必须存在，才可以设置成功，用于更新。
+3. ch：返回此次操作后，有序集合元素和分数发生变化的个数
+4. incr：对score做增加，相当于后面介绍的zincrby。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>示例:如果tom存在，给tom自增。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; zadd zset xx incr 1 tom
+&quot;2&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>相比于集合，有序集合增加了排序的操作，添加成员的时间复杂度由原来的<code>O(1)</code>变为<code>O(logn)</code></p> <h6 id="计算有序集合的大小"><a href="#计算有序集合的大小" class="header-anchor">#</a> 计算有序集合的大小</h6> <p>于scard一样，时间复杂度也是<code>O(1)</code></p> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zcard key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZCARD zset
+(integer) 3
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="查看成员分数"><a href="#查看成员分数" class="header-anchor">#</a> 查看成员分数</h6> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zscore key member
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; zscore zset tom
+&quot;3&quot;
+127.0.0.1:6379&gt; zscore zset jack
+&quot;2&quot;
+127.0.0.1:6379&gt; zscore zset xiaoming
+(nil)
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h6 id="计算成员排名"><a href="#计算成员排名" class="header-anchor">#</a> 计算成员排名</h6> <p>命令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 升序排名
+zrank key member
+## 降序排名
+zrevrank key member
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZRANK zset tom
+(integer) 2
+127.0.0.1:6379&gt; ZrevRANK zset tom
+(integer) 0
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h6 id="删除成员"><a href="#删除成员" class="header-anchor">#</a> 删除成员</h6> <p>命令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zrem key member member ...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZREM zset tom jack
+(integer) 2
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="给成员增加分数"><a href="#给成员增加分数" class="header-anchor">#</a> 给成员增加分数</h6> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zincrby key increment member
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZINCRBY zset 100 tom
+&quot;100&quot;
+127.0.0.1:6379&gt; ZINCRBY zset 100 tom
+&quot;200&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h6 id="查看排名"><a href="#查看排名" class="header-anchor">#</a> 查看排名</h6> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zrange key start end withscores]
+zrevrange key start end withscores]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZRANGE zset 0 -1 withscores
+1) &quot;lucy&quot;
+2) &quot;3&quot;
+3) &quot;tom&quot;
+4) &quot;200&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h6 id="返回指定分数范围的成员"><a href="#返回指定分数范围的成员" class="header-anchor">#</a> 返回指定分数范围的成员</h6> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zrangebyscore key min max withscores] limit offset count]
+zrevrangebyscore key max min withscores] limit offset count]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZRANGEBYSCORE zset 0 300 withscores
+1) &quot;lucy&quot;
+2) &quot;3&quot;
+3) &quot;tom&quot;
+4) &quot;200&quot;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>获取10到无限大的成员</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZRANGEBYSCORE zset (10 +inf withscores
+1) &quot;liu&quot;
+2) &quot;11&quot;
+3) &quot;tom&quot;
+4) &quot;200&quot;
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h6 id="获取指定分数范围内的用户"><a href="#获取指定分数范围内的用户" class="header-anchor">#</a> 获取指定分数范围内的用户</h6> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zcount key min max
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZCOUNT zset 0 10
+(integer) 2
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="删除指定排名内的用户"><a href="#删除指定排名内的用户" class="header-anchor">#</a> 删除指定排名内的用户</h6> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zremrangebyrank key start end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例:删除前3名成员</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZREMRANGEBYRANK zset 0 2
+(integer) 3
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h6 id="删除指定分数范围内的用户"><a href="#删除指定分数范围内的用户" class="header-anchor">#</a> 删除指定分数范围内的用户</h6> <p>指令</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>zremrangebyscore key min max
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>示例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:6379&gt; ZREMRANGEBYSCORE zset (250 +inf
+(integer) 1
+127.0.0.1:6379&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="内部编码-4"><a href="#内部编码-4" class="header-anchor">#</a> 内部编码</h4> <p>当集合size小于512且每个字符串大小不超过64字节时，有序集合使用的时ziplist，反之就是使用调表。从设计的角度来看，使用平衡树或者红黑树也能解决问题，但是跳表的实现相较于前者更加简单。查询也差不多。</p> <h4 id="使用场景-5"><a href="#使用场景-5" class="header-anchor">#</a> 使用场景</h4> <p>常用于点赞、播放量等排行榜</p> <p>如下就模拟了点赞排行榜的操作</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>## 小明获得10个赞
+127.0.0.1:6379&gt; zadd user:ranking:20220810 10 xiaoming
+(integer) 1
+## 小王获得11个赞
+127.0.0.1:6379&gt; zadd user:ranking:20220810 11 xiaowang
+(integer) 1
+## 小刘获得8个赞
+127.0.0.1:6379&gt; zadd user:ranking:20220810 8 xiaoliu
+(integer) 1
+## 小刘的赞+1
+127.0.0.1:6379&gt; zincrby user:ranking:20220810  1  xiaoliu
+&quot;9&quot;
+## 查看排名前3
+127.0.0.1:6379&gt; zrevrange user:ranking:20220810 0 2
+1) &quot;xiaowang&quot;
+2) &quot;xiaoming&quot;
+3) &quot;xiaoliu&quot;
+## 小刘被取消一个赞
+127.0.0.1:6379&gt; zincrby user:ranking:20220810  -1  xiaoliu
+&quot;8&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.66e71283.js" defer></script><script src="/assets/js/2.2d1cac8d.js" defer></script><script src="/assets/js/1.ab819bd9.js" defer></script><script src="/assets/js/53.c273b7a8.js" defer></script>
+  </body>
+</html>
