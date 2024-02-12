@@ -94,7 +94,10 @@ module.exports = [
             {
                 text: '其他', items: [
                     {text: 'Arthas使用小结', link: '/工具/其他/Arthas使用小结/'},
-                    {text: '基于Gitee实现Jenkins自动化部署SpringBoot项目', link: '/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/'},
+                    {
+                        text: '基于Gitee实现Jenkins自动化部署SpringBoot项目',
+                        link: '/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/'
+                    },
                     {text: '基于jmeter完成压测', link: '/工具/其他/基于jmeter完成压测/'},
                 ]
             },
@@ -142,11 +145,19 @@ module.exports = [
                     {text: 'Canal的使用', link: '/中间件/Canal/Canal的使用/'}
                 ]
             },
-            // {
-            //     text: 'Sharding-JDBC', items: [
-            //         {text: '', link: ''}
-            //     ]
-            // },
+            {
+                text: 'Sharding-JDBC', items: [
+                    {text: 'Sharding-JDBC的简单使用', link: '/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/'}
+                ]
+            },
+        ]
+    },
+    {
+        text: '业务理解',
+        items: [
+            {
+                text: '对支付系统的个人理解', link: '/业务理解/对支付系统的个人理解/'
+            }
         ]
     },
 ]
