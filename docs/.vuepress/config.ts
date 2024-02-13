@@ -3,7 +3,6 @@ import {viteBundler} from '@vuepress/bundler-vite'
 import theme from "./theme";
 
 export default defineUserConfig({
-    dest: "./dist",
 
     title: "麦俊轩的博客",
     description:
