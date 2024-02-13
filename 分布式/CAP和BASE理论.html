@@ -1,322 +1,40 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>分布式基础之CAP和BASE理论 | 麦俊轩的博客</title>
-    <meta name="generator" content="VuePress 1.9.10">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="description" content="">
-    <meta name="robots" content="all">
-    <meta name="author" content="mjx">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.7" />
+    <meta name="theme" content="VuePress Theme Hope 2.0.0-rc.23" />
+    <style>
+      html {
+        background: var(--bg-color, #fff);
+      }
+
+      html[data-theme="dark"] {
+        background: var(--bg-color, #1d1e1f);
+      }
+
+      body {
+        background: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+    <meta property="og:url" content="https://maijunxuan.cn/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html"><meta property="og:site_name" content="麦俊轩的博客"><meta property="og:title" content="分布式基础之CAP和BASE理论"><meta property="og:description" content="分布式基础之CAP和BASE理论 CAP理论 CAP是一个已经经过证实的理论：一个分布式系统最多只能同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Partition tolerance）这三项中的两项，其中P是网络的特性，所以只能选择AP或者CP。 一致性 我们知道ACID中事务的一致性是指事务的执行不能破坏..."><meta property="og:type" content="article"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2022-09-05T16:38:25.000Z"><meta property="article:author" content="maijunxuan"><meta property="article:modified_time" content="2022-09-05T16:38:25.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"分布式基础之CAP和BASE理论","image":[""],"dateModified":"2022-09-05T16:38:25.000Z","author":[{"@type":"Person","name":"maijunxuan"}]}</script><meta name="robots" content="all"><meta name="author" content="maijunxuan"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="alternate" type="application/atom+xml" href="https://maijunxuan.cn/atom.xml" title="麦俊轩的博客 Atom Feed"><link rel="alternate" type="application/json" href="https://maijunxuan.cn/feed.json" title="麦俊轩的博客 JSON Feed"><link rel="alternate" type="application/rss+xml" href="https://maijunxuan.cn/rss.xml" title="麦俊轩的博客 RSS Feed"><link rel="icon" href="/favicon.ico"><title>分布式基础之CAP和BASE理论 | 麦俊轩的博客</title><meta name="description" content="分布式基础之CAP和BASE理论 CAP理论 CAP是一个已经经过证实的理论：一个分布式系统最多只能同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Partition tolerance）这三项中的两项，其中P是网络的特性，所以只能选择AP或者CP。 一致性 我们知道ACID中事务的一致性是指事务的执行不能破坏...">
+    <link rel="preload" href="/assets/style-DEayU6yX.css" as="style"><link rel="stylesheet" href="/assets/style-DEayU6yX.css">
+    <link rel="modulepreload" href="/assets/app-DITNE2eT.js"><link rel="modulepreload" href="/assets/CAP和BASE理论.html-C7xJ6yrw.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper-DlAUqK2U.js">
     
-    <link rel="preload" href="/assets/css/0.styles.38934ce7.css" as="style"><link rel="preload" href="/assets/js/app.66e71283.js" as="script"><link rel="preload" href="/assets/js/2.2d1cac8d.js" as="script"><link rel="preload" href="/assets/js/1.ab819bd9.js" as="script"><link rel="preload" href="/assets/js/63.9cf5c587.js" as="script"><link rel="prefetch" href="/assets/js/10.84d14364.js"><link rel="prefetch" href="/assets/js/11.045a0a60.js"><link rel="prefetch" href="/assets/js/12.6f0e9932.js"><link rel="prefetch" href="/assets/js/13.fb842719.js"><link rel="prefetch" href="/assets/js/14.f4937493.js"><link rel="prefetch" href="/assets/js/15.f4b2583c.js"><link rel="prefetch" href="/assets/js/16.41b572be.js"><link rel="prefetch" href="/assets/js/17.8f245198.js"><link rel="prefetch" href="/assets/js/18.4c44bfad.js"><link rel="prefetch" href="/assets/js/19.46b03286.js"><link rel="prefetch" href="/assets/js/20.756867c9.js"><link rel="prefetch" href="/assets/js/21.2957c140.js"><link rel="prefetch" href="/assets/js/22.b345e7c5.js"><link rel="prefetch" href="/assets/js/23.d83d718a.js"><link rel="prefetch" href="/assets/js/24.d9975f36.js"><link rel="prefetch" href="/assets/js/25.7a4b71c9.js"><link rel="prefetch" href="/assets/js/26.cee50e0c.js"><link rel="prefetch" href="/assets/js/27.2bd584b7.js"><link rel="prefetch" href="/assets/js/28.40a4b61a.js"><link rel="prefetch" href="/assets/js/29.b28882d0.js"><link rel="prefetch" href="/assets/js/3.9afe9595.js"><link rel="prefetch" href="/assets/js/30.cbf9f923.js"><link rel="prefetch" href="/assets/js/31.9e279d6d.js"><link rel="prefetch" href="/assets/js/32.de890c1b.js"><link rel="prefetch" href="/assets/js/33.2edb4675.js"><link rel="prefetch" href="/assets/js/34.b10912b9.js"><link rel="prefetch" href="/assets/js/35.72464f81.js"><link rel="prefetch" href="/assets/js/36.0170a5ad.js"><link rel="prefetch" href="/assets/js/37.440103ea.js"><link rel="prefetch" href="/assets/js/38.fe4d020a.js"><link rel="prefetch" href="/assets/js/39.00806ff5.js"><link rel="prefetch" href="/assets/js/4.7daf21de.js"><link rel="prefetch" href="/assets/js/40.f91742c2.js"><link rel="prefetch" href="/assets/js/41.36d0ea03.js"><link rel="prefetch" href="/assets/js/42.c7dc16b4.js"><link rel="prefetch" href="/assets/js/43.84214d9d.js"><link rel="prefetch" href="/assets/js/44.2537628d.js"><link rel="prefetch" href="/assets/js/45.6588b1e4.js"><link rel="prefetch" href="/assets/js/46.20177a10.js"><link rel="prefetch" href="/assets/js/47.0dcf0b55.js"><link rel="prefetch" href="/assets/js/48.fb38c2ca.js"><link rel="prefetch" href="/assets/js/49.31712729.js"><link rel="prefetch" href="/assets/js/5.ae530a1a.js"><link rel="prefetch" href="/assets/js/50.4230d5ad.js"><link rel="prefetch" href="/assets/js/51.bda4cdd5.js"><link rel="prefetch" href="/assets/js/52.ab24e96b.js"><link rel="prefetch" href="/assets/js/53.c273b7a8.js"><link rel="prefetch" href="/assets/js/54.16f3f38e.js"><link rel="prefetch" href="/assets/js/55.a37b8f6c.js"><link rel="prefetch" href="/assets/js/56.b59cdd58.js"><link rel="prefetch" href="/assets/js/57.fcc7b064.js"><link rel="prefetch" href="/assets/js/58.c26f6871.js"><link rel="prefetch" href="/assets/js/59.f8b14dda.js"><link rel="prefetch" href="/assets/js/6.d389c045.js"><link rel="prefetch" href="/assets/js/60.02142959.js"><link rel="prefetch" href="/assets/js/61.7cbefbdb.js"><link rel="prefetch" href="/assets/js/62.c1c42d03.js"><link rel="prefetch" href="/assets/js/64.15de1976.js"><link rel="prefetch" href="/assets/js/65.2f4c079e.js"><link rel="prefetch" href="/assets/js/66.47253488.js"><link rel="prefetch" href="/assets/js/67.68a40463.js"><link rel="prefetch" href="/assets/js/68.cbfe3485.js"><link rel="prefetch" href="/assets/js/69.4e7fb2ee.js"><link rel="prefetch" href="/assets/js/7.c9f32eab.js"><link rel="prefetch" href="/assets/js/70.dded6a7a.js"><link rel="prefetch" href="/assets/js/71.31edd10e.js"><link rel="prefetch" href="/assets/js/72.1d6ce636.js"><link rel="prefetch" href="/assets/js/73.ae696eea.js"><link rel="prefetch" href="/assets/js/74.f547417c.js"><link rel="prefetch" href="/assets/js/75.caf8c871.js"><link rel="prefetch" href="/assets/js/76.702c7c76.js"><link rel="prefetch" href="/assets/js/77.4d49b55f.js"><link rel="prefetch" href="/assets/js/78.feebbb09.js"><link rel="prefetch" href="/assets/js/79.f45d29b6.js"><link rel="prefetch" href="/assets/js/80.9f2161de.js"><link rel="prefetch" href="/assets/js/81.820b8dd7.js"><link rel="prefetch" href="/assets/js/82.68ccd80c.js"><link rel="prefetch" href="/assets/js/83.3386f6f3.js"><link rel="prefetch" href="/assets/js/84.a781d39d.js"><link rel="prefetch" href="/assets/js/85.79b5e63f.js"><link rel="prefetch" href="/assets/js/86.6f22b386.js"><link rel="prefetch" href="/assets/js/87.e2fac3f5.js"><link rel="prefetch" href="/assets/js/88.e98f5936.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.1d2fbb22.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.38934ce7.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">麦俊轩的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
-  IDEA翻译插件报错更新TKK的问题
-</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
-  Vue3中为什么不能使用this
-</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
-  windows端口冲突解决
-</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
-  解决依赖冲突
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
-  Java基础小结
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
-  Java注解小结
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
-  Java反射小结
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
-  Java中的泛型
-</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
-  谈谈Java的异常
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
-  Lambda实践
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
-  Stream流实践
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
-  Java中的字符串
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
-  Java中的线程池
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
-  Java中的并发容器
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
-  谈谈ThreadLocal
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
-  synchronized的优化
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
-  CAS和原子类
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
-  volatile和CAS的弊端
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
-  CompletableFuture简单使用
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
-  AQS简述
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
-  JUC常用工具类
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
-  MySQL常用语句
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
-  MySQL中的事务
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
-  一条SQL的执行过程
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
-  MySQL中datetime和timestamp的区别与选择
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
-  普通索引和唯一索引的区别
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
-  Explain语句
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
-  MySQL的执行成本怎么算
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
-  MVCC实现原理
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
-  Redis的安装与基本操作
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
-  Redis的3种特殊类型
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
-  Redis配置文件介绍
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
-  Redis的Java客户端示例
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
-  Redis事务
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
-  RDB简介
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
-  AOF简介
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
-  主从复制及哨兵
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
-  Redis集群
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
-  使用缓存会存在哪些问题
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
-          Git
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
-  Git常用命令
-</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
-  Git 提交规约
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Linux
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
-  Linux的文件结构
-</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
-  Linux的进程管理
-</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
-  Linux常用网络命令
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Docker
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
-  Docker常用命令
-</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
-  DokcerCompose简单使用
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Nginx
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
-  Nginx的安装
-</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
-  Nginx基础入门
-</a></li></ul></li><li class="dropdown-item"><h4>
-          其他
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
-  Arthas使用小结
-</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
-  基于Gitee实现Jenkins自动化部署SpringBoot项目
-</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
-  基于jmeter完成压测
-</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
-  CAP和BASE理论
-</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
-  分布式事务的解决方案
-</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
-  分布式锁的几种实现方式
-</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
-  什么是xxl-job，它解决什么问题
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
-          Spring
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
-  Spring的常用注解
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
-  @Autowired注解详解
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
-  SpringBean的作用域
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
-  Spring三级缓存与循环依赖
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
-  JDK动态代理和CGlib代理
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Netty
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
-  Netty基础概念入门小结
-</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
-          消息队列
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
-  RabbitMQ简单使用
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Canal
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
-  Canal的使用
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Sharding-JDBC
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
-  Sharding-JDBC的简单使用
-</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
-  对支付系统的个人理解
-</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="日常" class="dropdown-title"><span class="title">日常</span> <span class="arrow down"></span></button> <button type="button" aria-label="日常" class="mobile-dropdown-title"><span class="title">日常</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/日常/IDEA翻译插件报错更新TKK的问题/" class="nav-link">
-  IDEA翻译插件报错更新TKK的问题
-</a></li><li class="dropdown-item"><!----> <a href="/日常/Vue3中为什么不能使用this/" class="nav-link">
-  Vue3中为什么不能使用this
-</a></li><li class="dropdown-item"><!----> <a href="/日常/windows端口冲突解决/" class="nav-link">
-  windows端口冲突解决
-</a></li><li class="dropdown-item"><!----> <a href="/日常/解决依赖冲突/" class="nav-link">
-  解决依赖冲突
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Java基础小结/" class="nav-link">
-  Java基础小结
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java注解小结/" class="nav-link">
-  Java注解小结
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java反射小结/" class="nav-link">
-  Java反射小结
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的泛型/" class="nav-link">
-  Java中的泛型
-</a></li><li class="dropdown-item"><!----> <a href="/Java/谈谈Java的异常/" class="nav-link">
-  谈谈Java的异常
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Lambda实践/" class="nav-link">
-  Lambda实践
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Stream流实践/" class="nav-link">
-  Stream流实践
-</a></li><li class="dropdown-item"><!----> <a href="/Java/Java中的字符串/" class="nav-link">
-  Java中的字符串
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JUC" class="dropdown-title"><span class="title">JUC</span> <span class="arrow down"></span></button> <button type="button" aria-label="JUC" class="mobile-dropdown-title"><span class="title">JUC</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JUC/Java中的线程池/" class="nav-link">
-  Java中的线程池
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/Java中的并发容器/" class="nav-link">
-  Java中的并发容器
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/谈谈ThreadLocal/" class="nav-link">
-  谈谈ThreadLocal
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/synchronized的优化/" class="nav-link">
-  synchronized的优化
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/CAS和原子类/" class="nav-link">
-  CAS和原子类
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/volatile和CAS的弊端/" class="nav-link">
-  volatile和CAS的弊端
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/CompletableFuture简单使用/" class="nav-link">
-  CompletableFuture简单使用
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/AQS简述/" class="nav-link">
-  AQS简述
-</a></li><li class="dropdown-item"><!----> <a href="/JUC/JUC常用工具类/" class="nav-link">
-  JUC常用工具类
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MySQL" class="dropdown-title"><span class="title">MySQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="MySQL" class="mobile-dropdown-title"><span class="title">MySQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MySQL/MySQL常用语句/" class="nav-link">
-  MySQL常用语句
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中的事务/" class="nav-link">
-  MySQL中的事务
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/一条SQL的执行过程/" class="nav-link">
-  一条SQL的执行过程
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL中datetime和timestamp的区别与选择/" class="nav-link">
-  MySQL中datetime和timestamp的区别与选择
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/普通索引和唯一索引的区别/" class="nav-link">
-  普通索引和唯一索引的区别
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/Explain语句/" class="nav-link">
-  Explain语句
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MySQL的执行成本怎么算/" class="nav-link">
-  MySQL的执行成本怎么算
-</a></li><li class="dropdown-item"><!----> <a href="/MySQL/MVCC实现原理/" class="nav-link">
-  MVCC实现原理
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Redis" class="dropdown-title"><span class="title">Redis</span> <span class="arrow down"></span></button> <button type="button" aria-label="Redis" class="mobile-dropdown-title"><span class="title">Redis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Redis/Redis的安装与基本操作/" class="nav-link">
-  Redis的安装与基本操作
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的3种特殊类型/" class="nav-link">
-  Redis的3种特殊类型
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis配置文件介绍/" class="nav-link">
-  Redis配置文件介绍
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis的Java客户端示例/" class="nav-link">
-  Redis的Java客户端示例
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis事务/" class="nav-link">
-  Redis事务
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/RDB简介/" class="nav-link">
-  RDB简介
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/AOF简介/" class="nav-link">
-  AOF简介
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/主从复制及哨兵/" class="nav-link">
-  主从复制及哨兵
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/Redis集群/" class="nav-link">
-  Redis集群
-</a></li><li class="dropdown-item"><!----> <a href="/Redis/使用缓存会存在哪些问题/" class="nav-link">
-  使用缓存会存在哪些问题
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
-          Git
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Git/Git常用命令/" class="nav-link">
-  Git常用命令
-</a></li><li class="dropdown-subitem"><a href="/工具/Git/Git 提交规约/" class="nav-link">
-  Git 提交规约
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Linux
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Linux/Linux的文件结构/" class="nav-link">
-  Linux的文件结构
-</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux的进程管理/" class="nav-link">
-  Linux的进程管理
-</a></li><li class="dropdown-subitem"><a href="/工具/Linux/Linux常用网络命令/" class="nav-link">
-  Linux常用网络命令
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Docker
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Docker/Docker常用命令/" class="nav-link">
-  Docker常用命令
-</a></li><li class="dropdown-subitem"><a href="/工具/Docker/DokcerCompose简单使用/" class="nav-link">
-  DokcerCompose简单使用
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Nginx
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx的安装/" class="nav-link">
-  Nginx的安装
-</a></li><li class="dropdown-subitem"><a href="/工具/Nginx/Nginx基础入门/" class="nav-link">
-  Nginx基础入门
-</a></li></ul></li><li class="dropdown-item"><h4>
-          其他
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/工具/其他/Arthas使用小结/" class="nav-link">
-  Arthas使用小结
-</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" class="nav-link">
-  基于Gitee实现Jenkins自动化部署SpringBoot项目
-</a></li><li class="dropdown-subitem"><a href="/工具/其他/基于jmeter完成压测/" class="nav-link">
-  基于jmeter完成压测
-</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分布式" class="dropdown-title"><span class="title">分布式</span> <span class="arrow down"></span></button> <button type="button" aria-label="分布式" class="mobile-dropdown-title"><span class="title">分布式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/分布式/CAP和BASE理论/" class="nav-link">
-  CAP和BASE理论
-</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式事务的解决方案/" class="nav-link">
-  分布式事务的解决方案
-</a></li><li class="dropdown-item"><!----> <a href="/分布式/分布式锁的几种实现方式/" class="nav-link">
-  分布式锁的几种实现方式
-</a></li><li class="dropdown-item"><!----> <a href="/分布式/什么是xxl-job，它解决什么问题/" class="nav-link">
-  什么是xxl-job，它解决什么问题
-</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
-          Spring
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Spring/Spring的常用注解/" class="nav-link">
-  Spring的常用注解
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/@Autowired注解详解/" class="nav-link">
-  @Autowired注解详解
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/SpringBean的作用域/" class="nav-link">
-  SpringBean的作用域
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/Spring三级缓存与循环依赖/" class="nav-link">
-  Spring三级缓存与循环依赖
-</a></li><li class="dropdown-subitem"><a href="/框架/Spring/JDK动态代理和CGlib代理/" class="nav-link">
-  JDK动态代理和CGlib代理
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Netty
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/框架/Netty/Netty基础概念入门小结/" class="nav-link">
-  Netty基础概念入门小结
-</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow down"></span></button> <button type="button" aria-label="中间件" class="mobile-dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
-          消息队列
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/RabbitMQ/RabbitMQ简单使用/" class="nav-link">
-  RabbitMQ简单使用
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Canal
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/" class="nav-link">
-  Canal的使用
-</a></li></ul></li><li class="dropdown-item"><h4>
-          Sharding-JDBC
-        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用/" class="nav-link">
-  Sharding-JDBC的简单使用
-</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="业务理解" class="dropdown-title"><span class="title">业务理解</span> <span class="arrow down"></span></button> <button type="button" aria-label="业务理解" class="mobile-dropdown-title"><span class="title">业务理解</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/业务理解/对支付系统的个人理解/" class="nav-link">
-  对支付系统的个人理解
-</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>分布式基础之CAP和BASE理论</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#cap理论" class="sidebar-link">CAP理论</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#一致性" class="sidebar-link">一致性</a></li><li class="sidebar-sub-header"><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#可用性" class="sidebar-link">可用性</a></li><li class="sidebar-sub-header"><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#分区容错性" class="sidebar-link">分区容错性</a></li><li class="sidebar-sub-header"><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#面临的问题" class="sidebar-link">面临的问题</a></li></ul></li><li><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#base理论" class="sidebar-link">BASE理论</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#基本可用" class="sidebar-link">基本可用</a></li><li class="sidebar-sub-header"><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#软状态" class="sidebar-link">软状态</a></li><li class="sidebar-sub-header"><a href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html#最终一致性" class="sidebar-link">最终一致性</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="分布式基础之cap和base理论"><a href="#分布式基础之cap和base理论" class="header-anchor">#</a> 分布式基础之CAP和BASE理论</h1> <h2 id="cap理论"><a href="#cap理论" class="header-anchor">#</a> CAP理论</h2> <p>CAP是一个已经经过证实的理论：一个分布式系统最多只能同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Partition tolerance）这三项中的两项，其中P是网络的特性，所以只能选择AP或者CP。</p> <h3 id="一致性"><a href="#一致性" class="header-anchor">#</a> 一致性</h3> <p>我们知道ACID中事务的一致性是指事务的执行不能破坏数据库数据的完整性和一致性，一个事务在执行前后，数据库都必须处于一致性状态。也就是说，事务的执行结果必须是使数据库从一个一致性状态转变到另一个一致性状态。</p> <p>和ACID中的一致性不同，分布式环境中的一致性是指数据在多个副本之间是否能够保持一致的特性。</p> <p>分布式系统中，数据一般会存在不同节点的副本中，如果对第一个节点的数据成功进行了更新操作，而第二个节点上的数据却没有得到相应更新，这时候读取第二个节点的数据依然是更新前的数据，即脏数据，这就是分布式系统数据不一致的情况。
-在分布式系统中，如果能够做到针对一个数据项的更新操作执行成功后，所有的用户都能读取到最新的值，那么这样的系统就被认为具有强一致性（或严格的一致性）。</p> <h3 id="可用性"><a href="#可用性" class="header-anchor">#</a> 可用性</h3> <p>可用性是指系统提供的服务必须一直处于可用的状态，对于用户的每一个操作请求总是能够在有限的时间内返回结果，如果超过了这个时间范围，那么系统就被认为是不可用的。</p> <p>“有限的时间内”是在系统的运行指标，不同系统会有差别。例如搜索引擎通常在0.5秒内需要给出用户检索结果。</p> <p>“返回结果”是可用性的另一个重要指标，它要求系统完成对用户请求的处理后，返回一个正常的响应结果，要明确的反映出对请求处理的成功或失败。如果返回的结果是系统错误，比如&quot;OutOfMemory&quot;等报错信息，则认为此时系统是不可用的。</p> <h3 id="分区容错性"><a href="#分区容错性" class="header-anchor">#</a> 分区容错性</h3> <p>一个分布式系统中，节点组成的网络本来应该是连通的。然而可能因为某些故障，使得有些节点之间不连通了，整个网络就分成了几块区域，而数据就散布在了这些不连通的区域中，这就叫分区。</p> <p>当你一个数据项只在一个节点中保存，那么分区出现后，和这个节点不连通的部分就访问不到这个数据了。这时分区就是无法容忍的。</p> <p>提高分区容忍性的办法就是一个数据项复制到多个节点上，那么出现分区之后，这一数据项仍然能在其他区中读取，容忍性就提高了。然而，把数据复制到多个节点，就会带来一致性的问题，就是多个节点上面的数据可能是不一致的。要保证一致，每次写操作就都要等待全部节点写成功，而这等待又会带来可用性的问题。</p> <p>总的来说就是，数据存在的节点越多，分区容忍性越高，但要复制更新的数据就越多，一致性就越难保证。为了保证一致性，更新所有节点数据所需要的时间就越长，可用性就会降低。</p> <h3 id="面临的问题"><a href="#面临的问题" class="header-anchor">#</a> 面临的问题</h3> <p>对于多数大型互联网应用的场景，主机众多、部署分散，而且现在的集群规模越来越大，所以节点故障、网络故障是常态，而且要保证服务可用性达到N个9，即保证P和A，舍弃C。</p> <h2 id="base理论"><a href="#base理论" class="header-anchor">#</a> BASE理论</h2> <p>BASE理论是对CAP理论的延伸，思想是即使无法做到强一致性（CAP的一致性就是强一致性），但可以采用适当的采取弱一致性，即最终一致性。</p> <p>BASE是指基本可用（Basically Available）、软状态（ Soft State）、最终一致性（ Eventual Consistency）。</p> <h3 id="基本可用"><a href="#基本可用" class="header-anchor">#</a> 基本可用</h3> <p>基本可用是指分布式系统在出现故障的时候，允许损失部分可用性（例如响应时间、功能上的可用性），允许损失部分可用性。需要注意的是，基本可用绝不等价于系统不可用。</p> <p>响应时间上的损失：正常情况下搜索引擎需要在0.5秒之内返回给用户相应的查询结果，但由于出现故障（比如系统部分机房发生断电或断网故障），查询结果的响应时间增加到了1~2秒。</p> <p>功能上的损失：购物网站在购物高峰（如双十一）时，为了保护系统的稳定性，部分消费者可能会被引导到一个降级页面。</p> <h3 id="软状态"><a href="#软状态" class="header-anchor">#</a> 软状态</h3> <p>软状态是指允许系统存在中间状态，而该中间状态不会影响系统整体可用性。分布式存储中一般一份数据会有多个副本，允许不同副本同步的延时就是软状态的体现。mysql replication的异步复制也是一种体现。</p> <h3 id="最终一致性"><a href="#最终一致性" class="header-anchor">#</a> 最终一致性</h3> <p>最终一致性是指系统中的所有数据副本经过一定时间后，最终能够达到一致的状态。弱一致性和强一致性相反，最终一致性是弱一致性的一种特殊情况。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
-    <script src="/assets/js/app.66e71283.js" defer></script><script src="/assets/js/2.2d1cac8d.js" defer></script><script src="/assets/js/1.ab819bd9.js" defer></script><script src="/assets/js/63.9cf5c587.js" defer></script>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="vp-skip-link sr-only">跳至主要內容</a><!--]--><!--[--><div class="theme-container no-sidebar has-toc"><!--[--><header id="navbar" class="vp-navbar"><div class="vp-navbar-start"><button type="button" class="vp-toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!--[--><!----><!--]--><!--[--><a class="route-link vp-brand" href="/"><img class="vp-nav-logo" src="/logo.png" alt><!----><span class="vp-site-name hide-in-pad">麦俊轩的博客</span></a><!--]--><!--[--><!----><!--]--></div><div class="vp-navbar-center"><!--[--><!----><!--]--><!--[--><nav class="vp-nav-links"><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="日常"><span class="title"><!---->日常</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a class="route-link nav-link" href="/%E6%97%A5%E5%B8%B8/IDEA%E7%BF%BB%E8%AF%91%E6%8F%92%E4%BB%B6%E6%8A%A5%E9%94%99%E6%9B%B4%E6%96%B0TKK%E7%9A%84%E9%97%AE%E9%A2%98.html" aria-label="IDEA翻译插件报错更新TKK的问题"><!---->IDEA翻译插件报错更新TKK的问题<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/%E6%97%A5%E5%B8%B8/Vue3%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8this.html" aria-label="Vue3中为什么不能使用this"><!---->Vue3中为什么不能使用this<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/%E6%97%A5%E5%B8%B8/windows%E7%AB%AF%E5%8F%A3%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3.html" aria-label="windows端口冲突解决"><!---->windows端口冲突解决<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/%E6%97%A5%E5%B8%B8/%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96%E5%86%B2%E7%AA%81.html" aria-label="解决依赖冲突"><!---->解决依赖冲突<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="Java"><span class="title"><!---->Java</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a class="route-link nav-link" href="/Java/Java%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%BB%93.html" aria-label="Java基础小结"><!---->Java基础小结<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Java/Java%E6%B3%A8%E8%A7%A3%E5%B0%8F%E7%BB%93.html" aria-label="Java注解小结"><!---->Java注解小结<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Java/Java%E5%8F%8D%E5%B0%84%E5%B0%8F%E7%BB%93.html" aria-label="Java反射小结"><!---->Java反射小结<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Java/Java%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B.html" aria-label="Java中的泛型"><!---->Java中的泛型<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Java/谈谈Java的异常.html" aria-label="谈谈Java的异常"><!---->谈谈Java的异常<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Java/Lambda%E5%AE%9E%E8%B7%B5.html" aria-label="Lambda实践"><!---->Lambda实践<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Java/Stream%E6%B5%81%E5%AE%9E%E8%B7%B5.html" aria-label="Stream流实践"><!---->Stream流实践<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Java/Java%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2.html" aria-label="Java中的字符串"><!---->Java中的字符串<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="JUC"><span class="title"><!---->JUC</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/Java%E4%B8%AD%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0.html" aria-label="Java中的线程池"><!---->Java中的线程池<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/Java%E4%B8%AD%E7%9A%84%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8.html" aria-label="Java中的并发容器"><!---->Java中的并发容器<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/%E8%B0%88%E8%B0%88ThreadLocal.html" aria-label="谈谈ThreadLocal"><!---->谈谈ThreadLocal<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/synchronized%E7%9A%84%E4%BC%98%E5%8C%96.html" aria-label="synchronized的优化"><!---->synchronized的优化<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/CAS%E5%92%8C%E5%8E%9F%E5%AD%90%E7%B1%BB.html" aria-label="CAS和原子类"><!---->CAS和原子类<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/volatile%E5%92%8CCAS%E7%9A%84%E5%BC%8A%E7%AB%AF.html" aria-label="volatile和CAS的弊端"><!---->volatile和CAS的弊端<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/CompletableFuture%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html" aria-label="CompletableFuture简单使用"><!---->CompletableFuture简单使用<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/AQS%E7%AE%80%E8%BF%B0.html" aria-label="AQS简述"><!---->AQS简述<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/JUC/JUC%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB.html" aria-label="JUC常用工具类"><!---->JUC常用工具类<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="MySQL"><span class="title"><!---->MySQL</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/MySQL%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5.html" aria-label="MySQL常用语句"><!---->MySQL常用语句<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/MySQL%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1.html" aria-label="MySQL中的事务"><!---->MySQL中的事务<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/%E4%B8%80%E6%9D%A1SQL%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.html" aria-label="一条SQL的执行过程"><!---->一条SQL的执行过程<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/MySQL%E4%B8%ADdatetime%E5%92%8Ctimestamp%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E9%80%89%E6%8B%A9.html" aria-label="MySQL中datetime和timestamp的区别与选择"><!---->MySQL中datetime和timestamp的区别与选择<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%E5%92%8C%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB.html" aria-label="普通索引和唯一索引的区别"><!---->普通索引和唯一索引的区别<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/Explain%E8%AF%AD%E5%8F%A5.html" aria-label="Explain语句"><!---->Explain语句<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/MySQL%E7%9A%84%E6%89%A7%E8%A1%8C%E6%88%90%E6%9C%AC%E6%80%8E%E4%B9%88%E7%AE%97.html" aria-label="MySQL的执行成本怎么算"><!---->MySQL的执行成本怎么算<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/MySQL/MVCC%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html" aria-label="MVCC实现原理"><!---->MVCC实现原理<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="Redis"><span class="title"><!---->Redis</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html" aria-label="Redis的安装与基本操作"><!---->Redis的安装与基本操作<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/Redis%E7%9A%843%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B.html" aria-label="Redis的3种特殊类型"><!---->Redis的3种特殊类型<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/Redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D.html" aria-label="Redis配置文件介绍"><!---->Redis配置文件介绍<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/Redis%E7%9A%84Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A4%BA%E4%BE%8B.html" aria-label="Redis的Java客户端示例"><!---->Redis的Java客户端示例<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/Redis%E4%BA%8B%E5%8A%A1.html" aria-label="Redis事务"><!---->Redis事务<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/RDB%E7%AE%80%E4%BB%8B.html" aria-label="RDB简介"><!---->RDB简介<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/AOF%E7%AE%80%E4%BB%8B.html" aria-label="AOF简介"><!---->AOF简介<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8A%E5%93%A8%E5%85%B5.html" aria-label="主从复制及哨兵"><!---->主从复制及哨兵<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/Redis%E9%9B%86%E7%BE%A4.html" aria-label="Redis集群"><!---->Redis集群<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/Redis/%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98.html" aria-label="使用缓存会存在哪些问题"><!---->使用缓存会存在哪些问题<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="工具"><span class="title"><!---->工具</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Git</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html" aria-label="Git常用命令"><!---->Git常用命令<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Git/Git%20%E6%8F%90%E4%BA%A4%E8%A7%84%E7%BA%A6.html" aria-label="Git 提交规约"><!---->Git 提交规约<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Linux</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Linux/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html" aria-label="Linux的文件结构"><!---->Linux的文件结构<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Linux/Linux%E7%9A%84%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86.html" aria-label="Linux的进程管理"><!---->Linux的进程管理<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Linux/Linux%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4.html" aria-label="Linux常用网络命令"><!---->Linux常用网络命令<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Docker</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Docker/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html" aria-label="Docker常用命令"><!---->Docker常用命令<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Docker/DokcerCompose%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html" aria-label="DokcerCompose简单使用"><!---->DokcerCompose简单使用<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Nginx</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Nginx/Nginx%E7%9A%84%E5%AE%89%E8%A3%85.html" aria-label="Nginx的安装"><!---->Nginx的安装<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/Nginx/Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8.html" aria-label="Nginx基础入门"><!---->Nginx基础入门<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>其他</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/Arthas%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html" aria-label="Arthas使用小结"><!---->Arthas使用小结<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/工具/其他/基于Gitee实现Jenkins自动化部署SpringBoot项目/" aria-label="基于Gitee实现Jenkins自动化部署SpringBoot项目"><!---->基于Gitee实现Jenkins自动化部署SpringBoot项目<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E5%B7%A5%E5%85%B7/%E5%85%B6%E4%BB%96/%E5%9F%BA%E4%BA%8Ejmeter%E5%AE%8C%E6%88%90%E5%8E%8B%E6%B5%8B.html" aria-label="基于jmeter完成压测"><!---->基于jmeter完成压测<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="分布式"><span class="title"><!---->分布式</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a class="route-link nav-link active" href="/%E5%88%86%E5%B8%83%E5%BC%8F/CAP%E5%92%8CBASE%E7%90%86%E8%AE%BA.html" aria-label="CAP和BASE理论"><!---->CAP和BASE理论<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html" aria-label="分布式事务的解决方案"><!---->分布式事务的解决方案<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html" aria-label="分布式锁的几种实现方式"><!---->分布式锁的几种实现方式<!----></a></li><li class="dropdown-item"><a class="route-link nav-link" href="/%E5%88%86%E5%B8%83%E5%BC%8F/%E4%BB%80%E4%B9%88%E6%98%AFxxl-job%EF%BC%8C%E5%AE%83%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98.html" aria-label="什么是xxl-job，它解决什么问题"><!---->什么是xxl-job，它解决什么问题<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="框架"><span class="title"><!---->框架</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Spring</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E6%A1%86%E6%9E%B6/Spring/Spring%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3.html" aria-label="Spring的常用注解"><!---->Spring的常用注解<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E6%A1%86%E6%9E%B6/Spring/@Autowired%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3.html" aria-label="@Autowired注解详解"><!---->@Autowired注解详解<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/框架/Spring/SpringBean的作用域.html" aria-label="SpringBean的作用域"><!---->SpringBean的作用域<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E6%A1%86%E6%9E%B6/Spring/Spring%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98%E4%B8%8E%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.html" aria-label="Spring三级缓存与循环依赖"><!---->Spring三级缓存与循环依赖<!----></a></li><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E6%A1%86%E6%9E%B6/Spring/JDK%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%92%8CCGlib%E4%BB%A3%E7%90%86.html" aria-label="JDK动态代理和CGlib代理"><!---->JDK动态代理和CGlib代理<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Netty</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E6%A1%86%E6%9E%B6/Netty/Netty%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%85%A5%E9%97%A8%E5%B0%8F%E7%BB%93.html" aria-label="Netty基础概念入门小结"><!---->Netty基础概念入门小结<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="中间件"><span class="title"><!---->中间件</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>消息队列</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/RabbitMQ%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html" aria-label="RabbitMQ简单使用"><!---->RabbitMQ简单使用<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Canal</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/%E4%B8%AD%E9%97%B4%E4%BB%B6/Canal/Canal%E7%9A%84%E4%BD%BF%E7%94%A8.html" aria-label="Canal的使用"><!---->Canal的使用<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Sharding-JDBC</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a class="route-link nav-link" href="/中间件/Canal/Canal的使用/Sharding-JDBC的简单使用.html" aria-label="Sharding-JDBC的简单使用"><!---->Sharding-JDBC的简单使用<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="业务理解"><span class="title"><!---->业务理解</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a class="route-link nav-link" href="/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3/%E5%AF%B9%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3.html" aria-label="对支付系统的个人理解"><!---->对支付系统的个人理解<!----></a></li></ul></button></div></div></nav><!--]--><!--[--><!----><!--]--></div><div class="vp-navbar-end"><!--[--><!----><!--]--><!--[--><!----><!----><div class="nav-item hide-in-mobile"><button type="button" id="appearance-switch"><svg xmlns="http://www.w3.org/2000/svg" class="icon auto-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="auto icon" style="display:block;"><path d="M512 992C246.92 992 32 777.08 32 512S246.92 32 512 32s480 214.92 480 480-214.92 480-480 480zm0-840c-198.78 0-360 161.22-360 360 0 198.84 161.22 360 360 360s360-161.16 360-360c0-198.78-161.22-360-360-360zm0 660V212c165.72 0 300 134.34 300 300 0 165.72-134.28 300-300 300z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="dark icon" style="display:none;"><path d="M524.8 938.667h-4.267a439.893 439.893 0 0 1-313.173-134.4 446.293 446.293 0 0 1-11.093-597.334A432.213 432.213 0 0 1 366.933 90.027a42.667 42.667 0 0 1 45.227 9.386 42.667 42.667 0 0 1 10.24 42.667 358.4 358.4 0 0 0 82.773 375.893 361.387 361.387 0 0 0 376.747 82.774 42.667 42.667 0 0 1 54.187 55.04 433.493 433.493 0 0 1-99.84 154.88 438.613 438.613 0 0 1-311.467 128z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="light icon" style="display:none;"><path d="M952 552h-80a40 40 0 0 1 0-80h80a40 40 0 0 1 0 80zM801.88 280.08a41 41 0 0 1-57.96-57.96l57.96-58a41.04 41.04 0 0 1 58 58l-58 57.96zM512 752a240 240 0 1 1 0-480 240 240 0 0 1 0 480zm0-560a40 40 0 0 1-40-40V72a40 40 0 0 1 80 0v80a40 40 0 0 1-40 40zm-289.88 88.08-58-57.96a41.04 41.04 0 0 1 58-58l57.96 58a41 41 0 0 1-57.96 57.96zM192 512a40 40 0 0 1-40 40H72a40 40 0 0 1 0-80h80a40 40 0 0 1 40 40zm30.12 231.92a41 41 0 0 1 57.96 57.96l-57.96 58a41.04 41.04 0 0 1-58-58l58-57.96zM512 832a40 40 0 0 1 40 40v80a40 40 0 0 1-80 0v-80a40 40 0 0 1 40-40zm289.88-88.08 58 57.96a41.04 41.04 0 0 1-58 58l-57.96-58a41 41 0 0 1 57.96-57.96z"></path></svg></button></div><form class="search-box" role="search"><input type="search" placeholder="搜索" autocomplete="off" spellcheck="false" value><!----></form><!--]--><!--[--><!----><!--]--><button type="button" class="vp-toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span><span class="vp-top"></span><span class="vp-middle"></span><span class="vp-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow start"></span></div><aside id="sidebar" class="vp-sidebar"><!--[--><!----><!--]--><ul class="vp-sidebar-links"></ul><!--[--><!----><!--]--></aside><!--[--><main id="main-content" class="vp-page"><!--[--><!--[--><!----><!--]--><!----><nav class="vp-breadcrumb disable"></nav><div class="vp-page-title"><h1><!---->分布式基础之CAP和BASE理论</h1><div class="page-info"><span class="page-author-info" aria-label="作者"><svg xmlns="http://www.w3.org/2000/svg" class="icon author-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="author icon"><path d="M649.6 633.6c86.4-48 147.2-144 147.2-249.6 0-160-128-288-288-288s-288 128-288 288c0 108.8 57.6 201.6 147.2 249.6-121.6 48-214.4 153.6-240 288-3.2 9.6 0 19.2 6.4 25.6 3.2 9.6 12.8 12.8 22.4 12.8h704c9.6 0 19.2-3.2 25.6-12.8 6.4-6.4 9.6-16 6.4-25.6-25.6-134.4-121.6-240-243.2-288z"></path></svg><span><span class="page-author-item">maijunxuan</span></span><span property="author" content="maijunxuan"></span></span><!----><!----><!----><span class="page-word-info" aria-label="字数"><svg xmlns="http://www.w3.org/2000/svg" class="icon word-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="word icon"><path d="M518.217 432.64V73.143A73.143 73.143 0 01603.43 1.097a512 512 0 01419.474 419.474 73.143 73.143 0 01-72.046 85.212H591.36a73.143 73.143 0 01-73.143-73.143z"></path><path d="M493.714 566.857h340.297a73.143 73.143 0 0173.143 85.577A457.143 457.143 0 11371.566 117.76a73.143 73.143 0 0185.577 73.143v339.383a36.571 36.571 0 0036.571 36.571z"></path></svg><span>约 1458 字</span><meta property="wordCount" content="1458"></span><span class="page-reading-time-info" aria-label="阅读时间"><svg xmlns="http://www.w3.org/2000/svg" class="icon timer-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="timer icon"><path d="M799.387 122.15c4.402-2.978 7.38-7.897 7.38-13.463v-1.165c0-8.933-7.38-16.312-16.312-16.312H256.33c-8.933 0-16.311 7.38-16.311 16.312v1.165c0 5.825 2.977 10.874 7.637 13.592 4.143 194.44 97.22 354.963 220.201 392.763-122.204 37.542-214.893 196.511-220.2 389.397-4.661 5.049-7.638 11.651-7.638 19.03v5.825h566.49v-5.825c0-7.379-2.849-13.981-7.509-18.9-5.049-193.016-97.867-351.985-220.2-389.527 123.24-37.67 216.446-198.453 220.588-392.892zM531.16 450.445v352.632c117.674 1.553 211.787 40.778 211.787 88.676H304.097c0-48.286 95.149-87.382 213.728-88.676V450.445c-93.077-3.107-167.901-81.297-167.901-177.093 0-8.803 6.99-15.793 15.793-15.793 8.803 0 15.794 6.99 15.794 15.793 0 80.261 63.69 145.635 142.01 145.635s142.011-65.374 142.011-145.635c0-8.803 6.99-15.793 15.794-15.793s15.793 6.99 15.793 15.793c0 95.019-73.789 172.82-165.96 177.093z"></path></svg><span>大约 5 分钟</span><meta property="timeRequired" content="PT5M"></span></div><hr></div><div class="toc-place-holder"><aside id="toc"><!--[--><!----><!--]--><div class="toc-header">此页内容<button type="button" class="print-button" title="打印"><svg xmlns="http://www.w3.org/2000/svg" class="icon print-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="print icon"><path d="M819.2 364.8h-44.8V128c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v236.8h-44.8C145.067 364.8 96 413.867 96 473.6v192c0 59.733 49.067 108.8 108.8 108.8h44.8V896c0 17.067 14.933 32 32 32h460.8c17.067 0 32-14.933 32-32V774.4h44.8c59.733 0 108.8-49.067 108.8-108.8v-192c0-59.733-49.067-108.8-108.8-108.8zM313.6 160h396.8v204.8H313.6V160zm396.8 704H313.6V620.8h396.8V864zM864 665.6c0 25.6-19.2 44.8-44.8 44.8h-44.8V588.8c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v121.6h-44.8c-25.6 0-44.8-19.2-44.8-44.8v-192c0-25.6 19.2-44.8 44.8-44.8h614.4c25.6 0 44.8 19.2 44.8 44.8v192z"></path></svg></button></div><div class="toc-wrapper"><ul class="toc-list"><!--[--><li class="toc-item"><a class="route-link toc-link level2" href="/#cap理论">CAP理论</a></li><li><ul class="toc-list"><!--[--><li class="toc-item"><a class="route-link toc-link level3" href="/#一致性">一致性</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="route-link toc-link level3" href="/#可用性">可用性</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="route-link toc-link level3" href="/#分区容错性">分区容错性</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="route-link toc-link level3" href="/#面临的问题">面临的问题</a></li><!----><!--]--></ul></li><!--]--><!--[--><li class="toc-item"><a class="route-link toc-link level2" href="/#base理论">BASE理论</a></li><li><ul class="toc-list"><!--[--><li class="toc-item"><a class="route-link toc-link level3" href="/#基本可用">基本可用</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="route-link toc-link level3" href="/#软状态">软状态</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="route-link toc-link level3" href="/#最终一致性">最终一致性</a></li><!----><!--]--></ul></li><!--]--></ul><div class="toc-marker" style="top:-1.7rem;"></div></div><!--[--><!----><!--]--></aside></div><!--[--><!----><!--]--><div class="theme-hope-content"><h1 id="分布式基础之cap和base理论" tabindex="-1"><a class="header-anchor" href="#分布式基础之cap和base理论"><span>分布式基础之CAP和BASE理论</span></a></h1><h2 id="cap理论" tabindex="-1"><a class="header-anchor" href="#cap理论"><span>CAP理论</span></a></h2><p>CAP是一个已经经过证实的理论：一个分布式系统最多只能同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Partition tolerance）这三项中的两项，其中P是网络的特性，所以只能选择AP或者CP。</p><h3 id="一致性" tabindex="-1"><a class="header-anchor" href="#一致性"><span>一致性</span></a></h3><p>我们知道ACID中事务的一致性是指事务的执行不能破坏数据库数据的完整性和一致性，一个事务在执行前后，数据库都必须处于一致性状态。也就是说，事务的执行结果必须是使数据库从一个一致性状态转变到另一个一致性状态。</p><p>和ACID中的一致性不同，分布式环境中的一致性是指数据在多个副本之间是否能够保持一致的特性。</p><p>分布式系统中，数据一般会存在不同节点的副本中，如果对第一个节点的数据成功进行了更新操作，而第二个节点上的数据却没有得到相应更新，这时候读取第二个节点的数据依然是更新前的数据，即脏数据，这就是分布式系统数据不一致的情况。 在分布式系统中，如果能够做到针对一个数据项的更新操作执行成功后，所有的用户都能读取到最新的值，那么这样的系统就被认为具有强一致性（或严格的一致性）。</p><h3 id="可用性" tabindex="-1"><a class="header-anchor" href="#可用性"><span>可用性</span></a></h3><p>可用性是指系统提供的服务必须一直处于可用的状态，对于用户的每一个操作请求总是能够在有限的时间内返回结果，如果超过了这个时间范围，那么系统就被认为是不可用的。</p><p>“有限的时间内”是在系统的运行指标，不同系统会有差别。例如搜索引擎通常在0.5秒内需要给出用户检索结果。</p><p>“返回结果”是可用性的另一个重要指标，它要求系统完成对用户请求的处理后，返回一个正常的响应结果，要明确的反映出对请求处理的成功或失败。如果返回的结果是系统错误，比如&quot;OutOfMemory&quot;等报错信息，则认为此时系统是不可用的。</p><h3 id="分区容错性" tabindex="-1"><a class="header-anchor" href="#分区容错性"><span>分区容错性</span></a></h3><p>一个分布式系统中，节点组成的网络本来应该是连通的。然而可能因为某些故障，使得有些节点之间不连通了，整个网络就分成了几块区域，而数据就散布在了这些不连通的区域中，这就叫分区。</p><p>当你一个数据项只在一个节点中保存，那么分区出现后，和这个节点不连通的部分就访问不到这个数据了。这时分区就是无法容忍的。</p><p>提高分区容忍性的办法就是一个数据项复制到多个节点上，那么出现分区之后，这一数据项仍然能在其他区中读取，容忍性就提高了。然而，把数据复制到多个节点，就会带来一致性的问题，就是多个节点上面的数据可能是不一致的。要保证一致，每次写操作就都要等待全部节点写成功，而这等待又会带来可用性的问题。</p><p>总的来说就是，数据存在的节点越多，分区容忍性越高，但要复制更新的数据就越多，一致性就越难保证。为了保证一致性，更新所有节点数据所需要的时间就越长，可用性就会降低。</p><h3 id="面临的问题" tabindex="-1"><a class="header-anchor" href="#面临的问题"><span>面临的问题</span></a></h3><p>对于多数大型互联网应用的场景，主机众多、部署分散，而且现在的集群规模越来越大，所以节点故障、网络故障是常态，而且要保证服务可用性达到N个9，即保证P和A，舍弃C。</p><h2 id="base理论" tabindex="-1"><a class="header-anchor" href="#base理论"><span>BASE理论</span></a></h2><p>BASE理论是对CAP理论的延伸，思想是即使无法做到强一致性（CAP的一致性就是强一致性），但可以采用适当的采取弱一致性，即最终一致性。</p><p>BASE是指基本可用（Basically Available）、软状态（ Soft State）、最终一致性（ Eventual Consistency）。</p><h3 id="基本可用" tabindex="-1"><a class="header-anchor" href="#基本可用"><span>基本可用</span></a></h3><p>基本可用是指分布式系统在出现故障的时候，允许损失部分可用性（例如响应时间、功能上的可用性），允许损失部分可用性。需要注意的是，基本可用绝不等价于系统不可用。</p><p>响应时间上的损失：正常情况下搜索引擎需要在0.5秒之内返回给用户相应的查询结果，但由于出现故障（比如系统部分机房发生断电或断网故障），查询结果的响应时间增加到了1~2秒。</p><p>功能上的损失：购物网站在购物高峰（如双十一）时，为了保护系统的稳定性，部分消费者可能会被引导到一个降级页面。</p><h3 id="软状态" tabindex="-1"><a class="header-anchor" href="#软状态"><span>软状态</span></a></h3><p>软状态是指允许系统存在中间状态，而该中间状态不会影响系统整体可用性。分布式存储中一般一份数据会有多个副本，允许不同副本同步的延时就是软状态的体现。mysql replication的异步复制也是一种体现。</p><h3 id="最终一致性" tabindex="-1"><a class="header-anchor" href="#最终一致性"><span>最终一致性</span></a></h3><p>最终一致性是指系统中的所有数据副本经过一定时间后，最终能够达到一致的状态。弱一致性和强一致性相反，最终一致性是弱一致性的一种特殊情况。</p></div><!--[--><!----><!--]--><footer class="page-meta"><!----><div class="meta-item git-info"><div class="update-time"><span class="label">上次编辑于: </span><!----></div><div class="contributors"><span class="label">贡献者: </span><!--[--><!--[--><span class="contributor" title="email: 1585225345@qq.com">MJX</span><!--]--><!--]--></div></div></footer><!----><!----><!--[--><!----><!--]--><!--]--></main><!--]--><footer class="vp-footer-wrapper"><!----><div class="vp-copyright">Copyright © 2024 maijunxuan </div></footer></div><!--]--><!--]--><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-DITNE2eT.js" defer></script>
   </body>
 </html>
