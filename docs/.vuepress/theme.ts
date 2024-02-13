@@ -3,7 +3,7 @@ import {hopeTheme} from "vuepress-theme-hope";
 import navbar from "./navbar";
 
 export default hopeTheme({
-    hostname: "https://maijunxuan.cn/",
+    hostname: "https://maijunxuan.cn",
     favicon: "/favicon.ico",
     author: {
         name: "maijunxuan",
