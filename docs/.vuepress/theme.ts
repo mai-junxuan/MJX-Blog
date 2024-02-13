@@ -4,7 +4,7 @@ import navbar from "./navbar";
 
 export default hopeTheme({
     hostname: "https://maijunxuan.cn",
-    favicon: "/favicon.ico",
+    favicon: "favicon.ico",
     author: {
         name: "maijunxuan",
         email: "maijunxuan0309@gmail.com"
