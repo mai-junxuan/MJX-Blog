@@ -1,16 +1,16 @@
 import {hopeTheme} from "vuepress-theme-hope";
 
 import navbar from "./navbar";
+
 export default hopeTheme({
     hostname: "https://maijunxuan.cn/",
-    logo: "/logo.png",
     favicon: "/favicon.ico",
     author: {
         name: "maijunxuan",
+        email: "maijunxuan0309@gmail.com"
     },
     docsDir: "docs",
-    // 纯净模式：https://theme-hope.vuejs.press/zh/guide/interface/pure.html
-    pure: true,
+    pure: false,
     breadcrumb: false,
     navbar,
     sidebar: false,
@@ -29,8 +29,7 @@ export default hopeTheme({
             canonical: "https://maijunxuan.cn/",
             global: true,
         },
-        copyCode: {
-        },
+        copyCode: {},
 
         feed: {
             atom: true,
