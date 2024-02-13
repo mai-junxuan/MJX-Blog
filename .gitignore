@@ -14,3 +14,8 @@ pnpm-debug.log*
 # Editor directories and files
 .idea
 package-lock.json
+
+# VuePress Cache
+**/.vuepress/.cache/
+# VuePress Temp
+**/.vuepress/.temp/

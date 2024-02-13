@@ -209,8 +209,6 @@ systemctl start firewalld.service
 
 2. 开启tomcat测试是否可达
 
-   ![image-20220903002900385](C:\Users\MJX\AppData\Roaming\Typora\typora-user-images\image-20220903002900385.png)
-
    ![image-20220903002909832](https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image/202209030029388.png)
 
 3. 配置nginx负载均衡配置 如下所示，`upstream` 即负载服务器，下文将`upstream`起名为myserver，然后在server中配置负载服务器名myserver即可完成负载均衡配置。

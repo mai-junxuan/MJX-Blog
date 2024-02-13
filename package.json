@@ -1,16 +1,20 @@
 {
   "name": "MJX-Blog",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.9.10",
-    "@vuepress/plugin-medium-zoom": "^1.9.10",
-    "@vuepress/plugin-search": "^1.9.10",
-    "vuepress": "^1.9.10"
+    "@vuepress/bundler-vite": "2.0.0-rc.7",
+    "@vuepress/plugin-feed": "2.0.0-rc.12",
+    "@vuepress/plugin-search": "2.0.0-rc.12",
+    "vuepress": "2.0.0-rc.7",
+    "vue": "^3.4.15",
+    "vuepress-theme-hope": "2.0.0-rc.23"
   },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress-vite build docs",
+    "docs:clean-dev": "vuepress-vite dev docs --clean-cache",
+    "docs:dev": "vuepress-vite dev docs",
+    "docs:update-package": "npx vp-update"
   }
 }
