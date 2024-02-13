@@ -29,6 +29,8 @@ export default hopeTheme({
             canonical: "https://maijunxuan.cn/",
             global: true,
         },
+        copyCode: {
+        },
 
         feed: {
             atom: true,
