@@ -9,7 +9,7 @@ export default defineUserConfig({
         "记录我学习的过程",
     lang: "zh-CN",
     head: [
-        // meta
+        ['link', {rel: 'icon', href: '/favicon.ico'}],
         ["meta", {name: "robots", content: "all"}],
         ["meta", {name: "author", content: "maijunxuan"}],
         [
