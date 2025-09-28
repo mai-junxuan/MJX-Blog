@@ -4,15 +4,21 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.7",
-    "vuepress": "2.0.0-rc.7",
-    "vue": "^3.4.15",
-    "vuepress-theme-hope": "2.0.0-rc.23"
+    "@vuepress/bundler-vite": "2.0.0-rc.24",
+    "@vuepress/plugin-feed": "2.0.0-rc.3",
+    "@vuepress/plugin-search": "^2.0.0-rc.112",
+    "vue": "^3.5.22",
+    "vuepress": "2.0.0-rc.24",
+    "vuepress-theme-hope": "^2.0.0-rc.94"
   },
   "scripts": {
     "docs:build": "vuepress-vite build docs",
     "docs:clean-dev": "vuepress-vite dev docs --clean-cache",
     "docs:dev": "vuepress-vite dev docs",
     "docs:update-package": "npx vp-update"
+  },
+  "packageManager": "yarn@4.10.3+sha512.c38cafb5c7bb273f3926d04e55e1d8c9dfa7d9c3ea1f36a4868fa028b9e5f72298f0b7f401ad5eb921749eb012eb1c3bb74bf7503df3ee43fd600d14a018266f",
+  "devDependencies": {
+    "sass-embedded": "^1.93.2"
   }
 }
