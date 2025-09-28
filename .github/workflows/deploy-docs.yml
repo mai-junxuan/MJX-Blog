@@ -29,6 +29,12 @@ jobs:
           node-version: 22
           cache: yarn
 
+      - name: 启用 Corepack
+        run: corepack enable
+
+      - name: 安装 Yarn 版本
+        run: corepack prepare yarn@4.10.3 --activate
+
       - name: 安装依赖
         run: yarn install --immutable
 
