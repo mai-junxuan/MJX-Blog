@@ -2,7 +2,7 @@
 home: true
 heroImage: https://cdn.jsdelivr.net/gh/mai-junxuan/Cloud-image/image20250929202844222.jpeg
 heroText: 欢迎来到我的博客
-tagline: 🚀Talk is cheap. Show me the code.
+tagline: "😐<span style='text-decoration: line-through;'>Talk is cheap. Show me the code</span><br> 🚀Code is cheap. Show me the Prompt."
 features:
   - title: 学习
     details: 我所学到的一切，都是从书本上得来的。 ——亚伯拉罕·林肯(Abraham Lincoln)
