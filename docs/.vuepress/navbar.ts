@@ -2,6 +2,12 @@ import {navbar} from "vuepress-theme-hope";
 
 export default navbar([
     {
+        text: 'AI探索',
+        children: [
+            {text: 'MCP相关原理', link: '/AI探索/MCP相关原理'},
+        ]
+    },
+    {
         text: '日常',
         children: [
             {text: 'IDEA翻译插件报错更新TKK的问题', link: '/日常/IDEA翻译插件报错更新TKK的问题'},
