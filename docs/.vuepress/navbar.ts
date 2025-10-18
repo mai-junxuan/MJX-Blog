@@ -8,6 +8,7 @@ export default navbar([
             {text: 'Vue3中为什么不能使用this', link: '/日常/Vue3中为什么不能使用this'},
             {text: 'windows端口冲突解决', link: '/日常/windows端口冲突解决'},
             {text: '解决依赖冲突', link: '/日常/解决依赖冲突'},
+            {text: '如何写好一个单元测试', link: '/日常/如何写好一个单元测试'},
         ]
     },
     {
