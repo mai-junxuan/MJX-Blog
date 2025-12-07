@@ -46,31 +46,34 @@ export default navbar([
         ]
     },
     {
-        text: 'MySQL',
+        text: '数据库',
         children: [
-            {text: 'MySQL常用语句', link: '/MySQL/MySQL常用语句'},
-            {text: 'MySQL中的事务', link: '/MySQL/MySQL中的事务'},
-            {text: '一条SQL的执行过程', link: '/MySQL/一条SQL的执行过程'},
-            {text: 'MySQL中datetime和timestamp的区别与选择', link: '/MySQL/MySQL中datetime和timestamp的区别与选择'},
-            {text: '普通索引和唯一索引的区别', link: '/MySQL/普通索引和唯一索引的区别'},
-            {text: 'Explain语句', link: '/MySQL/Explain语句'},
-            {text: 'MySQL的执行成本怎么算', link: '/MySQL/MySQL的执行成本怎么算'},
-            {text: 'MVCC实现原理', link: '/MySQL/MVCC实现原理'},
-        ]
-    },
-    {
-        text: 'Redis',
-        children: [
-            {text: 'Redis的安装与基本操作', link: '/Redis/Redis的安装与基本操作'},
-            {text: 'Redis的3种特殊类型', link: '/Redis/Redis的3种特殊类型'},
-            {text: 'Redis配置文件介绍', link: '/Redis/Redis配置文件介绍'},
-            {text: 'Redis的Java客户端示例', link: '/Redis/Redis的Java客户端示例'},
-            {text: 'Redis事务', link: '/Redis/Redis事务'},
-            {text: 'RDB简介', link: '/Redis/RDB简介'},
-            {text: 'AOF简介', link: '/Redis/AOF简介'},
-            {text: '主从复制及哨兵', link: '/Redis/主从复制及哨兵'},
-            {text: 'Redis集群', link: '/Redis/Redis集群'},
-            {text: '使用缓存会存在哪些问题', link: '/Redis/使用缓存会存在哪些问题'},
+            {
+                text: 'MySQL', children: [
+                    {text: 'MySQL常用语句', link: '/数据库/MySQL/MySQL常用语句'},
+                    {text: 'MySQL中的事务', link: '/数据库/MySQL/MySQL中的事务'},
+                    {text: '一条SQL的执行过程', link: '/数据库/MySQL/一条SQL的执行过程'},
+                    {text: 'MySQL中datetime和timestamp的区别与选择', link: '/数据库/MySQL/MySQL中datetime和timestamp的区别与选择'},
+                    {text: '普通索引和唯一索引的区别', link: '/数据库/MySQL/普通索引和唯一索引的区别'},
+                    {text: 'Explain语句', link: '/数据库/MySQL/Explain语句'},
+                    {text: 'MySQL的执行成本怎么算', link: '/数据库/MySQL/MySQL的执行成本怎么算'},
+                    {text: 'MVCC实现原理', link: '/数据库/MySQL/MVCC实现原理'},
+                ]
+            },
+            {
+                text: 'Redis', children: [
+                    {text: 'Redis的安装与基本操作', link: '/数据库/Redis/Redis的安装与基本操作'},
+                    {text: 'Redis的3种特殊类型', link: '/数据库/Redis/Redis的3种特殊类型'},
+                    {text: 'Redis配置文件介绍', link: '/数据库/Redis/Redis配置文件介绍'},
+                    {text: 'Redis的Java客户端示例', link: '/数据库/Redis/Redis的Java客户端示例'},
+                    {text: 'Redis事务', link: '/数据库/Redis/Redis事务'},
+                    {text: 'RDB简介', link: '/数据库/Redis/RDB简介'},
+                    {text: 'AOF简介', link: '/数据库/Redis/AOF简介'},
+                    {text: '主从复制及哨兵', link: '/数据库/Redis/主从复制及哨兵'},
+                    {text: 'Redis集群', link: '/数据库/Redis/Redis集群'},
+                    {text: '使用缓存会存在哪些问题', link: '/数据库/Redis/使用缓存会存在哪些问题'},
+                ]
+            },
         ]
     },
     {
@@ -165,7 +168,8 @@ export default navbar([
     {
         text: '业务理解',
         children: [
-            {text: '对支付系统的个人理解', link: '/业务理解/对支付系统的个人理解'}
+            {text: '对支付系统的个人理解', link: '/业务理解/对支付系统的个人理解'},
+            {text: '对商品询单的个人理解', link: '/业务理解/对商品询单的个人理解'}
         ]
     },
 ]);
