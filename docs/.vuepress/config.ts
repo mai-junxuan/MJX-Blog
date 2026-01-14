@@ -12,6 +12,7 @@ export default defineUserConfig({
         ['link', {rel: 'icon', href: '/favicon.ico'}],
         ["meta", {name: "robots", content: "all"}],
         ["meta", {name: "author", content: "maijunxuan"}],
+        ["meta", {name: "baidu-site-verification", content: "codeva-Z4eGDD5tMR"}],
         [
             "meta",
             {
