@@ -18,6 +18,7 @@ export default navbar([
             {text: '如何写好一个单元测试', link: '/日常/如何写好一个单元测试'},
             {text: 'RocketMQ的ConsumeFromWhere失效问题排查', link: '/日常/RocketMQ的ConsumeFromWhere失效问题排查'},
             {text: 'FastJSON的$ref的坑', link: '/日常/FastJSON的$ref的坑'},
+            {text: '数据库Json查询踩坑记录', link: '/日常/数据库Json查询踩坑记录'},
         ]
     },
     {
