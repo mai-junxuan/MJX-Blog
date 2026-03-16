@@ -5,6 +5,7 @@ export default navbar([
         text: 'AI探索',
         children: [
             {text: 'MCP相关原理', link: '/AI探索/MCP相关原理'},
+            {text: 'Claude Code的skill和mcp的区别', link: '/AI探索/Claude Code的skill和mcp的区别'},
         ]
     },
     {
