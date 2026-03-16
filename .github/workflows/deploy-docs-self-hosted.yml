@@ -1,9 +1,7 @@
-name: 部署文档
+name: 手动部署文档-self-hosted
 
 on:
-  push:
-    branches:
-      - master   # 主分支触发部署，可改成你的默认分支
+  workflow_dispatch:
 
 permissions:
   contents: write
