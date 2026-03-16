@@ -6,8 +6,8 @@
     <link>https://maijunxuan.cn/</link>
     <description>记录我学习的过程</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 14 Jan 2026 17:09:14 GMT</pubDate>
-    <lastBuildDate>Wed, 14 Jan 2026 17:09:14 GMT</lastBuildDate>
+    <pubDate>Mon, 16 Mar 2026 14:26:24 GMT</pubDate>
+    <lastBuildDate>Mon, 16 Mar 2026 14:26:24 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -105,6 +105,105 @@
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  ]</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>员工对象中的 <code>department</code> 属性被序列化为了 <code>{"$ref": "$"}</code>，<code>$</code> 代表根对象，即 <code>devDept</code> 本身，形成了一个闭环。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Claude Code 的 Skill 和 MCP 的区别</title>
+      <link>https://maijunxuan.cn/AI%E6%8E%A2%E7%B4%A2/Claude%20Code%E7%9A%84skill%E5%92%8Cmcp%E7%9A%84%E5%8C%BA%E5%88%AB.html</link>
+      <guid>https://maijunxuan.cn/AI%E6%8E%A2%E7%B4%A2/Claude%20Code%E7%9A%84skill%E5%92%8Cmcp%E7%9A%84%E5%8C%BA%E5%88%AB.html</guid>
+      <source url="https://maijunxuan.cn/rss.xml">Claude Code 的 Skill 和 MCP 的区别</source>
+      <description>Claude Code 的 Skill 和 MCP 的区别 概述 在使用 Claude Code 时，你可能会遇到两个容易混淆的概念：Skill（技能） 和 MCP（Model Context Protocol）。虽然它们都是扩展 Claude Code 能力的方式，但它们的设计理念、实现方式和应用场景完全不同。本文将深入探讨这两者的区别，帮助你在实际...</description>
+      <pubDate>Sun, 07 Dec 2025 14:40:51 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>概述</h2>
+<p>在使用 Claude Code 时，你可能会遇到两个容易混淆的概念：<strong>Skill（技能）</strong> 和 <strong>MCP（Model Context Protocol）</strong>。虽然它们都是扩展 Claude Code 能力的方式，但它们的设计理念、实现方式和应用场景完全不同。本文将深入探讨这两者的区别，帮助你在实际开发中做出正确的选择。</p>
+<h2>什么是 Skill？</h2>
+<h3>核心概念</h3>
+<p>Skill 是 Claude Code 中的<strong>专用提示词模板系统</strong>。它本质上是一组预定义的指令集，用于处理特定类型的任务。</p>
+<h3>工作原理</h3>
+<p>当你调用一个 Skill 时，实际上发生的是：</p>
+<ol>
+<li>Claude Code 读取对应的 Skill 定义文件</li>
+<li>将 Skill 中的提示词<strong>内联扩展</strong>到当前对话中</li>
+<li>Claude 按照扩展后的提示词执行任务</li>
+<li>整个过程在当前对话上下文中完成</li>
+</ol>
+<h3>特点</h3>
+<ul>
+<li><strong>轻量级</strong>：仅仅是提示词模板，不需要额外的进程或服务</li>
+<li><strong>即时执行</strong>：在对话中直接扩展，无需外部通信</li>
+<li><strong>领域特定</strong>：通常针对某个特定任务类型设计</li>
+<li><strong>易于创建</strong>：只需编写 Markdown 格式的提示词文件</li>
+</ul>
+<h3>适用场景</h3>
+<ul>
+<li>文档格式处理（PDF、Excel、Word）</li>
+<li>代码审查流程</li>
+<li>特定格式的代码生成</li>
+<li>重复性工作流的自动化</li>
+</ul>
+<h2>什么是 MCP？</h2>
+<h3>核心概念</h3>
+<p>MCP（Model Context Protocol）是一个<strong>开放的协议标准</strong>，用于在 AI 模型和外部工具/数据源之间建立标准化的通信。它不是 Claude Code 独有的，而是一个可以被任何 AI 应用采用的通用协议。</p>
+<h3>工作原理</h3>
+<p>MCP 采用<strong>客户端-服务器架构</strong>：</p>
+<ol>
+<li><strong>MCP Server</strong>：独立运行的进程，提供工具、资源或提示</li>
+<li><strong>MCP Client</strong>：Claude Code 作为客户端，通过标准化协议与服务器通信</li>
+<li><strong>RPC 调用</strong>：使用 JSON-RPC 2.0 协议进行远程过程调用</li>
+<li><strong>数据交换</strong>：服务器响应请求，返回数据或执行操作</li>
+</ol>
+<h3>架构示意</h3>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>┌─────────────┐         MCP Protocol        ┌──────────────┐</span></span>
+<span class="line"><span>│             │◄──────────────────────────►│              │</span></span>
+<span class="line"><span>│ Claude Code │     (JSON-RPC 2.0)         │  MCP Server  │</span></span>
+<span class="line"><span>│  (Client)   │                            │              │</span></span>
+<span class="line"><span>└─────────────┘                            └──────────────┘</span></span>
+<span class="line"><span>                                                    │</span></span>
+<span class="line"><span>                                                    ▼</span></span>
+<span class="line"><span>                                           ┌─────────────────┐</span></span>
+<span class="line"><span>                                           │  External APIs  │</span></span>
+<span class="line"><span>                                           │  Databases      │</span></span>
+<span class="line"><span>                                           │  File Systems   │</span></span>
+<span class="line"><span>                                           └─────────────────┘</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>特点</h3>
+<ul>
+<li><strong>重量级</strong>：需要运行独立的服务器进程</li>
+<li><strong>标准化</strong>：遵循 MCP 协议规范，跨应用兼容</li>
+<li><strong>功能丰富</strong>：可以提供工具（Tools）、资源（Resources）、提示（Prompts）</li>
+<li><strong>外部集成</strong>：连接真实的外部系统和服务</li>
+<li><strong>可扩展</strong>：任何人都可以开发自己的 MCP Server</li>
+</ul>
+<h3>使用示例</h3>
+<div class="language-json line-numbers-mode" data-highlighter="shiki" data-ext="json" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-json"><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 在 Claude Code settings 中配置 MCP Server</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">  "mcpServers"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    "github"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">      "command"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"npx"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">      "args"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: [</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"-y"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"@modelcontextprotocol/server-github"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">],</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">      "env"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">        "GITHUB_TOKEN"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"your-token"</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>调用后，MCP 提供的工具会自动出现在 Claude Code 的工具列表中：</p>
+<ul>
+<li><code>mcp__github__create_issue</code></li>
+<li><code>mcp__github__list_repositories</code></li>
+<li>等等</li>
+</ul>
+<h3>适用场景</h3>
+<ul>
+<li>访问外部数据源（PostgreSQL、MongoDB）</li>
+<li>集成第三方服务（GitHub、Slack、Google Drive）</li>
+<li>需要持久化状态的复杂工具</li>
+<li>跨项目、跨团队共享的工具集</li>
+<li>实时数据获取和处理</li>
+</ul>
+<h2>核心区别对比</h2>
+<p>| 维度 | Skill | MCP Server |
+|</p>
 ]]></content:encoded>
     </item>
     <item>
