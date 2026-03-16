@@ -16,6 +16,7 @@ export default navbar([
             {text: '解决依赖冲突', link: '/日常/解决依赖冲突'},
             {text: '如何写好一个单元测试', link: '/日常/如何写好一个单元测试'},
             {text: 'RocketMQ的ConsumeFromWhere失效问题排查', link: '/日常/RocketMQ的ConsumeFromWhere失效问题排查'},
+            {text: 'FastJSON的$ref的坑', link: '/日常/FastJSON的$ref的坑'},
         ]
     },
     {
