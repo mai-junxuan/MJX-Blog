@@ -35,6 +35,9 @@ export default hopeTheme({
             atom: true,
             json: true,
             rss: true,
+            getter: {
+                content: (page) => page.contentRendered || "",
+            },
         },
 
         // mdEnhance: {

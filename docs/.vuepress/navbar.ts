@@ -24,28 +24,33 @@ export default navbar([
     {
         text: 'Java',
         children: [
-            {text: 'Java基础小结', link: '/Java/Java基础小结'},
-            {text: 'Java注解小结', link: '/Java/Java注解小结'},
-            {text: 'Java反射小结', link: '/Java/Java反射小结'},
-            {text: 'Java中的泛型', link: '/Java/Java中的泛型'},
-            {text: '谈谈Java的异常', link: '/Java/谈谈Java的异常'},
-            {text: 'Lambda实践', link: '/Java/Lambda实践'},
-            {text: 'Stream流实践', link: '/Java/Stream流实践'},
-            {text: 'Java中的字符串', link: '/Java/Java中的字符串'},
-        ]
-    },
-    {
-        text: 'JUC',
-        children: [
-            {text: 'Java中的线程池', link: '/JUC/Java中的线程池'},
-            {text: 'Java中的并发容器', link: '/JUC/Java中的并发容器'},
-            {text: '谈谈ThreadLocal', link: '/JUC/谈谈ThreadLocal'},
-            {text: 'synchronized的优化', link: '/JUC/synchronized的优化'},
-            {text: 'CAS和原子类', link: '/JUC/CAS和原子类'},
-            {text: 'volatile和CAS的弊端', link: '/JUC/volatile和CAS的弊端'},
-            {text: 'CompletableFuture简单使用', link: '/JUC/CompletableFuture简单使用'},
-            {text: 'AQS简述', link: '/JUC/AQS简述'},
-            {text: 'JUC常用工具类', link: '/JUC/JUC常用工具类'},
+            {
+                text: 'Java基础',
+                children: [
+                    {text: 'Java基础小结', link: '/Java/Java基础/Java基础小结'},
+                    {text: 'Java注解小结', link: '/Java/Java基础/Java注解小结'},
+                    {text: 'Java反射小结', link: '/Java/Java基础/Java反射小结'},
+                    {text: 'Java中的泛型', link: '/Java/Java基础/Java中的泛型'},
+                    {text: '谈谈Java的异常', link: '/Java/Java基础/谈谈Java的异常'},
+                    {text: 'Lambda实践', link: '/Java/Java基础/Lambda实践'},
+                    {text: 'Stream流实践', link: '/Java/Java基础/Stream流实践'},
+                    {text: 'Java中的字符串', link: '/Java/Java基础/Java中的字符串'},
+                ]
+            },
+            {
+                text: 'JUC',
+                children: [
+                    {text: 'Java中的线程池', link: '/Java/JUC/Java中的线程池'},
+                    {text: 'Java中的并发容器', link: '/Java/JUC/Java中的并发容器'},
+                    {text: '谈谈ThreadLocal', link: '/Java/JUC/谈谈ThreadLocal'},
+                    {text: 'synchronized的优化', link: '/Java/JUC/synchronized的优化'},
+                    {text: 'CAS和原子类', link: '/Java/JUC/CAS和原子类'},
+                    {text: 'volatile和CAS的弊端', link: '/Java/JUC/volatile和CAS的弊端'},
+                    {text: 'CompletableFuture简单使用', link: '/Java/JUC/CompletableFuture简单使用'},
+                    {text: 'AQS简述', link: '/Java/JUC/AQS简述'},
+                    {text: 'JUC常用工具类', link: '/Java/JUC/JUC常用工具类'},
+                ]
+            }
         ]
     },
     {
